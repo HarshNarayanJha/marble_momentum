@@ -28,4 +28,4 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Trigger" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.135162, 0)
 shape = SubResource("CylinderShape3D_okroa")
-debug_color = Color(0.996796, 0, 0.179571, 0.42)
+debug_color = Color(0.289219, 0.630084, 0, 0.42)

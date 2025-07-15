@@ -3,17 +3,17 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cr0klmkc54vdq"
-path="res://.godot/imported/corner.fbx-5f64e512b3be9c8f512fdf8e8a8a7c5c.scn"
+uid="uid://ffp4ukrkq8tm"
+path="res://.godot/imported/gate_simple.fbx-2af6119c57911beff80771d48ebb37c1.scn"
 
 [deps]
 
-source_file="res://art/marble_kit/corner.fbx"
-dest_files=["res://.godot/imported/corner.fbx-5f64e512b3be9c8f512fdf8e8a8a7c5c.scn"]
+source_file="res://art/space_kit/gate_simple.fbx"
+dest_files=["res://.godot/imported/gate_simple.fbx-2af6119c57911beff80771d48ebb37c1.scn"]
 
 [params]
 
-nodes/root_type="StaticBody3D"
+nodes/root_type=""
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

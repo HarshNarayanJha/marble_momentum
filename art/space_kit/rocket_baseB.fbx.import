@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cr0klmkc54vdq"
-path="res://.godot/imported/corner.fbx-5f64e512b3be9c8f512fdf8e8a8a7c5c.scn"
+uid="uid://c7kxc0ittbc4t"
+path="res://.godot/imported/rocket_baseB.fbx-483019ef06f12bcc8bc2f229fa9ec94b.scn"
 
 [deps]
 
-source_file="res://art/marble_kit/corner.fbx"
-dest_files=["res://.godot/imported/corner.fbx-5f64e512b3be9c8f512fdf8e8a8a7c5c.scn"]
+source_file="res://art/space_kit/rocket_baseB.fbx"
+dest_files=["res://.godot/imported/rocket_baseB.fbx-483019ef06f12bcc8bc2f229fa9ec94b.scn"]
 
 [params]
 

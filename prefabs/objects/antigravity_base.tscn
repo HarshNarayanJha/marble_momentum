@@ -1,0 +1,130 @@
+[gd_scene load_steps=14 format=3 uid="uid://ckuucv7xbbwix"]
+
+[ext_resource type="PackedScene" uid="uid://c7kxc0ittbc4t" path="res://art/space_kit/rocket_baseB.fbx" id="1_hanmi"]
+[ext_resource type="Shader" uid="uid://crip5vhfoj26h" path="res://shaders/antigravity.gdshader" id="2_r7hrm"]
+[ext_resource type="Script" uid="uid://buwivqoghsi7v" path="res://scripts/objects/antigravity.gd" id="2_v0v2w"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hanmi"]
+points = PackedVector3Array(-0.0572631, 0, -0.9, -0.9, 0, -0.0572631, -0.0572631, 0.59999, -0.9, 0.0570869, 0, -0.9, -0.9, 0, 0.0570869, -0.9, 0.59999, -0.0572631, -0.0572631, 1.3, -0.500039, 0.0570869, 0.59999, -0.9, 0.9, 0, -0.0572631, -0.9, 0.59999, 0.0570869, -0.0572631, 0, 0.9, -0.500039, 1.3, -0.0572631, 0.0570869, 1.3, -0.500039, 0.9, 0.59999, -0.0572631, 0.9, 0, 0.0570869, -0.500039, 1.3, 0.0570869, -0.0572631, 0.59999, 0.9, 0.0570869, 0, 0.9, 0.499863, 1.3, -0.0572631, 0.9, 0.59999, 0.0570869, -0.0572631, 1.3, 0.499863, 0.0570869, 0.59999, 0.9, 0.499863, 1.3, 0.0570869, 0.0570869, 1.3, 0.499863)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hanmi"]
+height = 1.5
+radial_segments = 32
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r7hrm"]
+render_priority = 0
+shader = ExtResource("2_r7hrm")
+shader_parameter/albedo = Color(0, 0, 0, 1)
+shader_parameter/emission_amount = 3.0
+shader_parameter/rim_steepness = 2.5
+shader_parameter/uv_scale = Vector3(0, 0, 0)
+shader_parameter/uv_offset = Vector3(0, 0, 0)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_r7hrm"]
+height = 1.25
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v0v2w"]
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_box_extents = Vector3(0.35, 0, 0.35)
+spread = 0.0
+gravity = Vector3(0, 4.9, 0)
+turbulence_noise_strength = 4.19
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0v2w"]
+emission_enabled = true
+emission = Color(0.14902, 0.615686, 1, 1)
+emission_energy_multiplier = 1.5
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_13hw2"]
+material = SubResource("StandardMaterial3D_v0v2w")
+shape = 0
+size = 0.013
+sections = 2
+section_length = 0.026
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_13hw2"]
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_box_extents = Vector3(0.4, 0, 0.4)
+spread = 0.0
+gravity = Vector3(0, -4.9, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13hw2"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.275, 0.384, 1)
+emission_energy_multiplier = 1.5
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_v0v2w"]
+material = SubResource("StandardMaterial3D_13hw2")
+shape = 0
+size = 0.013
+sections = 2
+section_length = 0.026
+
+[node name="AntigravityBase" node_paths=PackedStringArray("force_area", "force_mesh", "repel_particles", "attract_particles") instance=ExtResource("1_hanmi")]
+collision_layer = 8
+collision_mask = 14
+script = ExtResource("2_v0v2w")
+force_area = NodePath("ForceField")
+force_mesh = NodePath("ForceField/MeshInstance3D")
+repel_particles = NodePath("RepelParticles")
+attract_particles = NodePath("AttractParticles")
+
+[node name="rocket_baseB" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("ConvexPolygonShape3D_hanmi")
+
+[node name="ForceField" type="Area3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 16
+collision_mask = 10
+gravity_space_override = 3
+gravity = -8.8
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ForceField" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CylinderMesh_hanmi")
+surface_material_override/0 = SubResource("ShaderMaterial_r7hrm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ForceField" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
+shape = SubResource("CylinderShape3D_r7hrm")
+debug_color = Color(0.996681, 0, 0.181905, 0.42)
+
+[node name="RepelParticles" type="GPUParticles3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+emitting = false
+amount = 10
+lifetime = 0.8
+speed_scale = 0.5
+randomness = 1.0
+trail_enabled = true
+trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_v0v2w")
+draw_pass_1 = SubResource("RibbonTrailMesh_13hw2")
+
+[node name="AttractParticles" type="GPUParticles3D" parent="." index="4"]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 0, 2.08939, 0)
+emitting = false
+amount = 10
+lifetime = 0.8
+speed_scale = 0.5
+randomness = 1.0
+trail_enabled = true
+trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_13hw2")
+draw_pass_1 = SubResource("RibbonTrailMesh_v0v2w")
