@@ -6,6 +6,11 @@ class_name TriggerButton extends StaticBody3D
 @export var keep_pressed: bool = false
 @export var allow_manual_change: bool = true
 @export var button_mesh: MeshInstance3D
+@export var button_color_mesh: MeshInstance3D
+
+@export_group("Colors")
+@export_color_no_alpha var off_color: Color = Color(0.957, 0.504, 0)
+@export_color_no_alpha var on_color: Color = Color(0, 0.874, 0)
 
 signal toggled(state: bool)
 signal turned_on
@@ -46,6 +51,7 @@ func toggle():
 		__turn_on()
 
 func lock_change():
+	_on_mouse_exit()
 	_manual_control_enabled = false
 
 func unlock_change():
@@ -54,6 +60,8 @@ func unlock_change():
 	_manual_control_enabled = true
 
 func __turn_on():
+	(button_color_mesh.get_surface_override_material(0) as StandardMaterial3D).albedo_color = on_color
+
 	if is_pressed:
 		return
 
@@ -63,10 +71,12 @@ func __turn_on():
 	animation_player.play(&"toggle-on")
 
 func __turn_off():
-	if not is_pressed:
+	if keep_pressed and is_pressed:
 		return
 
-	if keep_pressed:
+	(button_color_mesh.get_surface_override_material(0) as StandardMaterial3D).albedo_color = off_color
+
+	if not is_pressed:
 		return
 
 	is_pressed = false

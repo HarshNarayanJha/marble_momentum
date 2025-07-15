@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ok4pyt8rmkk0"]
+[gd_scene load_steps=32 format=3 uid="uid://ok4pyt8rmkk0"]
 
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_edoqj"]
 [ext_resource type="Environment" uid="uid://b1srll4lqu0sm" path="res://settings/world_environment.res" id="2_022ip"]
@@ -29,11 +29,17 @@ size = Vector3(1.27856, 1.5, 2.5)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_edoqj"]
 height = 4.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hl16f"]
+resource_local_to_scene = true
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_hl16f"]
 size = Vector3(1, 1.2, 0.5)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_022ip"]
 height = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v6yyo"]
+resource_local_to_scene = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v6yyo"]
 size = Vector3(1, 1.2, 0.5)
@@ -128,6 +134,9 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.192
 shape = SubResource("CapsuleShape3D_edoqj")
 debug_color = Color(0.973447, 0.163556, 7.70092e-07, 0.42)
 
+[node name="button" parent="Level/Objects/fan-standing-two/button-round/button-round" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_hl16f")
+
 [node name="CollisionShape3D" parent="Level/Objects/fan-standing-two/button-round/Trigger" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_hl16f")
@@ -141,6 +150,9 @@ wind_speed = 100.0
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.19209e-07, 0.5, -2.34323)
 shape = SubResource("CapsuleShape3D_022ip")
 debug_color = Color(0.973447, 0.163556, 7.70092e-07, 0.42)
+
+[node name="button" parent="Level/Objects/fan-standing-two2/button-round/button-round" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_v6yyo")
 
 [node name="CollisionShape3D" parent="Level/Objects/fan-standing-two2/button-round/Trigger" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)

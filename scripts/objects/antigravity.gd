@@ -75,6 +75,7 @@ func set_state(state: AntigravityState):
 		set_state(AntigravityState.OFF)
 
 func lock_change():
+	_on_mouse_exit()
 	_manual_control_enabled = false
 
 func unlock_change():
