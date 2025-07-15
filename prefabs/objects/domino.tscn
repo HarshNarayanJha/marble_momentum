@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://5e6ux51sxv6w"]
+
+[ext_resource type="PackedScene" uid="uid://cbyj0ohni1g1w" path="res://art/platformer_kit/domino.fbx" id="1_30gdi"]
+[ext_resource type="PhysicsMaterial" uid="uid://4uj6orphlajr" path="res://materials/level_physics_material.phymat" id="1_87y7t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_30gdi"]
+size = Vector3(1.5, 0.3, 1)
+
+[node name="Domino" type="RigidBody3D"]
+collision_layer = 8
+collision_mask = 15
+mass = 0.25
+physics_material_override = ExtResource("1_87y7t")
+
+[node name="block-moving" parent="." instance=ExtResource("1_30gdi")]
+transform = Transform3D(-6.55671e-08, 1, 0, -1.5, -4.37114e-08, 0, 0, 0, 1, -0.15, 0.8, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("BoxShape3D_30gdi")

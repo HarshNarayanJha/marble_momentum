@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnhj8nq5gipfo"]
+
+[ext_resource type="Script" uid="uid://u3fc3hbbog8v" path="res://scripts/gameplay/selectable_section.gd" id="1_qm2ey"]
+
+[node name="SelectableSection" type="Node3D"]
+script = ExtResource("1_qm2ey")

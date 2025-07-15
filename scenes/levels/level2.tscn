@@ -1,0 +1,177 @@
+[gd_scene load_steps=26 format=3 uid="uid://1okjujjfvgni"]
+
+[ext_resource type="PackedScene" uid="uid://bnhj8nq5gipfo" path="res://prefabs/gameplay/selectable_section.tscn" id="1_56gwk"]
+[ext_resource type="Environment" uid="uid://b1srll4lqu0sm" path="res://settings/world_environment.res" id="1_b4tpv"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_sqrei"]
+[ext_resource type="PackedScene" uid="uid://kpitevi1kttu" path="res://prefabs/level/straight-long.tscn" id="2_ve5ok"]
+[ext_resource type="PackedScene" uid="uid://cot7pnd46sum3" path="res://prefabs/level/ramp_long_a.tscn" id="3_yhrca"]
+[ext_resource type="PackedScene" uid="uid://di7jdrf68ys2x" path="res://prefabs/level/ramp_long_b.tscn" id="4_4eecq"]
+[ext_resource type="PackedScene" uid="uid://dyt650862u6fa" path="res://prefabs/level/ramp_long_c.tscn" id="5_b3p8y"]
+[ext_resource type="PackedScene" uid="uid://bnx7s0ei8iga6" path="res://prefabs/level/ramp_long_d.tscn" id="6_bxuut"]
+[ext_resource type="PackedScene" uid="uid://bic3ininocbum" path="res://prefabs/level/straight.tscn" id="6_cqal4"]
+[ext_resource type="PackedScene" uid="uid://cqr1qxqce7gtd" path="res://prefabs/objects/lamp_square_table.tscn" id="7_o3sye"]
+[ext_resource type="PackedScene" uid="uid://diqrs7j47gfmn" path="res://prefabs/objects/button_square.tscn" id="8_24ks5"]
+[ext_resource type="PackedScene" uid="uid://bkg5buo0t1jed" path="res://prefabs/objects/fan_standing_two.tscn" id="9_s4es8"]
+[ext_resource type="PackedScene" uid="uid://5e6ux51sxv6w" path="res://prefabs/objects/domino.tscn" id="10_63e4f"]
+[ext_resource type="Script" uid="uid://bsmwh6ogvdfg1" path="res://scripts/game_manager.gd" id="11_y6lc1"]
+[ext_resource type="PackedScene" uid="uid://cj6byrau2kj0i" path="res://prefabs/level/support_four_top_double.tscn" id="12_ekhvm"]
+[ext_resource type="PackedScene" uid="uid://ceyqn55l6fl6q" path="res://prefabs/gameplay/marble.tscn" id="13_nflru"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="14_4eecq"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="15_b3p8y"]
+[ext_resource type="Resource" uid="uid://byv2to4m7vhpb" path="res://settings/camera_resource.res" id="16_b3p8y"]
+[ext_resource type="PhysicsMaterial" uid="uid://c586fpgb4y1ja" path="res://materials/marble_level2.phymat" id="16_f3b2k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mrac1"]
+size = Vector3(1.27856, 1.5, 2.5)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2bfhc"]
+height = 9.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rlvb3"]
+size = Vector2(20, 30)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k63md"]
+points = PackedVector3Array(10, 0, 15, -10, 0, 15, 10, 0, -15, -10, 0, -15)
+
+[sub_resource type="Resource" id="Resource_bxuut"]
+script = ExtResource("15_b3p8y")
+duration = 1.0
+transition = 0
+ease = 2
+
+[node name="Level2" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+physics_interpolation_mode = 1
+transform = Transform3D(-0.601815, -0.480631, 0.637819, 0, 0.798636, 0.601815, -0.798635, 0.362181, -0.480631, 3.63782, 8.60182, -1.98063)
+projection = 1
+size = 5.5
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("1_sqrei")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.989526, -0.121884, 0.0773499, 0, 0.535827, 0.844328, -0.144356, -0.835484, 0.530214, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_mode = 0
+sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_b4tpv")
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="Paths" type="Node" parent="Level"]
+
+[node name="SelectableSection" parent="Level/Paths" node_paths=PackedStringArray("click_area") instance=ExtResource("1_56gwk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 2.5)
+click_area = NodePath("Area3D")
+sections = Array[PackedScene]([ExtResource("3_yhrca"), ExtResource("4_4eecq"), ExtResource("5_b3p8y"), ExtResource("6_bxuut")])
+
+[node name="Area3D" type="Area3D" parent="Level/Paths/SelectableSection"]
+collision_mask = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Paths/SelectableSection/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00866699, 0.75, 0.25)
+shape = SubResource("BoxShape3D_mrac1")
+debug_color = Color(1.39579e-06, 0.636256, 0.40716, 0.42)
+
+[node name="straight" parent="Level/Paths" instance=ExtResource("6_cqal4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -3)
+
+[node name="straight2" parent="Level/Paths" instance=ExtResource("2_ve5ok")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -1.5)
+
+[node name="straight3" parent="Level/Paths" instance=ExtResource("2_ve5ok")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.5)
+
+[node name="Objects" type="Node" parent="Level"]
+
+[node name="lampSquareTable" parent="Level/Objects" node_paths=PackedStringArray("button") instance=ExtResource("7_o3sye")]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 4, -11)
+button = NodePath("../button-square")
+
+[node name="button-square" parent="Level/Objects" instance=ExtResource("8_24ks5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
+keep_pressed = true
+allow_manual_change = false
+
+[node name="fan-standing-two" parent="Level/Objects" instance=ExtResource("9_s4es8")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 4.3, 1)
+wind_speed = 100.0
+
+[node name="WindCollisionShape" type="CollisionShape3D" parent="Level/Objects/fan-standing-two/WindArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.5, -4.34323)
+shape = SubResource("CapsuleShape3D_2bfhc")
+debug_color = Color(0.973447, 0.163556, 7.70092e-07, 0.42)
+
+[node name="button-round" parent="Level/Objects/fan-standing-two" index="4"]
+keep_pressed = true
+allow_manual_change = false
+
+[node name="Dominos" type="Node" parent="Level"]
+
+[node name="Domino" parent="Level/Dominos" instance=ExtResource("10_63e4f")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -4.5)
+
+[node name="Domino2" parent="Level/Dominos" instance=ExtResource("10_63e4f")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -5.5)
+
+[node name="Domino3" parent="Level/Dominos" instance=ExtResource("10_63e4f")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -6.5)
+
+[node name="Domino4" parent="Level/Dominos" instance=ExtResource("10_63e4f")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -7.5)
+
+[node name="Domino5" parent="Level/Dominos" instance=ExtResource("10_63e4f")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -8.5)
+
+[node name="Plane" type="StaticBody3D" parent="Level"]
+collision_mask = 0
+collision_priority = 0.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Plane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+layers = 0
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_rlvb3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Plane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("ConvexPolygonShape3D_k63md")
+
+[node name="PhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_target")]
+transform = Transform3D(-0.601815, -0.480631, 0.637819, 0, 0.798636, 0.601815, -0.798635, 0.362181, -0.480631, 3.63782, 8.60182, -1.98063)
+top_level = true
+script = ExtResource("14_4eecq")
+follow_mode = 5
+follow_target = NodePath("../MarbleLauncher/Marble")
+tween_resource = SubResource("Resource_bxuut")
+tween_on_load = false
+camera_3d_resource = ExtResource("16_b3p8y")
+follow_offset = Vector3(3, 1, -4.5)
+follow_damping = true
+follow_damping_value = Vector3(2, 2, 2)
+follow_axis_lock = 4
+dead_zone_width = 1.0
+dead_zone_height = 1.0
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("marble", "sections", "buttons")]
+script = ExtResource("11_y6lc1")
+marble = NodePath("../MarbleLauncher/Marble")
+sections = [NodePath("../Level/Paths/SelectableSection")]
+buttons = [NodePath("../Level/Objects/button-square"), NodePath("../Level/Objects/fan-standing-two/button-round")]
+
+[node name="MarbleLauncher" parent="." instance=ExtResource("12_ekhvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 3)
+
+[node name="Marble" parent="MarbleLauncher" instance=ExtResource("13_nflru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+physics_material_override = ExtResource("16_f3b2k")
+
+[editable path="Level/Objects/fan-standing-two"]

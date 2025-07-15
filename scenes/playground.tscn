@@ -1,0 +1,134 @@
+[gd_scene load_steps=20 format=3 uid="uid://y7xjq62nun3u"]
+
+[ext_resource type="Environment" uid="uid://b1srll4lqu0sm" path="res://settings/world_environment.res" id="1_k63md"]
+[ext_resource type="PackedScene" uid="uid://bic3ininocbum" path="res://prefabs/level/straight.tscn" id="2_o6wi6"]
+[ext_resource type="PackedScene" uid="uid://kpitevi1kttu" path="res://prefabs/level/straight-long.tscn" id="4_2bfhc"]
+[ext_resource type="PackedScene" uid="uid://cqr1qxqce7gtd" path="res://prefabs/objects/lamp_square_table.tscn" id="4_mm0a5"]
+[ext_resource type="PackedScene" uid="uid://bnhj8nq5gipfo" path="res://prefabs/gameplay/selectable_section.tscn" id="4_mrac1"]
+[ext_resource type="PackedScene" uid="uid://ceyqn55l6fl6q" path="res://prefabs/gameplay/marble.tscn" id="4_q8s1k"]
+[ext_resource type="PackedScene" uid="uid://coj7l5toj0d77" path="res://prefabs/level/slant_long_b.tscn" id="5_2bfhc"]
+[ext_resource type="PackedScene" uid="uid://diqrs7j47gfmn" path="res://prefabs/objects/button_square.tscn" id="5_o6wi6"]
+[ext_resource type="PackedScene" uid="uid://8is52y75bfde" path="res://prefabs/level/slant_long_c.tscn" id="6_osidk"]
+[ext_resource type="PackedScene" uid="uid://bbt67y3nikyvl" path="res://prefabs/level/slant_long_d.tscn" id="6_x1amm"]
+[ext_resource type="PackedScene" uid="uid://bkg5buo0t1jed" path="res://prefabs/objects/fan_standing_two.tscn" id="7_emj6c"]
+[ext_resource type="PackedScene" uid="uid://5e6ux51sxv6w" path="res://prefabs/objects/domino.tscn" id="11_k63md"]
+[ext_resource type="PackedScene" uid="uid://cj6byrau2kj0i" path="res://prefabs/level/support_four_top_double.tscn" id="11_rlvb3"]
+[ext_resource type="Script" uid="uid://bsmwh6ogvdfg1" path="res://scripts/game_manager.gd" id="12_osidk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mrac1"]
+size = Vector3(1.27856, 1.5, 2.5)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2bfhc"]
+height = 5.03328
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rlvb3"]
+size = Vector2(20, 30)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k63md"]
+points = PackedVector3Array(10, 0, 15, -10, 0, 15, 10, 0, -15, -10, 0, -15)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rlvb3"]
+bounce = 0.7
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.989526, -0.121884, 0.0773499, 0, 0.535827, 0.844328, -0.144356, -0.835484, 0.530214, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_mode = 0
+sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_k63md")
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="Paths" type="Node" parent="Level"]
+
+[node name="SelectableSection" parent="Level/Paths" node_paths=PackedStringArray("click_area") instance=ExtResource("4_mrac1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -1.5)
+click_area = NodePath("Area3D")
+sections = Array[PackedScene]([ExtResource("4_2bfhc"), ExtResource("5_2bfhc"), ExtResource("6_osidk"), ExtResource("6_x1amm")])
+
+[node name="Area3D" type="Area3D" parent="Level/Paths/SelectableSection"]
+collision_mask = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Paths/SelectableSection/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00866699, 0.75, 0.25)
+shape = SubResource("BoxShape3D_mrac1")
+
+[node name="straight" parent="Level/Paths" instance=ExtResource("2_o6wi6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -3)
+
+[node name="Objects" type="Node" parent="Level"]
+
+[node name="lampSquareTable" parent="Level/Objects" node_paths=PackedStringArray("button") instance=ExtResource("4_mm0a5")]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 4, -11)
+button = NodePath("../button-square")
+
+[node name="button-square" parent="Level/Objects" instance=ExtResource("5_o6wi6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
+keep_pressed = true
+allow_manual_change = false
+
+[node name="fan-standing-two" parent="Level/Objects" instance=ExtResource("7_emj6c")]
+process_mode = 4
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 5.3, 2)
+visible = false
+
+[node name="WindCollisionShape" type="CollisionShape3D" parent="Level/Objects/fan-standing-two"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.5, -2.34323)
+shape = SubResource("CapsuleShape3D_2bfhc")
+debug_color = Color(0.973447, 0.163556, 7.70092e-07, 0.42)
+
+[node name="Dominos" type="Node" parent="Level"]
+
+[node name="Domino" parent="Level/Dominos" instance=ExtResource("11_k63md")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -4.5)
+
+[node name="Domino2" parent="Level/Dominos" instance=ExtResource("11_k63md")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -5.5)
+
+[node name="Domino3" parent="Level/Dominos" instance=ExtResource("11_k63md")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -6.5)
+
+[node name="Domino4" parent="Level/Dominos" instance=ExtResource("11_k63md")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -7.5)
+
+[node name="Domino5" parent="Level/Dominos" instance=ExtResource("11_k63md")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -8.5)
+
+[node name="Plane" type="StaticBody3D" parent="Level"]
+collision_mask = 0
+collision_priority = 0.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Plane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+layers = 0
+mesh = SubResource("PlaneMesh_rlvb3")
+skeleton = NodePath("../../root/@EditorNode@21260/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/Node3D/Level")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Plane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("ConvexPolygonShape3D_k63md")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.577858, -0.471611, 0.666081, 0, 0.816138, 0.577857, -0.816138, 0.333919, -0.471612, 2.224, 7.5, -4.926)
+projection = 1
+fov = 60.0
+size = 6.0
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("marble", "sections", "buttons")]
+script = ExtResource("12_osidk")
+marble = NodePath("../MarbleLauncher/Marble")
+sections = [NodePath("../Level/Paths/SelectableSection")]
+buttons = [NodePath("../Level/Objects/button-square")]
+
+[node name="MarbleLauncher" parent="." instance=ExtResource("11_rlvb3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, -1)
+
+[node name="Marble" parent="MarbleLauncher" instance=ExtResource("4_q8s1k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+physics_material_override = SubResource("PhysicsMaterial_rlvb3")
+linear_damp = 0.0

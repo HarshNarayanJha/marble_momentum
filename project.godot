@@ -1,0 +1,48 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Marble Momentum"
+run/main_scene="uid://y7xjq62nun3u"
+config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+
+[editor]
+
+movie_writer/movie_file="/home/harshnj/Documents/GodotProjects/marble_momentum/recorded/movie.avi"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
+
+[layer_names]
+
+3d_physics/layer_1="default"
+3d_physics/layer_2="marble"
+3d_physics/layer_3="level"
+3d_physics/layer_4="objects"
+
+[physics]
+
+common/physics_jitter_fix=0.0
+3d/physics_engine="Jolt Physics"
+common/physics_interpolation=true
+
+[shader_globals]
+
+outline_color={
+"type": "color",
+"value": Color(1, 1, 1, 1)
+}
