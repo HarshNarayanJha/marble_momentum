@@ -5,6 +5,7 @@ class_name TriggerButton extends StaticBody3D
 @export var initial_pressed: bool = false
 @export var keep_pressed: bool = false
 @export var allow_manual_change: bool = true
+@export var button_mesh: MeshInstance3D
 
 signal toggled(state: bool)
 signal turned_on
@@ -12,11 +13,14 @@ signal turned_off
 
 var is_pressed: bool = false
 var _manual_control_enabled: bool
+var is_hovering: bool = false
 
 func _ready() -> void:
 	trigger_area.body_entered.connect(on_body_enter)
 	trigger_area.body_exited.connect(on_body_exit)
 	trigger_area.input_event.connect(on_input)
+	trigger_area.mouse_entered.connect(_on_mouse_enter)
+	trigger_area.mouse_exited.connect(_on_mouse_exit)
 
 	_manual_control_enabled = allow_manual_change
 
@@ -26,6 +30,8 @@ func _exit_tree() -> void:
 	trigger_area.body_entered.disconnect(on_body_enter)
 	trigger_area.body_exited.disconnect(on_body_exit)
 	trigger_area.input_event.disconnect(on_input)
+	trigger_area.mouse_entered.disconnect(_on_mouse_enter)
+	trigger_area.mouse_exited.disconnect(_on_mouse_exit)
 
 func set_pressed(state: bool):
 	if state:
@@ -89,3 +95,18 @@ func on_input(camera: Node, event: InputEvent, event_position: Vector3, normal: 
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			toggle()
+
+func _on_mouse_enter():
+	if not _manual_control_enabled:
+		return
+
+	is_hovering = true
+	button_mesh.set_instance_shader_parameter(&"outline_width", 2.5)
+
+func _on_mouse_exit():
+	is_hovering = false
+
+	if not _manual_control_enabled:
+		return
+
+	button_mesh.set_instance_shader_parameter(&"outline_width", 0.0)

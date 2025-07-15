@@ -10,6 +10,7 @@ const NUM_STATES = 3
 
 @export var force_area: Area3D
 @export var force_mesh: MeshInstance3D
+@export var base_mesh: MeshInstance3D
 @export var repel_particles: GPUParticles3D
 @export var attract_particles: GPUParticles3D
 
@@ -82,7 +83,7 @@ func unlock_change():
 	_manual_control_enabled = true
 
 func _on_input(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int):
-	if not allow_manual_change:
+	if not _manual_control_enabled:
 		return
 
 	if event is InputEventMouseButton:
@@ -93,16 +94,16 @@ func _on_input(camera: Node, event: InputEvent, event_position: Vector3, normal:
 			set_state(current_state)
 
 func _on_mouse_enter():
-	if not allow_manual_change:
+	if not _manual_control_enabled:
 		return
 
 	is_hovering = true
-	force_mesh.set_instance_shader_parameter(&"outline_width", 2.5)
+	base_mesh.set_instance_shader_parameter(&"outline_width", 2.5)
 
 func _on_mouse_exit():
 	is_hovering = false
 
-	if not allow_manual_change:
+	if not _manual_control_enabled:
 		return
 
-	force_mesh.set_instance_shader_parameter(&"outline_width", 0.0)
+	base_mesh.set_instance_shader_parameter(&"outline_width", 0.0)

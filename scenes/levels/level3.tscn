@@ -179,11 +179,12 @@ dead_zone_width = 1.0
 dead_zone_height = 1.0
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("marble", "sections", "buttons")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("marble", "sections", "buttons", "antigravities")]
 script = ExtResource("17_dc8aq")
 marble = NodePath("../MarbleLauncher/Marble")
 sections = [NodePath("../Level/Paths/SelectableSection")]
 buttons = [NodePath("../Level/Objects/fan-standing-two/button-round"), NodePath("../Level/Objects/fan-standing-two2/button-round"), NodePath("../Level/Objects/button-square"), NodePath("../Level/Objects/fan-standing-two3/button-round")]
+antigravities = [NodePath("../Level/Objects/AntigravityBase")]
 
 [node name="MarbleLauncher" parent="." instance=ExtResource("18_5bnxw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 2)

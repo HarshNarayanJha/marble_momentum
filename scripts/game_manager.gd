@@ -3,9 +3,11 @@ extends Node
 @export var marble: Marble
 @export var sections: Array[SelectableSection]
 @export var buttons: Array[TriggerButton]
+@export var antigravities: Array[Antigravity]
 @export var build_mode: bool = true
 
-var velocity: Vector3
+var lvel: Vector3
+var avel: Vector3
 
 func _ready() -> void:
 	enter_build_mode()
@@ -17,6 +19,8 @@ func enter_build_mode():
 		s.unlock_change()
 	for b in buttons:
 		b.unlock_change()
+	for a in antigravities:
+		a.unlock_change()
 
 func enter_play_mode():
 	build_mode = false
@@ -25,6 +29,8 @@ func enter_play_mode():
 		s.lock_change()
 	for b in buttons:
 		b.lock_change()
+	for a in antigravities:
+		a.lock_change()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
@@ -35,9 +41,11 @@ func _input(event: InputEvent) -> void:
 				enter_build_mode()
 
 func disable_physics():
-	velocity = marble.linear_velocity
+	lvel = marble.linear_velocity
+	avel = marble.angular_velocity
 	marble.set_freeze_enabled(true)
 
 func enable_physics():
 	marble.set_freeze_enabled(false)
-	marble.linear_velocity = velocity
+	marble.linear_velocity = lvel
+	marble.angular_velocity = avel

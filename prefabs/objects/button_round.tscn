@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwkiat62m4o5"]
+[gd_scene load_steps=6 format=3 uid="uid://bwkiat62m4o5"]
 
 [ext_resource type="PackedScene" uid="uid://dbyuie03grqh4" path="res://art/platformer_kit/button-round.fbx" id="1_ba7yw"]
 [ext_resource type="Script" uid="uid://dlxxomxu0lpg3" path="res://scripts/objects/button.gd" id="2_okroa"]
+[ext_resource type="Material" uid="uid://db8n62d6gmvm2" path="res://materials/level/level.material" id="3_qacx6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_okroa"]
 size = Vector3(0.4, 0.0871094, 0.4)
@@ -10,11 +11,15 @@ size = Vector3(0.4, 0.0871094, 0.4)
 height = 0.0944214
 radius = 0.174316
 
-[node name="button-round" node_paths=PackedStringArray("trigger_area", "animation_player") instance=ExtResource("1_ba7yw")]
+[node name="button-round" node_paths=PackedStringArray("trigger_area", "animation_player", "button_mesh") instance=ExtResource("1_ba7yw")]
 collision_mask = 15
 script = ExtResource("2_okroa")
 trigger_area = NodePath("Trigger")
 animation_player = NodePath("AnimationPlayer")
+button_mesh = NodePath("button-round")
+
+[node name="button-round" parent="." index="0"]
+surface_material_override/0 = ExtResource("3_qacx6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0435547, 0)
