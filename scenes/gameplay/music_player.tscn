@@ -23,20 +23,8 @@ clip_3/auto_advance = 0
 initial_clip = 3
 _transitions = {
 Vector2i(-1, -1): {
-"fade_beats": 0.5,
+"fade_beats": 0.1,
 "fade_mode": 3,
-"from_time": 0,
-"to_time": 1
-},
-Vector2i(-1, 4): {
-"fade_beats": 1.0,
-"fade_mode": 0,
-"from_time": 0,
-"to_time": 1
-},
-Vector2i(4, -1): {
-"fade_beats": 1.0,
-"fade_mode": 0,
 "from_time": 0,
 "to_time": 1
 }
@@ -51,6 +39,5 @@ menu_music_names = Array[StringName]([&"MENU"])
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_c573v")
-volume_db = 10.0
 autoplay = true
 bus = &"Music"

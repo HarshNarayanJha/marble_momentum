@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://1okjujjfvgni"]
+[gd_scene load_steps=27 format=3 uid="uid://1okjujjfvgni"]
 
 [ext_resource type="PackedScene" uid="uid://bnhj8nq5gipfo" path="res://prefabs/gameplay/selectable_section.tscn" id="1_56gwk"]
 [ext_resource type="Environment" uid="uid://b1srll4lqu0sm" path="res://settings/world_environment.res" id="1_b4tpv"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="15_b3p8y"]
 [ext_resource type="Resource" uid="uid://byv2to4m7vhpb" path="res://settings/camera_resource.res" id="16_b3p8y"]
 [ext_resource type="PhysicsMaterial" uid="uid://c586fpgb4y1ja" path="res://materials/marble_level2.phymat" id="16_f3b2k"]
+[ext_resource type="PackedScene" uid="uid://ok4pyt8rmkk0" path="res://scenes/levels/level3.tscn" id="18_bxuut"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mrac1"]
 size = Vector3(1.27856, 1.5, 2.5)
@@ -129,6 +130,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, 
 
 [node name="Domino5" parent="Level/Dominos" instance=ExtResource("10_63e4f")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -8.5)
+mass = 0.4
 
 [node name="Plane" type="StaticBody3D" parent="Level"]
 collision_mask = 0
@@ -161,11 +163,14 @@ dead_zone_width = 1.0
 dead_zone_height = 1.0
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("marble", "sections", "buttons")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("marble", "sections", "buttons", "win_button")]
 script = ExtResource("11_y6lc1")
 marble = NodePath("../MarbleLauncher/Marble")
 sections = [NodePath("../Level/Paths/SelectableSection")]
 buttons = [NodePath("../Level/Objects/button-square"), NodePath("../Level/Objects/fan-standing-two/button-round")]
+lose_wait_secs = 15.0
+win_button = NodePath("../Level/Objects/button-square")
+next_level = ExtResource("18_bxuut")
 
 [node name="MarbleLauncher" parent="." instance=ExtResource("12_ekhvm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 3)

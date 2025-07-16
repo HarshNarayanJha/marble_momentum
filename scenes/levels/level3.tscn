@@ -172,7 +172,7 @@ keep_pressed = true
 allow_manual_change = false
 
 [node name="AntigravityBase" parent="Level/Objects" instance=ExtResource("14_022ip")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -3.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -3.62157)
 
 [node name="PhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_target")]
 transform = Transform3D(-0.601815, -0.480631, 0.637819, 0, 0.798636, 0.601815, -0.798635, 0.362181, -0.480631, 3.63782, 8.60182, -2.98063)
@@ -191,12 +191,14 @@ dead_zone_width = 1.0
 dead_zone_height = 1.0
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("marble", "sections", "buttons", "antigravities")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("marble", "sections", "buttons", "antigravities", "win_button")]
 script = ExtResource("17_dc8aq")
 marble = NodePath("../MarbleLauncher/Marble")
 sections = [NodePath("../Level/Paths/SelectableSection")]
 buttons = [NodePath("../Level/Objects/fan-standing-two/button-round"), NodePath("../Level/Objects/fan-standing-two2/button-round"), NodePath("../Level/Objects/button-square"), NodePath("../Level/Objects/fan-standing-two3/button-round")]
 antigravities = [NodePath("../Level/Objects/AntigravityBase")]
+lose_wait_secs = 20.0
+win_button = NodePath("../Level/Objects/button-square")
 
 [node name="MarbleLauncher" parent="." instance=ExtResource("18_5bnxw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 2)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ck4usqg4wh3rj"]
+[gd_scene load_steps=16 format=3 uid="uid://ck4usqg4wh3rj"]
 
 [ext_resource type="Environment" uid="uid://ct1hry7q6ak2j" path="res://settings/main_menu_environment.res" id="1_l6cm7"]
 [ext_resource type="PackedScene" uid="uid://ceyqn55l6fl6q" path="res://prefabs/gameplay/marble.tscn" id="2_ekxnf"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://chvh4qd82w84y" path="res://prefabs/level/bend_large.tscn" id="9_jk1qb"]
 [ext_resource type="Script" uid="uid://bi583ftmsmw0d" path="res://scripts/main_menu_manager.gd" id="10_5dd4i"]
 [ext_resource type="PackedScene" uid="uid://bio4g1jjphmv3" path="res://prefabs/objects/speed_booster.tscn" id="10_lgwnu"]
+[ext_resource type="PackedScene" uid="uid://cjgtvd17lhp3w" path="res://scenes/levels/level1.tscn" id="11_rcqid"]
 [ext_resource type="FontFile" uid="uid://c4mm3of2mc8o5" path="res://addons/phantom_camera/fonts/Nunito-Black.ttf" id="12_flqon"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rcqid"]
@@ -18,6 +19,10 @@ font = ExtResource("12_flqon")
 font_size = 64
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_flqon"]
+font_size = 14
+font_color = Color(0.735475, 0.735475, 0.735475, 1)
 
 [node name="MainMenu" type="Node3D"]
 
@@ -82,8 +87,11 @@ transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -5, 1, 0
 [node name="bend-large" parent="MenuLevel" instance=ExtResource("9_jk1qb")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.5, 2, 4.5)
 
-[node name="MainMenuManager" type="Node" parent="."]
+[node name="MainMenuManager" type="Node" parent="." node_paths=PackedStringArray("play_button", "exit_button")]
 script = ExtResource("10_5dd4i")
+play_button = NodePath("../MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer/Buttons/Play")
+exit_button = NodePath("../MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer/Buttons/Exit")
+level1_scene = ExtResource("11_rcqid")
 
 [node name="SpeedBooster" parent="." instance=ExtResource("10_lgwnu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.428277, 0.270514, -5.5)
@@ -126,24 +134,28 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuUI/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuUI/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Control" type="Control" parent="MainMenuUI/MarginContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Control" type="Control" parent="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="MainMenuUI/MarginContainer/HBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuUI/MarginContainer/HBoxContainer/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer"]
 layout_mode = 2
 theme_override_constants/separation = 80
 alignment = 1
 
-[node name="GameTitle" type="Label" parent="MainMenuUI/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer"]
+[node name="GameTitle" type="Label" parent="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Marble Momentum"
@@ -151,20 +163,29 @@ label_settings = SubResource("LabelSettings_rcqid")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuUI/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer"]
+[node name="Buttons" type="VBoxContainer" parent="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Play" type="Button" parent="MainMenuUI/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer/VBoxContainer"]
+[node name="Play" type="Button" parent="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer/Buttons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = "Play!"
 
-[node name="Credits" type="Button" parent="MainMenuUI/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer/VBoxContainer"]
+[node name="Exit" type="Button" parent="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer/Buttons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
-text = "Credits"
+text = "Exit"
+
+[node name="Label" type="Label" parent="MainMenuUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+size_flags_stretch_ratio = 0.0
+text = "© 2025 Harsh Narayan Jha. A Game made in Godot for the Inbound Shovel Jam 2025."
+label_settings = SubResource("LabelSettings_flqon")
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [editable path="SpeedBooster"]
 [editable path="SpeedBooster2"]
