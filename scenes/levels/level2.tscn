@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://1okjujjfvgni"]
+[gd_scene load_steps=28 format=3 uid="uid://1okjujjfvgni"]
 
 [ext_resource type="PackedScene" uid="uid://bnhj8nq5gipfo" path="res://prefabs/gameplay/selectable_section.tscn" id="1_56gwk"]
 [ext_resource type="Environment" uid="uid://b1srll4lqu0sm" path="res://settings/world_environment.res" id="1_b4tpv"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://diqrs7j47gfmn" path="res://prefabs/objects/button_square.tscn" id="8_24ks5"]
 [ext_resource type="PackedScene" uid="uid://bkg5buo0t1jed" path="res://prefabs/objects/fan_standing_two.tscn" id="9_s4es8"]
 [ext_resource type="PackedScene" uid="uid://5e6ux51sxv6w" path="res://prefabs/objects/domino.tscn" id="10_63e4f"]
-[ext_resource type="Script" uid="uid://bsmwh6ogvdfg1" path="res://scripts/game_manager.gd" id="11_y6lc1"]
 [ext_resource type="PackedScene" uid="uid://cj6byrau2kj0i" path="res://prefabs/level/support_four_top_double.tscn" id="12_ekhvm"]
 [ext_resource type="PackedScene" uid="uid://ceyqn55l6fl6q" path="res://prefabs/gameplay/marble.tscn" id="13_nflru"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="14_4eecq"]
@@ -21,6 +20,8 @@
 [ext_resource type="Resource" uid="uid://byv2to4m7vhpb" path="res://settings/camera_resource.res" id="16_b3p8y"]
 [ext_resource type="PhysicsMaterial" uid="uid://c586fpgb4y1ja" path="res://materials/marble_level2.phymat" id="16_f3b2k"]
 [ext_resource type="PackedScene" uid="uid://ok4pyt8rmkk0" path="res://scenes/levels/level3.tscn" id="18_bxuut"]
+[ext_resource type="PackedScene" uid="uid://ijho6f4ohbhf" path="res://prefabs/gameplay/game_manager.tscn" id="19_ida7w"]
+[ext_resource type="PackedScene" uid="uid://bu6catn6oeils" path="res://prefabs/gameplay/level_ui.tscn" id="22_g04qb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mrac1"]
 size = Vector3(1.27856, 1.5, 2.5)
@@ -93,17 +94,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.5)
 [node name="Objects" type="Node" parent="Level"]
 
 [node name="lampSquareTable" parent="Level/Objects" node_paths=PackedStringArray("button") instance=ExtResource("7_o3sye")]
-transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 4, -11)
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 4, -10)
 button = NodePath("../button-square")
 
 [node name="button-square" parent="Level/Objects" instance=ExtResource("8_24ks5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -9)
 keep_pressed = true
 allow_manual_change = false
 
 [node name="fan-standing-two" parent="Level/Objects" instance=ExtResource("9_s4es8")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 4.3, 1)
-wind_speed = 100.0
+wind_speed = 80.0
 
 [node name="WindCollisionShape" type="CollisionShape3D" parent="Level/Objects/fan-standing-two/WindArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.5, -4.34323)
@@ -127,10 +128,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, 
 
 [node name="Domino4" parent="Level/Dominos" instance=ExtResource("10_63e4f")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -7.5)
-
-[node name="Domino5" parent="Level/Dominos" instance=ExtResource("10_63e4f")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -8.5)
-mass = 0.4
 
 [node name="Plane" type="StaticBody3D" parent="Level"]
 collision_mask = 0
@@ -163,14 +160,16 @@ dead_zone_width = 1.0
 dead_zone_height = 1.0
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("marble", "sections", "buttons", "win_button")]
-script = ExtResource("11_y6lc1")
+[node name="GameManager" parent="." node_paths=PackedStringArray("marble", "sections", "buttons", "win_button", "progress_circle", "reload_button", "start_button") instance=ExtResource("19_ida7w")]
 marble = NodePath("../MarbleLauncher/Marble")
 sections = [NodePath("../Level/Paths/SelectableSection")]
 buttons = [NodePath("../Level/Objects/button-square"), NodePath("../Level/Objects/fan-standing-two/button-round")]
 lose_wait_secs = 15.0
 win_button = NodePath("../Level/Objects/button-square")
 next_level = ExtResource("18_bxuut")
+progress_circle = NodePath("../UI/MarginContainer/VBoxContainer/CenterContainer/TextureProgressBar")
+reload_button = NodePath("../UI/MarginContainer/VBoxContainer/CenterContainer/ReloadButton")
+start_button = NodePath("../UI/MarginContainer/StartButton")
 
 [node name="MarbleLauncher" parent="." instance=ExtResource("12_ekhvm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 3)
@@ -179,4 +178,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 physics_material_override = ExtResource("16_f3b2k")
 
+[node name="UI" parent="." instance=ExtResource("22_g04qb")]
+
 [editable path="Level/Objects/fan-standing-two"]
+[editable path="UI"]

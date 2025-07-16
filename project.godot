@@ -52,5 +52,5 @@ common/physics_interpolation=true
 
 outline_color={
 "type": "color",
-"value": Color(1, 1, 1, 1)
+"value": Color(1, 0.407843, 0.34902, 1)
 }

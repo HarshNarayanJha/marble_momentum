@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ceyqn55l6fl6q"]
+[gd_scene load_steps=6 format=3 uid="uid://ceyqn55l6fl6q"]
 
 [ext_resource type="Script" uid="uid://di2ts6rkp8m25" path="res://scripts/marbel.gd" id="1_q26nf"]
 [ext_resource type="PackedScene" uid="uid://d2p3ndbwy5w23" path="res://art/marble_kit/marble-center-butterfly-high.fbx" id="1_xf8th"]
+[ext_resource type="Material" uid="uid://dugf82dlgbuw5" path="res://materials/marble.material" id="3_0nb5v"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xf8th"]
 
@@ -20,3 +21,8 @@ script = ExtResource("1_q26nf")
 shape = SubResource("SphereShape3D_q8s1k")
 
 [node name="marble-center-butterfly-high" parent="." instance=ExtResource("1_xf8th")]
+
+[node name="(_ignore)" parent="marble-center-butterfly-high/marble-center-butterfly-high" index="0"]
+surface_material_override/0 = ExtResource("3_0nb5v")
+
+[editable path="marble-center-butterfly-high"]

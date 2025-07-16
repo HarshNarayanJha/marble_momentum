@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cjgtvd17lhp3w"]
+[gd_scene load_steps=23 format=3 uid="uid://cjgtvd17lhp3w"]
 
 [ext_resource type="PackedScene" uid="uid://bic3ininocbum" path="res://prefabs/level/straight.tscn" id="1_f31uk"]
 [ext_resource type="Environment" uid="uid://b1srll4lqu0sm" path="res://settings/world_environment.res" id="1_lgguw"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="14_g7tkf"]
 [ext_resource type="PhysicsMaterial" uid="uid://cqsr24bjak2pa" path="res://materials/marble_level1.phymat" id="14_jprdt"]
 [ext_resource type="Resource" uid="uid://byv2to4m7vhpb" path="res://settings/camera_resource.res" id="15_g7tkf"]
+[ext_resource type="PackedScene" uid="uid://bu6catn6oeils" path="res://prefabs/gameplay/level_ui.tscn" id="20_gvm5i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mrac1"]
 size = Vector3(1.27856, 1.5, 2.5)
@@ -78,7 +79,7 @@ shape = SubResource("BoxShape3D_mrac1")
 [node name="Objects" type="Node" parent="Level"]
 
 [node name="lampSquareTable" parent="Level/Objects" node_paths=PackedStringArray("button") instance=ExtResource("8_3w4mx")]
-transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 4, -7)
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, -1, 4, -7)
 button = NodePath("../button-square")
 
 [node name="button-square" parent="Level/Objects" instance=ExtResource("9_u068y")]
@@ -86,12 +87,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -6)
 keep_pressed = true
 allow_manual_change = false
 
-[node name="GameManager" parent="." node_paths=PackedStringArray("marble", "sections", "buttons", "win_button") instance=ExtResource("12_g7tkf")]
+[node name="GameManager" parent="." node_paths=PackedStringArray("marble", "sections", "buttons", "win_button", "progress_circle", "reload_button", "start_button") instance=ExtResource("12_g7tkf")]
 marble = NodePath("../MarbleLauncher/Marble")
 sections = [NodePath("../Level/Paths/SelectableSection")]
 buttons = [NodePath("../Level/Objects/button-square")]
+lose_wait_secs = 8.0
 win_button = NodePath("../Level/Objects/button-square")
 next_level = ExtResource("13_4fww7")
+progress_circle = NodePath("../UI/MarginContainer/VBoxContainer/CenterContainer/TextureProgressBar")
+reload_button = NodePath("../UI/MarginContainer/VBoxContainer/CenterContainer/ReloadButton")
+start_button = NodePath("../UI/MarginContainer/StartButton")
 
 [node name="PhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_target")]
 transform = Transform3D(-0.601752, -0.48062, 0.63775, 0, 0.798618, 0.60175, -0.798552, 0.362173, -0.480579, 3.63775, 8.60175, -5.98058)
@@ -117,4 +122,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, -1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 physics_material_override = ExtResource("14_jprdt")
 
-[editable path="GameManager"]
+[node name="UI" parent="." instance=ExtResource("20_gvm5i")]
+
+[editable path="UI"]

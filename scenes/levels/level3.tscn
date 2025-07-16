@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ok4pyt8rmkk0"]
+[gd_scene load_steps=33 format=3 uid="uid://ok4pyt8rmkk0"]
 
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_edoqj"]
 [ext_resource type="Environment" uid="uid://b1srll4lqu0sm" path="res://settings/world_environment.res" id="2_022ip"]
@@ -19,9 +19,10 @@
 [ext_resource type="PhysicsMaterial" uid="uid://bc2eevrgapdey" path="res://materials/marble_level3.phymat" id="15_a82vw"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="15_d1mne"]
 [ext_resource type="Resource" uid="uid://byv2to4m7vhpb" path="res://settings/camera_resource.res" id="16_ul42b"]
-[ext_resource type="Script" uid="uid://bsmwh6ogvdfg1" path="res://scripts/game_manager.gd" id="17_dc8aq"]
 [ext_resource type="PackedScene" uid="uid://cj6byrau2kj0i" path="res://prefabs/level/support_four_top_double.tscn" id="18_5bnxw"]
 [ext_resource type="PackedScene" uid="uid://ceyqn55l6fl6q" path="res://prefabs/gameplay/marble.tscn" id="19_swbdl"]
+[ext_resource type="PackedScene" uid="uid://ijho6f4ohbhf" path="res://prefabs/gameplay/game_manager.tscn" id="20_v6yyo"]
+[ext_resource type="PackedScene" uid="uid://bu6catn6oeils" path="res://prefabs/gameplay/level_ui.tscn" id="23_v6yyo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mrac1"]
 size = Vector3(1.27856, 1.5, 2.5)
@@ -191,14 +192,16 @@ dead_zone_width = 1.0
 dead_zone_height = 1.0
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("marble", "sections", "buttons", "antigravities", "win_button")]
-script = ExtResource("17_dc8aq")
+[node name="GameManager" parent="." node_paths=PackedStringArray("marble", "sections", "buttons", "antigravities", "win_button", "progress_circle", "reload_button", "start_button") instance=ExtResource("20_v6yyo")]
 marble = NodePath("../MarbleLauncher/Marble")
 sections = [NodePath("../Level/Paths/SelectableSection")]
 buttons = [NodePath("../Level/Objects/fan-standing-two/button-round"), NodePath("../Level/Objects/fan-standing-two2/button-round"), NodePath("../Level/Objects/button-square"), NodePath("../Level/Objects/fan-standing-two3/button-round")]
 antigravities = [NodePath("../Level/Objects/AntigravityBase")]
 lose_wait_secs = 20.0
 win_button = NodePath("../Level/Objects/button-square")
+progress_circle = NodePath("../UI/MarginContainer/VBoxContainer/CenterContainer/TextureProgressBar")
+reload_button = NodePath("../UI/MarginContainer/VBoxContainer/CenterContainer/ReloadButton")
+start_button = NodePath("../UI/MarginContainer/StartButton")
 
 [node name="MarbleLauncher" parent="." instance=ExtResource("18_5bnxw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 2)
@@ -209,8 +212,11 @@ physics_material_override = ExtResource("15_a82vw")
 linear_damp = 0.5
 angular_damp = 0.1
 
+[node name="UI" parent="." instance=ExtResource("23_v6yyo")]
+
 [editable path="Level/Objects/fan-standing-two"]
 [editable path="Level/Objects/fan-standing-two/button-round"]
 [editable path="Level/Objects/fan-standing-two2"]
 [editable path="Level/Objects/fan-standing-two2/button-round"]
 [editable path="Level/Objects/fan-standing-two3"]
+[editable path="UI"]

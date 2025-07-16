@@ -7,6 +7,8 @@ class_name TriggerButton extends StaticBody3D
 @export var allow_manual_change: bool = true
 @export var button_mesh: MeshInstance3D
 @export var button_color_mesh: MeshInstance3D
+@export var outline_width: float = 5.0
+@export var outline_width_highlight: float = 3.0
 
 @export_group("Colors")
 @export_color_no_alpha var off_color: Color = Color(0.957, 0.504, 0)
@@ -58,6 +60,15 @@ func unlock_change():
 	if not allow_manual_change:
 		return
 	_manual_control_enabled = true
+
+func highlight():
+	if not _manual_control_enabled:
+		return
+
+	button_mesh.set_instance_shader_parameter(&"outline_width", outline_width if is_hovering else outline_width_highlight)
+
+func remove_highlight():
+	button_mesh.set_instance_shader_parameter(&"outline_width", 0.0)
 
 func __turn_on():
 	(button_color_mesh.get_surface_override_material(0) as StandardMaterial3D).albedo_color = on_color
@@ -111,7 +122,7 @@ func _on_mouse_enter():
 		return
 
 	is_hovering = true
-	button_mesh.set_instance_shader_parameter(&"outline_width", 2.5)
+	highlight()
 
 func _on_mouse_exit():
 	is_hovering = false
@@ -119,4 +130,4 @@ func _on_mouse_exit():
 	if not _manual_control_enabled:
 		return
 
-	button_mesh.set_instance_shader_parameter(&"outline_width", 0.0)
+	remove_highlight()

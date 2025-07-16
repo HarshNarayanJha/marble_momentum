@@ -4,6 +4,8 @@ class_name SelectableSection extends Node3D
 @export var sections: Array[PackedScene]
 @export var current_section: int = 0
 @export var allow_manual_change: bool = true
+@export var outline_width: float = 5.0
+@export var outline_width_highlight: float = 3.0
 
 var section: Node3D = null
 var is_hovering: bool = false
@@ -31,6 +33,25 @@ func lock_change():
 
 func unlock_change():
 	allow_manual_change = true
+
+func highlight_part():
+	if not section:
+		return
+
+	if not allow_manual_change:
+		return
+
+	for sm in section.find_children("*", "MeshInstance3D"):
+		var sec_mesh: GeometryInstance3D = sm
+		sec_mesh.set_instance_shader_parameter(&"outline_width", outline_width if is_hovering else outline_width_highlight)
+
+func remove_highlight():
+	if not section:
+		return
+
+	for sm in section.find_children("*", "MeshInstance3D"):
+		var sec_mesh: GeometryInstance3D = sm
+		sec_mesh.set_instance_shader_parameter(&"outline_width", 0.0)
 
 func __replace_section(part: PackedScene):
 	if section:
@@ -62,10 +83,7 @@ func _on_mouse_enter():
 		return
 
 	is_hovering = true
-
-	for sm in section.find_children("*", "MeshInstance3D"):
-		var sec_mesh: GeometryInstance3D = sm
-		sec_mesh.set_instance_shader_parameter(&"outline_width", 2.5)
+	highlight_part()
 
 func _on_mouse_exit():
 	is_hovering = false
@@ -76,6 +94,4 @@ func _on_mouse_exit():
 	if not allow_manual_change:
 		return
 
-	for sm in section.find_children("*", "MeshInstance3D"):
-		var sec_mesh: GeometryInstance3D = sm
-		sec_mesh.set_instance_shader_parameter(&"outline_width", 0.0)
+	remove_highlight()
