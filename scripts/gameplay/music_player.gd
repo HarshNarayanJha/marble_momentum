@@ -6,6 +6,7 @@ extends Node3D
 @export var menu_music_names: Array[StringName]
 
 func play_music(mname: StringName):
+	print("Playing Music: ", mname)
 	var stream_playback: AudioStreamPlaybackInteractive = bg_player.get_stream_playback()
 	stream_playback.switch_to_clip_by_name(mname)
 

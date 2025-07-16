@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://bio4g1jjphmv3"]
+
+[ext_resource type="Script" uid="uid://dvnyf4smodjyk" path="res://scripts/objects/speed_booster.gd" id="1_3jlfi"]
+[ext_resource type="Shader" uid="uid://dw22oc5itxi13" path="res://shaders/speed_booster.gdshader" id="2_ygpp3"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ygpp3"]
+seed = 50
+frequency = 0.4017
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_wuuwg"]
+height = 32
+noise = SubResource("FastNoiseLite_ygpp3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wuuwg"]
+render_priority = 0
+shader = ExtResource("2_ygpp3")
+shader_parameter/color1 = Color(0, 0.61082, 0.991958, 1)
+shader_parameter/color2 = Color(0.737006, 0.00106022, 0.834827, 1)
+shader_parameter/noise = SubResource("NoiseTexture3D_wuuwg")
+
+[sub_resource type="QuadMesh" id="QuadMesh_5wm51"]
+lightmap_size_hint = Vector2i(4, 3)
+material = SubResource("ShaderMaterial_wuuwg")
+size = Vector2(0.25, 0.5)
+orientation = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5wm51"]
+size = Vector3(0.5, 0.3, 0.25)
+
+[node name="SpeedBooster" type="Node3D" node_paths=PackedStringArray("booster_area", "forward_marker")]
+script = ExtResource("1_3jlfi")
+booster_area = NodePath("BoosterArea")
+forward_marker = NodePath("Marker3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_5wm51")
+
+[node name="BoosterArea" type="Area3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoosterArea"]
+shape = SubResource("BoxShape3D_5wm51")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)

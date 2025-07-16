@@ -1,0 +1,173 @@
+[gd_scene load_steps=14 format=3 uid="uid://ck4usqg4wh3rj"]
+
+[ext_resource type="Environment" uid="uid://ct1hry7q6ak2j" path="res://settings/main_menu_environment.res" id="1_l6cm7"]
+[ext_resource type="PackedScene" uid="uid://ceyqn55l6fl6q" path="res://prefabs/gameplay/marble.tscn" id="2_ekxnf"]
+[ext_resource type="PhysicsMaterial" uid="uid://c50cee25r4fml" path="res://materials/marble_main_menu.phymat" id="3_lgwnu"]
+[ext_resource type="PackedScene" uid="uid://8is52y75bfde" path="res://prefabs/level/slant_long_c.tscn" id="4_jk1qb"]
+[ext_resource type="PackedScene" uid="uid://b5toqrpkjhu7v" path="res://prefabs/level/corner.tscn" id="5_5dd4i"]
+[ext_resource type="PackedScene" uid="uid://dyt650862u6fa" path="res://prefabs/level/ramp_long_c.tscn" id="6_lgwnu"]
+[ext_resource type="PackedScene" uid="uid://kpitevi1kttu" path="res://prefabs/level/straight-long.tscn" id="7_flqon"]
+[ext_resource type="PackedScene" uid="uid://cm5w7q67t2b72" path="res://prefabs/level/split_double.tscn" id="8_rcqid"]
+[ext_resource type="PackedScene" uid="uid://chvh4qd82w84y" path="res://prefabs/level/bend_large.tscn" id="9_jk1qb"]
+[ext_resource type="Script" uid="uid://bi583ftmsmw0d" path="res://scripts/main_menu_manager.gd" id="10_5dd4i"]
+[ext_resource type="PackedScene" uid="uid://bio4g1jjphmv3" path="res://prefabs/objects/speed_booster.tscn" id="10_lgwnu"]
+[ext_resource type="FontFile" uid="uid://c4mm3of2mc8o5" path="res://addons/phantom_camera/fonts/Nunito-Black.ttf" id="12_flqon"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rcqid"]
+font = ExtResource("12_flqon")
+font_size = 64
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.989526, -0.121884, 0.0773499, 0, 0.535827, 0.844328, -0.144356, -0.835484, 0.530214, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_mode = 0
+sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_l6cm7")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+physics_interpolation_mode = 1
+transform = Transform3D(-0.601752, -0.48062, 0.63775, 0, 0.798618, 0.60175, -0.798552, 0.362173, -0.480579, 2, 10, -12)
+projection = 1
+size = 15.0
+
+[node name="Marble" parent="." instance=ExtResource("2_ekxnf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 3)
+mass = 10.0
+physics_material_override = ExtResource("3_lgwnu")
+constant_force = Vector3(0, 0, -1)
+
+[node name="MenuLevel" type="Node" parent="."]
+
+[node name="slant-long-c" parent="MenuLevel" instance=ExtResource("4_jk1qb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+
+[node name="slant-long-c2" parent="MenuLevel" instance=ExtResource("4_jk1qb")]
+
+[node name="corner" parent="MenuLevel" instance=ExtResource("5_5dd4i")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -5.5)
+
+[node name="ramp-long-c" parent="MenuLevel" instance=ExtResource("6_lgwnu")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 0, -5.5)
+
+[node name="ramp-long-c2" parent="MenuLevel" instance=ExtResource("6_lgwnu")]
+transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, -5, 1, 2)
+
+[node name="corner2" parent="MenuLevel" instance=ExtResource("5_5dd4i")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5, 1, -5.5)
+
+[node name="straight" parent="MenuLevel" instance=ExtResource("7_flqon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -4)
+
+[node name="straight2" parent="MenuLevel" instance=ExtResource("7_flqon")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -2)
+
+[node name="straight3" parent="MenuLevel" instance=ExtResource("7_flqon")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -4)
+
+[node name="straight4" parent="MenuLevel" instance=ExtResource("7_flqon")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -3.5, 1, -5.5)
+
+[node name="split-double" parent="MenuLevel" instance=ExtResource("8_rcqid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -2)
+
+[node name="split-double2" parent="MenuLevel" instance=ExtResource("8_rcqid")]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -5, 1, 0)
+
+[node name="bend-large" parent="MenuLevel" instance=ExtResource("9_jk1qb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.5, 2, 4.5)
+
+[node name="MainMenuManager" type="Node" parent="."]
+script = ExtResource("10_5dd4i")
+
+[node name="SpeedBooster" parent="." instance=ExtResource("10_lgwnu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.428277, 0.270514, -5.5)
+visible = false
+impulse_amount = 70.0
+
+[node name="SpeedBooster2" parent="." instance=ExtResource("10_lgwnu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 1.271, -5)
+visible = false
+impulse_amount = 20.0
+
+[node name="SpeedBooster3" parent="." instance=ExtResource("10_lgwnu")]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -5.13862, 1.27051, -2.39298)
+visible = false
+impulse_amount = 40.0
+
+[node name="SpeedBooster4" parent="." instance=ExtResource("10_lgwnu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 1.271, 0.395882)
+visible = false
+impulse_amount = 85.0
+
+[node name="Marker3D" parent="SpeedBooster4" index="2"]
+transform = Transform3D(-4.37114e-08, 0.573576, -0.819152, 0, 0.819152, 0.573576, 1, 2.50718e-08, -3.58063e-08, 0, 0, 0)
+
+[node name="SpeedBooster5" parent="." instance=ExtResource("10_lgwnu")]
+transform = Transform3D(-1, 0, -1.47027e-07, 0, 1, 0, 1.47027e-07, 0, -1, -2.432, 2.278, 5.5)
+visible = false
+impulse_amount = 40.0
+
+[node name="MainMenuUI" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuUI/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Control" type="Control" parent="MainMenuUI/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="MainMenuUI/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuUI/MarginContainer/HBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 80
+alignment = 1
+
+[node name="GameTitle" type="Label" parent="MainMenuUI/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Marble Momentum"
+label_settings = SubResource("LabelSettings_rcqid")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuUI/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Play" type="Button" parent="MainMenuUI/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Play!"
+
+[node name="Credits" type="Button" parent="MainMenuUI/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Credits"
+
+[editable path="SpeedBooster"]
+[editable path="SpeedBooster2"]
+[editable path="SpeedBooster3"]
+[editable path="SpeedBooster4"]
+[editable path="SpeedBooster5"]

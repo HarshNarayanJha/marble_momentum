@@ -20,6 +20,7 @@ clip_2/auto_advance = 0
 clip_3/name = &"MENU"
 clip_3/stream = ExtResource("5_im8bf")
 clip_3/auto_advance = 0
+initial_clip = 3
 _transitions = {
 Vector2i(-1, -1): {
 "fade_beats": 0.5,
@@ -50,6 +51,6 @@ menu_music_names = Array[StringName]([&"MENU"])
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_c573v")
-volume_db = -10.0
+volume_db = 10.0
 autoplay = true
 bus = &"Music"

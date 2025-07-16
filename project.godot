@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Marble Momentum"
-run/main_scene="uid://y7xjq62nun3u"
+run/main_scene="uid://ck4usqg4wh3rj"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 MusicPlayer="*res://scenes/gameplay/music_player.tscn"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 
 [editor]
 
