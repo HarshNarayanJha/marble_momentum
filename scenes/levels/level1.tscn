@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bbt67y3nikyvl" path="res://prefabs/level/slant_long_d.tscn" id="7_jvkml"]
 [ext_resource type="PackedScene" uid="uid://cqr1qxqce7gtd" path="res://prefabs/objects/lamp_square_table.tscn" id="8_3w4mx"]
 [ext_resource type="PackedScene" uid="uid://diqrs7j47gfmn" path="res://prefabs/objects/button_square.tscn" id="9_u068y"]
-[ext_resource type="Script" uid="uid://bsmwh6ogvdfg1" path="res://scripts/game_manager.gd" id="11_ai3nx"]
+[ext_resource type="PackedScene" uid="uid://ijho6f4ohbhf" path="res://prefabs/gameplay/game_manager.tscn" id="12_g7tkf"]
 [ext_resource type="PackedScene" uid="uid://cj6byrau2kj0i" path="res://prefabs/level/support_four_top_double.tscn" id="12_phfsf"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="13_1xax6"]
 [ext_resource type="PackedScene" uid="uid://ceyqn55l6fl6q" path="res://prefabs/gameplay/marble.tscn" id="13_3oqy1"]
@@ -85,8 +85,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -6)
 keep_pressed = true
 allow_manual_change = false
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("marble", "sections", "buttons")]
-script = ExtResource("11_ai3nx")
+[node name="GameManager" parent="." node_paths=PackedStringArray("marble", "sections", "buttons") instance=ExtResource("12_g7tkf")]
 marble = NodePath("../MarbleLauncher/Marble")
 sections = [NodePath("../Level/Paths/SelectableSection")]
 buttons = [NodePath("../Level/Objects/button-square")]
@@ -114,3 +113,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, -1)
 [node name="Marble" parent="MarbleLauncher" instance=ExtResource("13_3oqy1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 physics_material_override = ExtResource("14_jprdt")
+
+[editable path="GameManager"]

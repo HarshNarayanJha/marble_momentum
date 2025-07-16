@@ -107,7 +107,7 @@ collision_priority = 0.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 layers = 0
 mesh = SubResource("PlaneMesh_rlvb3")
-skeleton = NodePath("../../root/@EditorNode@21260/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/Node3D/Level")
+skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Plane"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)

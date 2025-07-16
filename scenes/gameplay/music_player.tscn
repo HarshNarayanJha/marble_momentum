@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://c83kktf3yj683"]
+
+[ext_resource type="Script" uid="uid://cfl5a0u68kc0l" path="res://scripts/gameplay/music_player.gd" id="1_c573v"]
+[ext_resource type="AudioStream" uid="uid://5e0n5u4yuam8" path="res://audio/music/lvl_0_the_tutorial.mp3" id="2_ytbcg"]
+[ext_resource type="AudioStream" uid="uid://ujbsxu5psfw7" path="res://audio/music/lvl_5_the_oasis_or_resting_place.mp3" id="3_gyr01"]
+[ext_resource type="AudioStream" uid="uid://t2g4gxo4u6u7" path="res://audio/music/thinking_and_tinkering.wav" id="4_7mep4"]
+[ext_resource type="AudioStream" uid="uid://0gq0pw00br01" path="res://audio/music/pixabayminimal-109310.wav" id="5_im8bf"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_c573v"]
+clip_count = 4
+clip_0/name = &"BG_1"
+clip_0/stream = ExtResource("2_ytbcg")
+clip_0/auto_advance = 0
+clip_1/name = &"BG_2"
+clip_1/stream = ExtResource("3_gyr01")
+clip_1/auto_advance = 0
+clip_2/name = &"THINK"
+clip_2/stream = ExtResource("4_7mep4")
+clip_2/auto_advance = 0
+clip_3/name = &"MENU"
+clip_3/stream = ExtResource("5_im8bf")
+clip_3/auto_advance = 0
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 0.5,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(-1, 4): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(4, -1): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"from_time": 0,
+"to_time": 1
+}
+}
+
+[node name="MusicPlayer" type="Node3D" node_paths=PackedStringArray("bg_player")]
+script = ExtResource("1_c573v")
+bg_player = NodePath("BGMusic")
+level_music_names = Array[StringName]([&"BG_1", &"BG_2"])
+build_music_names = Array[StringName]([&"THINK"])
+menu_music_names = Array[StringName]([&"MENU"])
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamInteractive_c573v")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"

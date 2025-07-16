@@ -22,6 +22,8 @@ func enter_build_mode():
 	for a in antigravities:
 		a.unlock_change()
 
+	MusicPlayer.play_build_music()
+
 func enter_play_mode():
 	build_mode = false
 	enable_physics()
@@ -31,6 +33,8 @@ func enter_play_mode():
 		b.lock_change()
 	for a in antigravities:
 		a.lock_change()
+
+	MusicPlayer.play_level_music()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
