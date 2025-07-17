@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cocpiyt8twm52"
+uid="uid://088gwuqc4j7p"
 path="res://.godot/imported/bend.fbx-31aab0ad559fd86d0918f4e5da442b85.scn"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/bend.fbx-31aab0ad559fd86d0918f4e5da442b85.scn
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="StaticBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

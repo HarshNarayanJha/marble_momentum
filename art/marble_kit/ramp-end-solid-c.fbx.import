@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://blamqdc4263dp"
+uid="uid://c2jqioa6cyk2a"
 path="res://.godot/imported/ramp-end-solid-c.fbx-2987a04c9903f0a24d0a7b4c6ed8386f.scn"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/ramp-end-solid-c.fbx-2987a04c9903f0a24d0a7b4c
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="StaticBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

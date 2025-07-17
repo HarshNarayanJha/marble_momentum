@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bwkiat62m4o5"]
 
-[ext_resource type="PackedScene" uid="uid://dbyuie03grqh4" path="res://art/platformer_kit/button-round.fbx" id="1_ba7yw"]
+[ext_resource type="PackedScene" uid="uid://xlnm4hdn8m0l" path="res://art/platformer_kit/button-round.fbx" id="1_ba7yw"]
 [ext_resource type="Script" uid="uid://dlxxomxu0lpg3" path="res://scripts/objects/button.gd" id="2_okroa"]
 [ext_resource type="Material" uid="uid://db8n62d6gmvm2" path="res://materials/level/level.material" id="3_qacx6"]
 

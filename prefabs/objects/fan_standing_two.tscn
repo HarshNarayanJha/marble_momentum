@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bkg5buo0t1jed"]
 
-[ext_resource type="PackedScene" uid="uid://cdbr23xlx4oa0" path="res://art/marble_kit/fan-standing-two.fbx" id="1_fvnsh"]
+[ext_resource type="PackedScene" uid="uid://dj1wmvpoq5s3i" path="res://art/marble_kit/fan-standing-two.fbx" id="1_fvnsh"]
 [ext_resource type="Script" uid="uid://c07wcnx6ls1fg" path="res://scripts/objects/fan.gd" id="2_7bs4j"]
 [ext_resource type="PackedScene" uid="uid://bwkiat62m4o5" path="res://prefabs/objects/button_round.tscn" id="3_vw0i5"]
 
@@ -64,7 +64,7 @@ _data = {
 [node name="fan-standing-two" node_paths=PackedStringArray("wind_area", "animation_player", "button") instance=ExtResource("1_fvnsh")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 collision_layer = 8
-collision_mask = 2
+collision_mask = 14
 script = ExtResource("2_7bs4j")
 wind_speed = 45.0
 wind_area = NodePath("WindArea")

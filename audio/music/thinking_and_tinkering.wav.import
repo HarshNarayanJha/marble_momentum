@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://t2g4gxo4u6u7"
+uid="uid://de68cqdkg74hc"
 path="res://.godot/imported/thinking_and_tinkering.wav-56ec7b1d84bfce8b67e57de94fd9f93d.sample"
 
 [deps]
@@ -16,7 +16,7 @@ force/8_bit=false
 force/mono=false
 force/max_rate=false
 force/max_rate_hz=44100
-edit/trim=false
+edit/trim=true
 edit/normalize=true
 edit/loop_mode=2
 edit/loop_begin=0

@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c2ig7yfhcm2xt"
+uid="uid://cnegyjs4b8in"
 path="res://.godot/imported/split-large-solid-right.fbx-d3aedab3118a5311ec6914923a8941ee.scn"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/split-large-solid-right.fbx-d3aedab3118a5311e
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="StaticBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

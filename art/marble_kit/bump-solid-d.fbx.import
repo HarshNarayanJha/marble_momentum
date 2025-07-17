@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://chfm1j716y08b"
+uid="uid://2sod0ip68vb6"
 path="res://.godot/imported/bump-solid-d.fbx-9004ce4cfb0e6ff82b73bf9a49925526.scn"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/bump-solid-d.fbx-9004ce4cfb0e6ff82b73bf9a4992
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="StaticBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://diqrs7j47gfmn"]
 
-[ext_resource type="PackedScene" uid="uid://njqrhqba02ga" path="res://art/platformer_kit/button-square.fbx" id="1_gw5bd"]
+[ext_resource type="PackedScene" uid="uid://dpjgr5x3x4emv" path="res://art/platformer_kit/button-square.fbx" id="1_gw5bd"]
 [ext_resource type="Script" uid="uid://dlxxomxu0lpg3" path="res://scripts/objects/button.gd" id="2_8fw7b"]
 [ext_resource type="PhysicsMaterial" uid="uid://4uj6orphlajr" path="res://materials/level_physics_material.phymat" id="2_hvon3"]
 [ext_resource type="Material" uid="uid://db8n62d6gmvm2" path="res://materials/level/level.material" id="4_h0c57"]

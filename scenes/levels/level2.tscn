@@ -1,9 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://1okjujjfvgni"]
+[gd_scene load_steps=27 format=3 uid="uid://1okjujjfvgni"]
 
 [ext_resource type="PackedScene" uid="uid://bnhj8nq5gipfo" path="res://prefabs/gameplay/selectable_section.tscn" id="1_56gwk"]
 [ext_resource type="Environment" uid="uid://b1srll4lqu0sm" path="res://settings/world_environment.res" id="1_b4tpv"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_sqrei"]
-[ext_resource type="PackedScene" uid="uid://kpitevi1kttu" path="res://prefabs/level/straight-long.tscn" id="2_ve5ok"]
 [ext_resource type="PackedScene" uid="uid://cot7pnd46sum3" path="res://prefabs/level/ramp_long_a.tscn" id="3_yhrca"]
 [ext_resource type="PackedScene" uid="uid://di7jdrf68ys2x" path="res://prefabs/level/ramp_long_b.tscn" id="4_4eecq"]
 [ext_resource type="PackedScene" uid="uid://dyt650862u6fa" path="res://prefabs/level/ramp_long_c.tscn" id="5_b3p8y"]
@@ -82,29 +81,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00866699, 0.75, 0.25)
 shape = SubResource("BoxShape3D_mrac1")
 debug_color = Color(1.39579e-06, 0.636256, 0.40716, 0.42)
 
-[node name="straight" parent="Level/Paths" instance=ExtResource("6_cqal4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -3)
+[node name="straight2" parent="Level/Paths" instance=ExtResource("6_cqal4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -2)
 
-[node name="straight2" parent="Level/Paths" instance=ExtResource("2_ve5ok")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -1.5)
+[node name="straight3" parent="Level/Paths" instance=ExtResource("6_cqal4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -1)
 
-[node name="straight3" parent="Level/Paths" instance=ExtResource("2_ve5ok")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.5)
+[node name="straight4" parent="Level/Paths" instance=ExtResource("6_cqal4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="straight5" parent="Level/Paths" instance=ExtResource("6_cqal4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 1)
 
 [node name="Objects" type="Node" parent="Level"]
 
 [node name="lampSquareTable" parent="Level/Objects" node_paths=PackedStringArray("button") instance=ExtResource("7_o3sye")]
-transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 4, -10)
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 4, -9)
 button = NodePath("../button-square")
 
 [node name="button-square" parent="Level/Objects" instance=ExtResource("8_24ks5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -8)
 keep_pressed = true
 allow_manual_change = false
 
 [node name="fan-standing-two" parent="Level/Objects" instance=ExtResource("9_s4es8")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 4.3, 1)
-wind_speed = 80.0
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 4.3, 0.5)
+wind_speed = 150.0
 
 [node name="WindCollisionShape" type="CollisionShape3D" parent="Level/Objects/fan-standing-two/WindArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.5, -4.34323)
@@ -118,16 +120,16 @@ allow_manual_change = false
 [node name="Dominos" type="Node" parent="Level"]
 
 [node name="Domino" parent="Level/Dominos" instance=ExtResource("10_63e4f")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -4.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -3.5)
 
 [node name="Domino2" parent="Level/Dominos" instance=ExtResource("10_63e4f")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -5.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -4.5)
 
 [node name="Domino3" parent="Level/Dominos" instance=ExtResource("10_63e4f")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -6.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -5.5)
 
 [node name="Domino4" parent="Level/Dominos" instance=ExtResource("10_63e4f")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -7.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 4, -6.5)
 
 [node name="Plane" type="StaticBody3D" parent="Level"]
 collision_mask = 0

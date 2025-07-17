@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://c83kktf3yj683"]
 
 [ext_resource type="Script" uid="uid://cfl5a0u68kc0l" path="res://scripts/gameplay/music_player.gd" id="1_c573v"]
-[ext_resource type="AudioStream" uid="uid://5e0n5u4yuam8" path="res://audio/music/lvl_0_the_tutorial.mp3" id="2_ytbcg"]
-[ext_resource type="AudioStream" uid="uid://ujbsxu5psfw7" path="res://audio/music/lvl_5_the_oasis_or_resting_place.mp3" id="3_gyr01"]
-[ext_resource type="AudioStream" uid="uid://t2g4gxo4u6u7" path="res://audio/music/thinking_and_tinkering.wav" id="4_7mep4"]
-[ext_resource type="AudioStream" uid="uid://0gq0pw00br01" path="res://audio/music/pixabayminimal-109310.wav" id="5_im8bf"]
+[ext_resource type="AudioStream" uid="uid://jqbbww5h4d00" path="res://audio/music/lvl_0_the_tutorial.mp3" id="2_ytbcg"]
+[ext_resource type="AudioStream" uid="uid://qbdwixllnerg" path="res://audio/music/lvl_5_the_oasis_or_resting_place.mp3" id="3_gyr01"]
+[ext_resource type="AudioStream" uid="uid://de68cqdkg74hc" path="res://audio/music/thinking_and_tinkering.wav" id="4_7mep4"]
+[ext_resource type="AudioStream" uid="uid://c7ow4tmrke7gy" path="res://audio/music/pixabayminimal-109310.wav" id="5_im8bf"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_c573v"]
 clip_count = 4

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://8is52y75bfde"]
 
-[ext_resource type="PackedScene" uid="uid://xcqx1rrglld1" path="res://art/marble_kit/slant-long-c.fbx" id="1_tpfus"]
+[ext_resource type="PackedScene" uid="uid://ctm4wl3hcgn8d" path="res://art/marble_kit/slant-long-c.fbx" id="1_tpfus"]
 [ext_resource type="PhysicsMaterial" uid="uid://4uj6orphlajr" path="res://materials/level_physics_material.phymat" id="2_s1lfg"]
 [ext_resource type="Material" uid="uid://db8n62d6gmvm2" path="res://materials/level/level.material" id="3_s1lfg"]
 
@@ -9,7 +9,7 @@ data = PackedVector3Array(-0.2875, 0.3125, -1, -0.35, 1.5, 1, -0.35, 0.5, -1, -0
 
 [node name="slant-long-c" instance=ExtResource("1_tpfus")]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 14
 physics_material_override = ExtResource("2_s1lfg")
 
 [node name="slant-long-c" parent="." index="0"]

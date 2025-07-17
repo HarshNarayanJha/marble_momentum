@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bedlxbdq5kjqw"
+uid="uid://140ttt28pauc"
 path="res://.godot/imported/support-four-middle.fbx-e28d3b93c66258d257af38e1727d236f.scn"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/support-four-middle.fbx-e28d3b93c66258d257af3
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="StaticBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

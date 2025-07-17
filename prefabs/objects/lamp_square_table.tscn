@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cqr1qxqce7gtd"]
 
-[ext_resource type="PackedScene" uid="uid://dis3qql860n5g" path="res://art/furniture_kit/lampSquareTable.glb" id="1_6hcgl"]
+[ext_resource type="PackedScene" uid="uid://dxoxxsf3klprk" path="res://art/furniture_kit/lampSquareTable.glb" id="1_6hcgl"]
 [ext_resource type="Script" uid="uid://ubkta3nqsrf8" path="res://scripts/objects/lamp.gd" id="2_sl0ce"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6hcgl"]

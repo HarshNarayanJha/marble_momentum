@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ckujvxshlc8us"
+uid="uid://dw5er8dl7m4yn"
 path="res://.godot/imported/ramp-start-b.fbx-c25bc9d4a510f60df68b6216db0e0693.scn"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/ramp-start-b.fbx-c25bc9d4a510f60df68b6216db0e
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="StaticBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

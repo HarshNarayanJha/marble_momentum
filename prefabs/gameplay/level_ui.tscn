@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://bu6catn6oeils"]
 
-[ext_resource type="Texture2D" uid="uid://c0xlyxtce6jaa" path="res://art/sprites/CircularProgressBar.png" id="1_vbcbx"]
-[ext_resource type="Texture2D" uid="uid://b1jp4ymur17dx" path="res://art/sprites/restoreBtn.png" id="2_57kgk"]
-[ext_resource type="FontFile" uid="uid://cldhu52eayqtd" path="res://fonts/Fredoka-Medium.ttf" id="3_wlu32"]
-[ext_resource type="Texture2D" uid="uid://qk380mu17rjm" path="res://art/sprites/playBtn.png" id="3_x5spu"]
+[ext_resource type="Texture2D" uid="uid://3hvpmf0dlnoq" path="res://art/sprites/CircularProgressBar.png" id="1_vbcbx"]
+[ext_resource type="Texture2D" uid="uid://sr77lnd3f7qi" path="res://art/sprites/restoreBtn.png" id="2_57kgk"]
+[ext_resource type="FontFile" uid="uid://qm6fgp10yfh2" path="res://fonts/Fredoka-Medium.ttf" id="3_wlu32"]
+[ext_resource type="Texture2D" uid="uid://dfli8nuhgbxc8" path="res://art/sprites/playBtn.png" id="3_x5spu"]
 [ext_resource type="StyleBox" uid="uid://11ipljkj26xa" path="res://settings/ui/level_start_pressed.tres" id="4_7xeyb"]
 [ext_resource type="StyleBox" uid="uid://drspulbrfa548" path="res://settings/ui/level_start_disabled.stylebox" id="4_d4gn0"]
 [ext_resource type="StyleBox" uid="uid://w45m58rvi7df" path="res://settings/ui/level_start_normal.tres" id="4_v2wqe"]

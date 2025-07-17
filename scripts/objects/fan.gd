@@ -1,6 +1,6 @@
 class_name Fan extends StaticBody3D
 
-@export_range(-20.0, 100.0) var wind_speed: float = 0.0
+@export_range(-20.0, 200.0) var wind_speed: float = 0.0
 @export var wind_area: Area3D
 @export var animation_player: AnimationPlayer
 @export var button: TriggerButton

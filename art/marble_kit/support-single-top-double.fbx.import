@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cg5dqsrs652g7"
+uid="uid://uxoevl2hu3kj"
 path="res://.godot/imported/support-single-top-double.fbx-a436d68f598a48264a720a244237caec.scn"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/support-single-top-double.fbx-a436d68f598a482
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="StaticBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

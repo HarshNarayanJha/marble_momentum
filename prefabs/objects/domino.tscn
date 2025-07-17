@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://5e6ux51sxv6w"]
 
-[ext_resource type="PackedScene" uid="uid://cbyj0ohni1g1w" path="res://art/platformer_kit/domino.fbx" id="1_30gdi"]
+[ext_resource type="PackedScene" uid="uid://bn3iyejnlhjr" path="res://art/platformer_kit/domino.fbx" id="1_30gdi"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_30gdi"]
 friction = 2.0

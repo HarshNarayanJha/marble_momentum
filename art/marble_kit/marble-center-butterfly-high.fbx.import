@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d2p3ndbwy5w23"
+uid="uid://p3gftx25ok58"
 path="res://.godot/imported/marble-center-butterfly-high.fbx-fbc469f7cb2d2b555552bc2c0768266d.scn"
 
 [deps]
@@ -32,26 +32,7 @@ animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"meshes": {
-"Scene": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 60.0,
-"save_to_file/enabled": false,
-"save_to_file/path": "res://art/marble_kit/mesh/Scene.res"
-},
-"Scene2": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 60.0,
-"save_to_file/enabled": false,
-"save_to_file/path": "res://art/marble_kit/mesh/Scene2.res"
-}
-}
-}
+_subresources={}
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=1

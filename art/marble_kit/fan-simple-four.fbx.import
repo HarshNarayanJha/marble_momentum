@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cfrgop7qqb5uo"
+uid="uid://djxvs0458sbsc"
 path="res://.godot/imported/fan-simple-four.fbx-80e73a180ecec98a6d767d0d775ae3bc.scn"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/fan-simple-four.fbx-80e73a180ecec98a6d767d0d7
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="StaticBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

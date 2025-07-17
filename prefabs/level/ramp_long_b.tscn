@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://di7jdrf68ys2x"]
 
-[ext_resource type="PackedScene" uid="uid://sr11v5rk04wy" path="res://art/marble_kit/ramp-long-b.fbx" id="1_qee7l"]
+[ext_resource type="PackedScene" uid="uid://bdsuepd67a78j" path="res://art/marble_kit/ramp-long-b.fbx" id="1_qee7l"]
 [ext_resource type="PhysicsMaterial" uid="uid://4uj6orphlajr" path="res://materials/level_physics_material.phymat" id="2_ejhdr"]
 [ext_resource type="Material" uid="uid://db8n62d6gmvm2" path="res://materials/level/level.material" id="3_ejhdr"]
 
@@ -9,7 +9,7 @@ data = PackedVector3Array(-0.2875, 0.4205, -0.316, -0.35, 0.676, -0.152, -0.35, 
 
 [node name="ramp-long-b" instance=ExtResource("1_qee7l")]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 14
 physics_material_override = ExtResource("2_ejhdr")
 
 [node name="ramp-long-b" parent="." index="0"]

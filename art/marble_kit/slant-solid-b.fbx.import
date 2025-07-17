@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://chrae40xvh7yp"
+uid="uid://djmaejea4i7ou"
 path="res://.godot/imported/slant-solid-b.fbx-6f06316a62eef2d112352bd556f9a4d3.scn"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/slant-solid-b.fbx-6f06316a62eef2d112352bd556f
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="StaticBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

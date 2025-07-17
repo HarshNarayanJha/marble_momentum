@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ceyqn55l6fl6q"]
 
 [ext_resource type="Script" uid="uid://di2ts6rkp8m25" path="res://scripts/marbel.gd" id="1_q26nf"]
-[ext_resource type="PackedScene" uid="uid://d2p3ndbwy5w23" path="res://art/marble_kit/marble-center-butterfly-high.fbx" id="1_xf8th"]
+[ext_resource type="PackedScene" uid="uid://p3gftx25ok58" path="res://art/marble_kit/marble-center-butterfly-high.fbx" id="1_xf8th"]
 [ext_resource type="Material" uid="uid://dugf82dlgbuw5" path="res://materials/marble.material" id="3_0nb5v"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xf8th"]
