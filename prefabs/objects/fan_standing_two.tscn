@@ -1,8 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkg5buo0t1jed"]
+[gd_scene load_steps=11 format=3 uid="uid://bkg5buo0t1jed"]
 
 [ext_resource type="PackedScene" uid="uid://dj1wmvpoq5s3i" path="res://art/marble_kit/fan-standing-two.fbx" id="1_fvnsh"]
 [ext_resource type="Script" uid="uid://c07wcnx6ls1fg" path="res://scripts/objects/fan.gd" id="2_7bs4j"]
+[ext_resource type="Material" uid="uid://db8n62d6gmvm2" path="res://materials/level/level.material" id="3_kg1df"]
 [ext_resource type="PackedScene" uid="uid://bwkiat62m4o5" path="res://prefabs/objects/button_round.tscn" id="3_vw0i5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vw0i5"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.113725, 0.305882, 0.909804, 1)
+metallic = 0.62
+roughness = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7bs4j"]
 size = Vector3(1.02, 1.02, 0.4)
@@ -71,6 +79,12 @@ wind_area = NodePath("WindArea")
 animation_player = NodePath("AnimationPlayer")
 button = NodePath("button-round")
 
+[node name="fan-standing-two" parent="." index="0"]
+surface_material_override/0 = ExtResource("3_kg1df")
+
+[node name="fan" parent="fan-standing-two" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_vw0i5")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.493805, -0.0539551)
 shape = SubResource("BoxShape3D_7bs4j")
@@ -86,5 +100,6 @@ collision_layer = 8
 collision_mask = 2
 monitorable = false
 
-[node name="button-round" parent="." index="4" instance=ExtResource("3_vw0i5")]
+[node name="button-round" parent="." index="4" node_paths=PackedStringArray("button_mesh") instance=ExtResource("3_vw0i5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0038, -0.0438577)
+button_mesh = NodePath("../fan-standing-two")

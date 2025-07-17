@@ -34,7 +34,7 @@ height = 4.0
 resource_local_to_scene = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hl16f"]
-size = Vector3(1, 1.2, 0.5)
+size = Vector3(1.14526, 1.3124, 0.793213)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_022ip"]
 height = 4.0
@@ -43,7 +43,7 @@ height = 4.0
 resource_local_to_scene = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v6yyo"]
-size = Vector3(1, 1.2, 0.5)
+size = Vector3(1.14526, 1.3124, 0.793213)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hl16f"]
 height = 7.0
@@ -140,7 +140,7 @@ debug_color = Color(0.973447, 0.163556, 7.70092e-07, 0.42)
 surface_material_override/0 = SubResource("StandardMaterial3D_hl16f")
 
 [node name="CollisionShape3D" parent="Level/Objects/fan-standing-two/button-round/Trigger" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00305176, -0.443799, 0.0150148)
 shape = SubResource("BoxShape3D_hl16f")
 debug_color = Color(0.996796, 0, 0.179571, 0.42)
 

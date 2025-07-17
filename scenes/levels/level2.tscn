@@ -116,6 +116,7 @@ debug_color = Color(0.973447, 0.163556, 7.70092e-07, 0.42)
 [node name="button-round" parent="Level/Objects/fan-standing-two" index="4"]
 keep_pressed = true
 allow_manual_change = false
+off_color = Color(1, 0.188235, 0.266667, 1)
 
 [node name="Dominos" type="Node" parent="Level"]
 

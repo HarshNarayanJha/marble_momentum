@@ -7,12 +7,12 @@ class_name TriggerButton extends StaticBody3D
 @export var allow_manual_change: bool = true
 @export var button_mesh: MeshInstance3D
 @export var button_color_mesh: MeshInstance3D
-@export var outline_width: float = 5.0
-@export var outline_width_highlight: float = 3.0
+@export var outline_width: float = 7.0
+@export var outline_width_highlight: float = 5.0
 
 @export_group("Colors")
-@export_color_no_alpha var off_color: Color = Color(0.957, 0.504, 0)
-@export_color_no_alpha var on_color: Color = Color(0, 0.874, 0)
+@export_color_no_alpha var off_color: Color = Color("#ff3044")
+@export_color_no_alpha var on_color: Color = Color("00c600")
 
 signal toggled(state: bool)
 signal turned_on

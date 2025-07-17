@@ -4,8 +4,8 @@ class_name SelectableSection extends Node3D
 @export var sections: Array[PackedScene]
 @export var current_section: int = 0
 @export var allow_manual_change: bool = true
-@export var outline_width: float = 5.0
-@export var outline_width_highlight: float = 3.0
+@export var outline_width: float = 8.0
+@export var outline_width_highlight: float = 5.0
 
 var section: Node3D = null
 var is_hovering: bool = false

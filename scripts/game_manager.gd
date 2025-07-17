@@ -49,6 +49,7 @@ func enter_build_mode():
 		b.highlight()
 	for a in antigravities:
 		a.unlock_change()
+		a.highlight()
 
 	MusicPlayer.play_build_music()
 
@@ -63,6 +64,7 @@ func enter_play_mode():
 		b.remove_highlight()
 	for a in antigravities:
 		a.lock_change()
+		a.remove_highlight()
 
 	MusicPlayer.play_level_music()
 	# start the lose timer
