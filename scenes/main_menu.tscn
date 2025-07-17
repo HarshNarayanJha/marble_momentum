@@ -181,6 +181,10 @@ alignment = 1
 [node name="Play" type="Button" parent="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer/Buttons"]
 custom_minimum_size = Vector2(0, 108)
 layout_mode = 2
+tooltip_text = "Play Game"
+focus_neighbor_bottom = NodePath("../Exit")
+focus_next = NodePath("../Exit")
+focus_previous = NodePath("../Exit")
 theme_override_fonts/font = ExtResource("14_7b55j")
 theme_override_font_sizes/font_size = 42
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a8gd2")
@@ -195,6 +199,10 @@ icon_alignment = 2
 [node name="Exit" type="Button" parent="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer/Buttons"]
 custom_minimum_size = Vector2(0, 108)
 layout_mode = 2
+tooltip_text = "Exit Game"
+focus_neighbor_top = NodePath("../Play")
+focus_next = NodePath("../Play")
+focus_previous = NodePath("../Play")
 theme_override_fonts/font = ExtResource("14_7b55j")
 theme_override_font_sizes/font_size = 42
 theme_override_styles/focus = SubResource("StyleBoxEmpty_j7ex8")

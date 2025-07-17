@@ -88,7 +88,8 @@ func lose() -> void:
 
 func reload_level() -> void:
 	reload_button.disabled = true
-	reload_button.pressed.disconnect(reload_level)
+	if reload_button.pressed.is_connected(reload_level):
+		reload_button.pressed.disconnect(reload_level)
 	# Can't use change_scene directly since phantom camera bugs out
 	SceneManager.fade_out()
 	await SceneManager.fade_complete
