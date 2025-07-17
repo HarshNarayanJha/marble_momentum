@@ -39,5 +39,4 @@ menu_music_names = Array[StringName]([&"MENU"])
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_c573v")
-autoplay = true
 bus = &"Music"

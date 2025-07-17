@@ -6,8 +6,12 @@ extends Node3D
 @export var menu_music_names: Array[StringName]
 
 func play_music(mname: StringName):
+	if not bg_player.has_stream_playback():
+		bg_player.play()
+
 	var stream_playback: AudioStreamPlaybackInteractive = bg_player.get_stream_playback()
 	stream_playback.switch_to_clip_by_name(mname)
+
 
 func play_level_music():
 	play_music(level_music_names.pick_random())
