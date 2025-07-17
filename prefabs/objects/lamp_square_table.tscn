@@ -1,7 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqr1qxqce7gtd"]
+[gd_scene load_steps=10 format=3 uid="uid://cqr1qxqce7gtd"]
 
 [ext_resource type="PackedScene" uid="uid://dxoxxsf3klprk" path="res://art/furniture_kit/lampSquareTable.glb" id="1_6hcgl"]
 [ext_resource type="Script" uid="uid://ubkta3nqsrf8" path="res://scripts/objects/lamp.gd" id="2_sl0ce"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sl0ce"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.831124, 0.749768, 0.567655, 1)
+roughness = 0.8
+rim_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1g0li"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.221361, 0.221379, 0.270927, 1)
+roughness = 0.8
+rim_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6hcgl"]
 size = Vector3(0.12, 0.28, 0.12)
@@ -33,7 +47,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
-"values": [2.0, 0.0]
+"values": [2.5, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_sl0ce"]
@@ -47,7 +61,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.633333, -1.1206, 0.266667, 0.931925, 2, -0.166667, 0.998463, 0, 0),
+"points": PackedFloat32Array(0, -0.633333, -1.1206, 0.266667, 0.931925, 2.5, -0.166667, 0.998463, 0, 0),
 "times": PackedFloat32Array(0, 0.5)
 }
 
@@ -65,6 +79,8 @@ animation_player = NodePath("AnimationPlayer")
 
 [node name="lampSquareTable(Clone)" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06, 0, 0.06)
+surface_material_override/0 = SubResource("StandardMaterial3D_sl0ce")
+surface_material_override/1 = SubResource("StandardMaterial3D_1g0li")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.145, 0)
@@ -72,8 +88,8 @@ shape = SubResource("BoxShape3D_6hcgl")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.232912, 0)
-light_color = Color(0.909804, 0.898039, 0.815686, 1)
 light_energy = 0.0
+shadow_enabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 libraries = {

@@ -12,7 +12,11 @@ shader = ExtResource("3_13hw2")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_218yq"]
 next_pass = SubResource("ShaderMaterial_13hw2")
+diffuse_mode = 3
+specular_mode = 1
 albedo_color = Color(0.182476, 0.227651, 0.294631, 1)
+metallic = 0.6
+roughness = 0.6
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_218yq"]
 render_priority = 0
@@ -20,7 +24,11 @@ shader = ExtResource("3_13hw2")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhx5o"]
 next_pass = SubResource("ShaderMaterial_218yq")
+diffuse_mode = 3
+specular_mode = 1
 albedo_color = Color(0.311939, 0.391374, 0.433001, 1)
+metallic = 0.6
+roughness = 0.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vhx5o"]
 render_priority = 0
@@ -28,7 +36,11 @@ shader = ExtResource("3_13hw2")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57vnp"]
 next_pass = SubResource("ShaderMaterial_vhx5o")
-albedo_color = Color(0.783899, 0.896673, 0.676708, 1)
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.424088, 0.814152, 0.798461, 1)
+metallic = 0.6
+roughness = 0.5
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hanmi"]
 points = PackedVector3Array(-0.0572631, 0, -0.9, -0.9, 0, -0.0572631, -0.0572631, 0.59999, -0.9, 0.0570869, 0, -0.9, -0.9, 0, 0.0570869, -0.9, 0.59999, -0.0572631, -0.0572631, 1.3, -0.500039, 0.0570869, 0.59999, -0.9, 0.9, 0, -0.0572631, -0.9, 0.59999, 0.0570869, -0.0572631, 0, 0.9, -0.500039, 1.3, -0.0572631, 0.0570869, 1.3, -0.500039, 0.9, 0.59999, -0.0572631, 0.9, 0, 0.0570869, -0.500039, 1.3, 0.0570869, -0.0572631, 0.59999, 0.9, 0.0570869, 0, 0.9, 0.499863, 1.3, -0.0572631, 0.9, 0.59999, 0.0570869, -0.0572631, 1.3, 0.499863, 0.0570869, 0.59999, 0.9, 0.499863, 1.3, 0.0570869, 0.0570869, 1.3, 0.499863)

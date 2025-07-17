@@ -6,6 +6,9 @@
 [ext_resource type="Material" uid="uid://db8n62d6gmvm2" path="res://materials/level/level.material" id="4_h0c57"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h0c57"]
+diffuse_mode = 3
+specular_mode = 1
+roughness = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8fw7b"]
 size = Vector3(0.6, 0.0990234, 0.6)
