@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://diqrs7j47gfmn"]
+[gd_scene load_steps=9 format=3 uid="uid://diqrs7j47gfmn"]
 
 [ext_resource type="PackedScene" uid="uid://dpjgr5x3x4emv" path="res://art/platformer_kit/button-square.fbx" id="1_gw5bd"]
 [ext_resource type="Script" uid="uid://dlxxomxu0lpg3" path="res://scripts/objects/button.gd" id="2_8fw7b"]
 [ext_resource type="PhysicsMaterial" uid="uid://4uj6orphlajr" path="res://materials/level_physics_material.phymat" id="2_hvon3"]
 [ext_resource type="Material" uid="uid://db8n62d6gmvm2" path="res://materials/level/level.material" id="4_h0c57"]
+[ext_resource type="AudioStream" uid="uid://b1l30gp2bvt37" path="res://settings/audio/button_audio_randomizer.res" id="5_0nrwc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h0c57"]
 diffuse_mode = 3
@@ -16,7 +17,7 @@ size = Vector3(0.6, 0.0990234, 0.6)
 [sub_resource type="BoxShape3D" id="BoxShape3D_gw5bd"]
 size = Vector3(0.4, 0.096, 0.4)
 
-[node name="button-square" node_paths=PackedStringArray("trigger_area", "animation_player", "button_mesh", "button_color_mesh") instance=ExtResource("1_gw5bd")]
+[node name="button-square" node_paths=PackedStringArray("trigger_area", "animation_player", "button_mesh", "button_color_mesh", "toggle_audio") instance=ExtResource("1_gw5bd")]
 collision_layer = 4
 collision_mask = 14
 physics_material_override = ExtResource("2_hvon3")
@@ -25,6 +26,7 @@ trigger_area = NodePath("Trigger")
 animation_player = NodePath("AnimationPlayer")
 button_mesh = NodePath("button-square")
 button_color_mesh = NodePath("button-square/button")
+toggle_audio = NodePath("AudioStreamPlayer3D")
 
 [node name="button-square" parent="." index="0"]
 surface_material_override/0 = ExtResource("4_h0c57")
@@ -45,3 +47,7 @@ monitorable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.15527e-05, 0.152374, 0)
 shape = SubResource("BoxShape3D_gw5bd")
 debug_color = Color(0.996796, 0, 0.179571, 0.42)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="4"]
+stream = ExtResource("5_0nrwc")
+bus = &"SFX"

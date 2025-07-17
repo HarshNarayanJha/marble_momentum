@@ -6,6 +6,7 @@ class_name SelectableSection extends Node3D
 @export var allow_manual_change: bool = true
 @export var outline_width: float = 8.0
 @export var outline_width_highlight: float = 5.0
+@export var change_audio: AudioStreamPlayer3D
 
 var section: Node3D = null
 var is_hovering: bool = false
@@ -66,6 +67,9 @@ func __replace_section(part: PackedScene):
 		if is_hovering:
 			_on_mouse_enter()
 
+func play_audio():
+	change_audio.play()
+
 func _on_input(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int):
 	if not allow_manual_change:
 		return
@@ -74,6 +78,7 @@ func _on_input(camera: Node, event: InputEvent, event_position: Vector3, normal:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			current_section = wrapi(current_section + 1, 0, sections.size())
 			change_section()
+			play_audio()
 
 func _on_mouse_enter():
 	if not section:

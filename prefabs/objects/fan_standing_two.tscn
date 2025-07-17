@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkg5buo0t1jed"]
+[gd_scene load_steps=13 format=3 uid="uid://bkg5buo0t1jed"]
 
 [ext_resource type="PackedScene" uid="uid://dj1wmvpoq5s3i" path="res://art/marble_kit/fan-standing-two.fbx" id="1_fvnsh"]
 [ext_resource type="Script" uid="uid://c07wcnx6ls1fg" path="res://scripts/objects/fan.gd" id="2_7bs4j"]
 [ext_resource type="Material" uid="uid://db8n62d6gmvm2" path="res://materials/level/level.material" id="3_kg1df"]
 [ext_resource type="PackedScene" uid="uid://bwkiat62m4o5" path="res://prefabs/objects/button_round.tscn" id="3_vw0i5"]
+[ext_resource type="AudioStream" uid="uid://dw0y6kwxvinwl" path="res://audio/sfx/pixabay-fan-sound-247413.wav" id="5_4bo8n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vw0i5"]
 diffuse_mode = 3
@@ -69,7 +70,12 @@ _data = {
 &"spinning": SubResource("Animation_vw0i5")
 }
 
-[node name="fan-standing-two" node_paths=PackedStringArray("wind_area", "animation_player", "button") instance=ExtResource("1_fvnsh")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kg1df"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("5_4bo8n")
+
+[node name="fan-standing-two" node_paths=PackedStringArray("wind_area", "animation_player", "button", "sfx") instance=ExtResource("1_fvnsh")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 collision_layer = 8
 collision_mask = 14
@@ -78,6 +84,7 @@ wind_speed = 45.0
 wind_area = NodePath("WindArea")
 animation_player = NodePath("AnimationPlayer")
 button = NodePath("button-round")
+sfx = NodePath("AudioStreamPlayer3D")
 
 [node name="fan-standing-two" parent="." index="0"]
 surface_material_override/0 = ExtResource("3_kg1df")
@@ -103,3 +110,8 @@ monitorable = false
 [node name="button-round" parent="." index="4" node_paths=PackedStringArray("button_mesh") instance=ExtResource("3_vw0i5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0038, -0.0438577)
 button_mesh = NodePath("../fan-standing-two")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="5"]
+stream = SubResource("AudioStreamRandomizer_kg1df")
+volume_db = -8.0
+bus = &"SFX"

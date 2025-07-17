@@ -4,6 +4,7 @@ class_name Fan extends StaticBody3D
 @export var wind_area: Area3D
 @export var animation_player: AnimationPlayer
 @export var button: TriggerButton
+@export var sfx: AudioStreamPlayer3D
 
 var is_running: bool = false
 var _body: Marble
@@ -46,6 +47,7 @@ func __turn_on():
 
 	is_running = true
 	animation_player.play(&"spinning")
+	sfx.play()
 
 func __turn_off():
 	if not is_running:
@@ -53,6 +55,7 @@ func __turn_off():
 
 	is_running = false
 	animation_player.stop()
+	sfx.stop()
 
 func on_marble_enter(body: Node3D):
 	if body is Marble:

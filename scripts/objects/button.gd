@@ -14,6 +14,9 @@ class_name TriggerButton extends StaticBody3D
 @export_color_no_alpha var off_color: Color = Color("#ff3044")
 @export_color_no_alpha var on_color: Color = Color("00c600")
 
+@export_group("Audio")
+@export var toggle_audio: AudioStreamPlayer3D
+
 signal toggled(state: bool)
 signal turned_on
 signal turned_off
@@ -29,6 +32,8 @@ func _ready() -> void:
 	trigger_area.mouse_entered.connect(_on_mouse_enter)
 	trigger_area.mouse_exited.connect(_on_mouse_exit)
 
+	animation_player.animation_finished.connect(play_audio)
+
 	_manual_control_enabled = allow_manual_change
 
 	set_pressed(initial_pressed)
@@ -39,6 +44,8 @@ func _exit_tree() -> void:
 	trigger_area.input_event.disconnect(on_input)
 	trigger_area.mouse_entered.disconnect(_on_mouse_enter)
 	trigger_area.mouse_exited.disconnect(_on_mouse_exit)
+
+	animation_player.animation_finished.disconnect(play_audio)
 
 func set_pressed(state: bool):
 	if state:
@@ -94,6 +101,9 @@ func __turn_off():
 	toggled.emit(false)
 	turned_off.emit()
 	animation_player.play(&"toggle-off")
+
+func play_audio(anim_name: StringName):
+	toggle_audio.play()
 
 func on_body_enter(body: Node3D):
 	if body is not PhysicsBody3D:
