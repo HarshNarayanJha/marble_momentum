@@ -10,12 +10,14 @@ extends Node
 @export_range(0, 10) var win_wait_secs: float = 3.0
 @export_range(0, 50) var lose_wait_secs: float = 10.0
 @export var win_button: TriggerButton
-@export var next_level: PackedScene
+@export_file var next_level: String
+@export_file var main_menu_scene: String
 
 @export_category("UI")
 @export var progress_circle: TextureProgressBar
 @export var reload_button: TextureButton
 @export var start_button: BaseButton
+@export var home_button: BaseButton
 
 var lvel: Vector3
 var avel: Vector3
@@ -28,12 +30,14 @@ func _ready() -> void:
 	win_button.turned_on.connect(win)
 	start_button.pressed.connect(start_level)
 	reload_button.pressed.connect(reload_level)
+	home_button.pressed.connect(goto_main_menu)
 	progress_circle.value = 0
 
 func _exit_tree() -> void:
 	win_button.turned_on.disconnect(win)
 	start_button.pressed.disconnect(start_level)
 	reload_button.pressed.disconnect(reload_level)
+	home_button.pressed.disconnect(goto_main_menu)
 
 func enter_build_mode():
 	if lose_timer:
@@ -74,6 +78,9 @@ func enter_play_mode():
 func win() -> void:
 	reload_button.disabled = true
 	reload_button.pressed.disconnect(reload_level)
+	home_button.disabled = true
+	home_button.pressed.disconnect(goto_main_menu)
+
 	if lose_timer:
 		lose_timer.timeout.disconnect(lose)
 
@@ -83,20 +90,29 @@ func win() -> void:
 	SceneManager.fade_out()
 	await SceneManager.fade_complete
 
-	get_tree().change_scene_to_packed(next_level)
+	get_tree().change_scene_to_file(next_level)
 
 func lose() -> void:
-	reload_level()
-
-func reload_level() -> void:
 	reload_button.disabled = true
 	if reload_button.pressed.is_connected(reload_level):
 		reload_button.pressed.disconnect(reload_level)
+	home_button.disabled = true
+	if home_button.pressed.is_connected(goto_main_menu):
+		home_button.pressed.disconnect(goto_main_menu)
+
+	reload_level()
+
+func reload_level() -> void:
 	# Can't use change_scene directly since phantom camera bugs out
 	SceneManager.fade_out()
 	await SceneManager.fade_complete
 
 	get_tree().reload_current_scene()
+
+func goto_main_menu():
+	SceneManager.fade_out()
+	await SceneManager.fade_complete
+	get_tree().change_scene_to_file(main_menu_scene)
 
 func _process(delta: float) -> void:
 	if build_mode:
@@ -105,18 +121,10 @@ func _process(delta: float) -> void:
 	time += delta
 	progress_circle.value = 100 - (time / lose_wait_secs) * 100
 
-# now with actual button
-#func _input(event: InputEvent) -> void:
-	#if event is InputEventKey:
-		#if event.key_label == KEY_SPACE and event.pressed:
-			#if build_mode:
-				#enter_play_mode()
-			#else:
-				#enter_build_mode()
-
 func start_level() -> void:
 	enter_play_mode()
 	start_button.disabled = true
+	start_button.pressed.disconnect(start_level)
 
 func disable_physics():
 	marble.set_freeze_enabled(true)

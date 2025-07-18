@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ck4usqg4wh3rj"]
+[gd_scene load_steps=21 format=3 uid="uid://ck4usqg4wh3rj"]
 
 [ext_resource type="Environment" uid="uid://ct1hry7q6ak2j" path="res://settings/main_menu_environment.res" id="1_l6cm7"]
 [ext_resource type="PackedScene" uid="uid://ceyqn55l6fl6q" path="res://prefabs/gameplay/marble.tscn" id="2_ekxnf"]
@@ -11,13 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://chvh4qd82w84y" path="res://prefabs/level/bend_large.tscn" id="9_jk1qb"]
 [ext_resource type="Script" uid="uid://bi583ftmsmw0d" path="res://scripts/main_menu_manager.gd" id="10_5dd4i"]
 [ext_resource type="PackedScene" uid="uid://bio4g1jjphmv3" path="res://prefabs/objects/speed_booster.tscn" id="10_lgwnu"]
-[ext_resource type="PackedScene" uid="uid://cjgtvd17lhp3w" path="res://scenes/levels/level1.tscn" id="11_rcqid"]
 [ext_resource type="FontFile" uid="uid://bxkm18i60iand" path="res://fonts/Fredoka-Bold.ttf" id="13_rcqid"]
 [ext_resource type="FontFile" uid="uid://dtlrw1fbub0gj" path="res://fonts/Fredoka_Condensed-Medium.ttf" id="14_7b55j"]
 [ext_resource type="StyleBox" uid="uid://bnv0n4vgdj3ty" path="res://settings/ui/button_pressed.stylebox" id="15_5pajh"]
 [ext_resource type="StyleBox" uid="uid://cif0rwxw7j4ls" path="res://settings/ui/button_hovered.tres" id="16_a8gd2"]
 [ext_resource type="StyleBox" uid="uid://blhlkejognmms" path="res://settings/ui/button_normal.stylebox" id="16_j7ex8"]
-[ext_resource type="FontFile" uid="uid://qm6fgp10yfh2" path="res://fonts/Fredoka-Medium.ttf" id="18_a8gd2"]
+[ext_resource type="LabelSettings" uid="uid://d2js0acfuhji4" path="res://settings/ui/main_menu_bottom_text_label.tres" id="18_a8gd2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rcqid"]
 font = ExtResource("13_rcqid")
@@ -28,11 +27,6 @@ outline_color = Color(0.211345, 0.243996, 0.292972, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a8gd2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j7ex8"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_flqon"]
-font = ExtResource("18_a8gd2")
-font_size = 14
-font_color = Color(0.866667, 0.847059, 0.807843, 1)
 
 [node name="MainMenu" type="Node3D"]
 
@@ -47,9 +41,11 @@ environment = ExtResource("1_l6cm7")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 physics_interpolation_mode = 1
-transform = Transform3D(-0.601752, -0.48062, 0.63775, 0, 0.798618, 0.60175, -0.798552, 0.362173, -0.480579, 2, 10, -12)
+transform = Transform3D(-0.601752, -0.48062, 0.63775, 0, 0.798618, 0.60175, -0.798552, 0.362173, -0.480579, 4.44025, 10, -8.76167)
 projection = 1
-size = 15.0
+size = 10.0
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
 
 [node name="Marble" parent="." instance=ExtResource("2_ekxnf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 3)
@@ -98,11 +94,16 @@ transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -5, 1, 0
 [node name="bend-large" parent="MenuLevel" instance=ExtResource("9_jk1qb")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.5, 2, 4.5)
 
-[node name="MainMenuManager" type="Node" parent="." node_paths=PackedStringArray("play_button", "exit_button")]
+[node name="MainMenuManager" type="Node" parent="." node_paths=PackedStringArray("play_button", "help_button", "credits_button", "exit_button", "version_text")]
 script = ExtResource("10_5dd4i")
 play_button = NodePath("../MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer/Buttons/Play")
+help_button = NodePath("../MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer/Buttons/HowTo")
+credits_button = NodePath("../MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer/Buttons/Credits")
 exit_button = NodePath("../MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer/Buttons/Exit")
-level1_scene = ExtResource("11_rcqid")
+version_text = NodePath("../MainMenuUI/MarginContainer/VBoxContainer/BottomText/Version")
+level1_scene = "uid://cjgtvd17lhp3w"
+help_scene = "uid://csqxpmdqhrv26"
+credits_scene = "uid://c68kepcsqa85c"
 
 [node name="SpeedBooster" parent="." instance=ExtResource("10_lgwnu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.428277, 0.270514, -5.5)
@@ -149,8 +150,13 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 alignment = 1
 
+[node name="Spacer" type="Control" parent="MainMenuUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MainMenuUI/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 alignment = 1
 
 [node name="Control" type="Control" parent="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -183,8 +189,8 @@ alignment = 1
 custom_minimum_size = Vector2(0, 108)
 layout_mode = 2
 tooltip_text = "Play Game"
-focus_neighbor_bottom = NodePath("../Exit")
-focus_next = NodePath("../Exit")
+focus_neighbor_bottom = NodePath("../HowTo")
+focus_next = NodePath("../HowTo")
 focus_previous = NodePath("../Exit")
 theme_override_fonts/font = ExtResource("14_7b55j")
 theme_override_font_sizes/font_size = 42
@@ -197,13 +203,49 @@ text = "Play!
 "
 icon_alignment = 2
 
+[node name="HowTo" type="Button" parent="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(0, 108)
+layout_mode = 2
+tooltip_text = "How to Play the Game"
+focus_neighbor_top = NodePath("../Play")
+focus_neighbor_bottom = NodePath("../Credits")
+focus_next = NodePath("../Credits")
+focus_previous = NodePath("../Play")
+theme_override_fonts/font = ExtResource("14_7b55j")
+theme_override_font_sizes/font_size = 42
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a8gd2")
+theme_override_styles/hover_pressed = ExtResource("15_5pajh")
+theme_override_styles/hover = ExtResource("16_a8gd2")
+theme_override_styles/pressed = ExtResource("15_5pajh")
+theme_override_styles/normal = ExtResource("16_j7ex8")
+text = "How to Play?"
+icon_alignment = 2
+
+[node name="Credits" type="Button" parent="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(0, 108)
+layout_mode = 2
+tooltip_text = "Roll the credits instead"
+focus_neighbor_top = NodePath("../HowTo")
+focus_neighbor_bottom = NodePath("../Exit")
+focus_next = NodePath("../Exit")
+focus_previous = NodePath("../HowTo")
+theme_override_fonts/font = ExtResource("14_7b55j")
+theme_override_font_sizes/font_size = 42
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a8gd2")
+theme_override_styles/hover_pressed = ExtResource("15_5pajh")
+theme_override_styles/hover = ExtResource("16_a8gd2")
+theme_override_styles/pressed = ExtResource("15_5pajh")
+theme_override_styles/normal = ExtResource("16_j7ex8")
+text = "See Credits"
+icon_alignment = 2
+
 [node name="Exit" type="Button" parent="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer/Buttons"]
 custom_minimum_size = Vector2(0, 108)
 layout_mode = 2
 tooltip_text = "Exit Game"
-focus_neighbor_top = NodePath("../Play")
+focus_neighbor_top = NodePath("../Credits")
 focus_next = NodePath("../Play")
-focus_previous = NodePath("../Play")
+focus_previous = NodePath("../Credits")
 theme_override_fonts/font = ExtResource("14_7b55j")
 theme_override_font_sizes/font_size = 42
 theme_override_styles/focus = SubResource("StyleBoxEmpty_j7ex8")
@@ -213,12 +255,28 @@ theme_override_styles/pressed = ExtResource("15_5pajh")
 theme_override_styles/normal = ExtResource("16_j7ex8")
 text = "Exit"
 
-[node name="Label" type="Label" parent="MainMenuUI/MarginContainer/VBoxContainer"]
+[node name="BottomText" type="HBoxContainer" parent="MainMenuUI/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
-size_flags_stretch_ratio = 0.0
+alignment = 1
+
+[node name="Label" type="Label" parent="MainMenuUI/MarginContainer/VBoxContainer/BottomText"]
+layout_mode = 2
+size_flags_vertical = 8
 text = "© 2025 Harsh Narayan Jha. A Game made in Godot for the Inbound Shovel Jam 2025."
-label_settings = SubResource("LabelSettings_flqon")
+label_settings = ExtResource("18_a8gd2")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Control" type="Control" parent="MainMenuUI/MarginContainer/VBoxContainer/BottomText"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Version" type="Label" parent="MainMenuUI/MarginContainer/VBoxContainer/BottomText"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+text = "v1.0.0"
+label_settings = ExtResource("18_a8gd2")
 horizontal_alignment = 1
 vertical_alignment = 2
 

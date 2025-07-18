@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://d2js0acfuhji4"]
+
+[ext_resource type="FontFile" uid="uid://qm6fgp10yfh2" path="res://fonts/Fredoka-Medium.ttf" id="1_g82af"]
+
+[resource]
+font = ExtResource("1_g82af")
+font_size = 14
+font_color = Color(0.866667, 0.847059, 0.807843, 1)

@@ -2,9 +2,12 @@
 
 Wouldn't been possible without assets from Kenney.nl
  - marble kit: https://kenney.nl/assets/marble-kit
+ - furniture_kit: https://kenney.nl/assets/furniture-kit
+ - space_kit: https://kenney.nl/assets/space-kit
 
 Helpful addons that reduced work
  - phantom camera: https://phantom-camera.dev/
+ - SceneManager: https://github.com/glass-brick/Scene-Manager
 
 Awesome Music in this game
  - Thinking and Tinkering Fablefly Music on itch.io (https://fablefly-music.itch.io/thinking-and-tinkering)
