@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ck4usqg4wh3rj"]
+[gd_scene load_steps=22 format=3 uid="uid://ck4usqg4wh3rj"]
 
 [ext_resource type="Environment" uid="uid://ct1hry7q6ak2j" path="res://settings/main_menu_environment.res" id="1_l6cm7"]
 [ext_resource type="PackedScene" uid="uid://ceyqn55l6fl6q" path="res://prefabs/gameplay/marble.tscn" id="2_ekxnf"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://chvh4qd82w84y" path="res://prefabs/level/bend_large.tscn" id="9_jk1qb"]
 [ext_resource type="Script" uid="uid://bi583ftmsmw0d" path="res://scripts/main_menu_manager.gd" id="10_5dd4i"]
 [ext_resource type="PackedScene" uid="uid://bio4g1jjphmv3" path="res://prefabs/objects/speed_booster.tscn" id="10_lgwnu"]
+[ext_resource type="Texture2D" uid="uid://b15r3qcto4pti" path="res://art/sprites/Marble_Momentum.png" id="13_a8gd2"]
 [ext_resource type="FontFile" uid="uid://bxkm18i60iand" path="res://fonts/Fredoka-Bold.ttf" id="13_rcqid"]
 [ext_resource type="FontFile" uid="uid://dtlrw1fbub0gj" path="res://fonts/Fredoka_Condensed-Medium.ttf" id="14_7b55j"]
 [ext_resource type="StyleBox" uid="uid://bnv0n4vgdj3ty" path="res://settings/ui/button_pressed.stylebox" id="15_5pajh"]
@@ -173,12 +174,20 @@ theme_override_constants/separation = 80
 alignment = 1
 
 [node name="GameTitle" type="Label" parent="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Marble Momentum"
 label_settings = SubResource("LabelSettings_rcqid")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture = ExtResource("13_a8gd2")
+stretch_mode = 5
 
 [node name="Buttons" type="VBoxContainer" parent="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2

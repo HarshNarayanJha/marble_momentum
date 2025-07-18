@@ -1,5 +1,7 @@
 # Marble Momentum
 
+![logo_big.png](logo_big.png)
+
 > ​Set the path and just get started!
 
 Marble Momentum is a 3D physics puzzle game where every level is a chain reaction waiting to be triggered.
