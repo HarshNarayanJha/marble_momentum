@@ -21,6 +21,12 @@ You can press R or click the reload icon at the top to restart the level at any 
 
 You can click the home button to go back to the main menu.
 
+## Where to Play
+
+Built binaries can be downloaded from GitHub releases here as well as on itch.io
+
+A web version can be played on itch.io, though, it might be low on graphics.
+
 ## ATTRIBUTIONS
 
 See attributions in [ATTRIBUTIONS.md](ATTRIBUTIONS.md)

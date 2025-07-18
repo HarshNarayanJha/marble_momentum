@@ -107,30 +107,30 @@ help_scene = "uid://csqxpmdqhrv26"
 credits_scene = "uid://c68kepcsqa85c"
 
 [node name="SpeedBooster" parent="." instance=ExtResource("10_lgwnu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.428277, 0.270514, -5.5)
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, -0.428277, 0.270514, -5.5)
 visible = false
 impulse_amount = 70.0
 
 [node name="SpeedBooster2" parent="." instance=ExtResource("10_lgwnu")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 1.271, -5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5, 1.271, -5)
 visible = false
 impulse_amount = 20.0
 
 [node name="SpeedBooster3" parent="." instance=ExtResource("10_lgwnu")]
-transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -5.13862, 1.27051, -2.39298)
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -5.13862, 1.27051, -2.39298)
 visible = false
 impulse_amount = 40.0
 
 [node name="SpeedBooster4" parent="." instance=ExtResource("10_lgwnu")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 1.271, 0.395882)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5, 1.271, 0.395882)
 visible = false
 impulse_amount = 85.0
 
 [node name="Marker3D" parent="SpeedBooster4" index="2"]
-transform = Transform3D(-4.37114e-08, 0.573576, -0.819152, 0, 0.819152, 0.573576, 1, 2.50718e-08, -3.58063e-08, 0, 0, 0)
+transform = Transform3D(-1, -5.01436e-08, 7.16126e-08, 0, 0.819152, 0.573576, -8.74228e-08, 0.573576, -0.819152, 0, 0, 0)
 
 [node name="SpeedBooster5" parent="." instance=ExtResource("10_lgwnu")]
-transform = Transform3D(-1, 0, -1.47027e-07, 0, 1, 0, 1.47027e-07, 0, -1, -2.432, 2.278, 5.5)
+transform = Transform3D(1.90738e-07, 0, -1, 0, 1, 0, 1, 0, 1.90738e-07, -2.432, 2.278, 5.5)
 visible = false
 impulse_amount = 40.0
 
@@ -290,7 +290,12 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [editable path="SpeedBooster"]
+[editable path="SpeedBooster/banner"]
 [editable path="SpeedBooster2"]
+[editable path="SpeedBooster2/banner"]
 [editable path="SpeedBooster3"]
+[editable path="SpeedBooster3/banner"]
 [editable path="SpeedBooster4"]
+[editable path="SpeedBooster4/banner"]
 [editable path="SpeedBooster5"]
+[editable path="SpeedBooster5/banner"]
