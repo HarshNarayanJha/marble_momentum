@@ -86,8 +86,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -6)
 keep_pressed = true
 allow_manual_change = false
 
-[node name="GameManager" parent="." node_paths=PackedStringArray("marble", "sections", "buttons", "win_button", "progress_circle", "reload_button", "start_button", "home_button") instance=ExtResource("12_g7tkf")]
-marble = NodePath("../MarbleLauncher/Marble")
+[node name="GameManager" parent="." node_paths=PackedStringArray("marbles", "sections", "buttons", "win_button", "progress_circle", "reload_button", "start_button", "home_button") instance=ExtResource("12_g7tkf")]
+marbles = [NodePath("../MarbleLauncher/Marble")]
 sections = [NodePath("../Level/Paths/SelectableSection")]
 buttons = [NodePath("../Level/Objects/button-square")]
 lose_wait_secs = 8.0

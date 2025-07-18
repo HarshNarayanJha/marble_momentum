@@ -193,14 +193,14 @@ dead_zone_width = 1.0
 dead_zone_height = 1.0
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
-[node name="GameManager" parent="." node_paths=PackedStringArray("marble", "sections", "buttons", "antigravities", "win_button", "progress_circle", "reload_button", "start_button", "home_button") instance=ExtResource("20_v6yyo")]
-marble = NodePath("../MarbleLauncher/Marble")
+[node name="GameManager" parent="." node_paths=PackedStringArray("marbles", "sections", "buttons", "antigravities", "win_button", "progress_circle", "reload_button", "start_button", "home_button") instance=ExtResource("20_v6yyo")]
+marbles = [NodePath("../MarbleLauncher/Marble")]
 sections = [NodePath("../Level/Paths/SelectableSection")]
 buttons = [NodePath("../Level/Objects/fan-standing-two/button-round"), NodePath("../Level/Objects/fan-standing-two2/button-round"), NodePath("../Level/Objects/button-square"), NodePath("../Level/Objects/fan-standing-two3/button-round")]
 antigravities = [NodePath("../Level/Objects/AntigravityBase")]
 lose_wait_secs = 22.0
 win_button = NodePath("../Level/Objects/button-square")
-next_level = "uid://c68kepcsqa85c"
+next_level = "uid://hv6larmamf2r"
 main_menu_scene = "uid://ck4usqg4wh3rj"
 progress_circle = NodePath("../UI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/TextureProgressBar")
 reload_button = NodePath("../UI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/ReloadButton")

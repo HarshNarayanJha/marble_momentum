@@ -1,0 +1,206 @@
+[gd_scene load_steps=25 format=3 uid="uid://hv6larmamf2r"]
+
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_8rpwu"]
+[ext_resource type="Environment" uid="uid://b1srll4lqu0sm" path="res://settings/world_environment.res" id="2_eh8f3"]
+[ext_resource type="PackedScene" uid="uid://coj7l5toj0d77" path="res://prefabs/level/slant_long_b.tscn" id="5_yw4fb"]
+[ext_resource type="PackedScene" uid="uid://bic3ininocbum" path="res://prefabs/level/straight.tscn" id="8_ph4mq"]
+[ext_resource type="PackedScene" uid="uid://di7jdrf68ys2x" path="res://prefabs/level/ramp_long_b.tscn" id="10_ll01n"]
+[ext_resource type="PackedScene" uid="uid://b5toqrpkjhu7v" path="res://prefabs/level/corner.tscn" id="11_hxr3b"]
+[ext_resource type="PackedScene" uid="uid://cqr1qxqce7gtd" path="res://prefabs/objects/lamp_square_table.tscn" id="12_cdy06"]
+[ext_resource type="PackedScene" uid="uid://cpvkb0k0s5caw" path="res://prefabs/level/bump_b.tscn" id="12_m1gbu"]
+[ext_resource type="PackedScene" uid="uid://diqrs7j47gfmn" path="res://prefabs/objects/button_square.tscn" id="13_2c5pw"]
+[ext_resource type="PackedScene" uid="uid://cm6vejru61p80" path="res://prefabs/level/end_rounded.tscn" id="13_w1hcc"]
+[ext_resource type="PackedScene" uid="uid://bkg5buo0t1jed" path="res://prefabs/objects/fan_standing_two.tscn" id="14_7cvth"]
+[ext_resource type="PackedScene" uid="uid://ckuucv7xbbwix" path="res://prefabs/objects/antigravity_base.tscn" id="15_jxa0w"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="16_8toe1"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="17_3fbce"]
+[ext_resource type="PackedScene" uid="uid://bio4g1jjphmv3" path="res://prefabs/objects/speed_booster.tscn" id="17_yw4fb"]
+[ext_resource type="PackedScene" uid="uid://bwkiat62m4o5" path="res://prefabs/objects/button_round.tscn" id="18_1wpw8"]
+[ext_resource type="Resource" uid="uid://byv2to4m7vhpb" path="res://settings/camera_resource.res" id="18_5exf6"]
+[ext_resource type="PackedScene" uid="uid://ijho6f4ohbhf" path="res://prefabs/gameplay/game_manager.tscn" id="19_ku6mp"]
+[ext_resource type="PackedScene" uid="uid://cj6byrau2kj0i" path="res://prefabs/level/support_four_top_double.tscn" id="20_rv7jb"]
+[ext_resource type="PackedScene" uid="uid://ceyqn55l6fl6q" path="res://prefabs/gameplay/marble.tscn" id="21_bf472"]
+[ext_resource type="PhysicsMaterial" uid="uid://bc2eevrgapdey" path="res://materials/marble_level3.phymat" id="22_rjokd"]
+[ext_resource type="PackedScene" uid="uid://bu6catn6oeils" path="res://prefabs/gameplay/level_ui.tscn" id="23_uq63i"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hl16f"]
+height = 9.99276
+
+[sub_resource type="Resource" id="Resource_bxuut"]
+script = ExtResource("17_3fbce")
+duration = 1.0
+transition = 0
+ease = 2
+
+[node name="Level4" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+physics_interpolation_mode = 1
+transform = Transform3D(-0.601815, -0.480631, 0.637819, 0, 0.798636, 0.601815, -0.798635, 0.362181, -0.480631, 3.63782, 8.85182, -1.73063)
+projection = 1
+size = 5.5
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("1_8rpwu")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.989526, -0.121884, 0.0773499, 0, 0.535827, 0.844328, -0.144356, -0.835484, 0.530214, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_mode = 0
+sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_eh8f3")
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="Paths" type="Node" parent="Level"]
+
+[node name="straight2" parent="Level/Paths" instance=ExtResource("8_ph4mq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3)
+
+[node name="straight5" parent="Level/Paths" instance=ExtResource("8_ph4mq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -4)
+
+[node name="straight" parent="Level/Paths" instance=ExtResource("8_ph4mq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 3.5, -2.5)
+
+[node name="straight7" parent="Level/Paths" instance=ExtResource("8_ph4mq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 3.5, -2.5)
+
+[node name="straight8" parent="Level/Paths" instance=ExtResource("8_ph4mq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 3.5, -2.5)
+
+[node name="straight9" parent="Level/Paths" instance=ExtResource("8_ph4mq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 3.5, -2.5)
+
+[node name="straight4" parent="Level/Paths" instance=ExtResource("8_ph4mq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 2, -5)
+
+[node name="straight6" parent="Level/Paths" instance=ExtResource("8_ph4mq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 2, -5)
+
+[node name="ramp-long-b" parent="Level/Paths" instance=ExtResource("10_ll01n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -1)
+
+[node name="ramp-long-b2" parent="Level/Paths" instance=ExtResource("10_ll01n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1.5)
+
+[node name="corner" parent="Level/Paths" instance=ExtResource("11_hxr3b")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2, -5)
+
+[node name="corner2" parent="Level/Paths" instance=ExtResource("11_hxr3b")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3.5, -2.5)
+
+[node name="slant-long-b" parent="Level/Paths" instance=ExtResource("5_yw4fb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 2)
+
+[node name="slant-long-b2" parent="Level/Paths" instance=ExtResource("5_yw4fb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 4)
+
+[node name="bump-b" parent="Level/Paths" instance=ExtResource("12_m1gbu")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.5, 2, -5)
+
+[node name="end-rounded" parent="Level/Paths" instance=ExtResource("13_w1hcc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 2, -5)
+
+[node name="Objects" type="Node" parent="Level"]
+
+[node name="lampSquareTable" parent="Level/Objects" node_paths=PackedStringArray("button") instance=ExtResource("12_cdy06")]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, -5.5, 3.5, -3.5)
+button = NodePath("../button-square")
+
+[node name="button-square" parent="Level/Objects" instance=ExtResource("13_2c5pw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3.5, -2.5)
+keep_pressed = true
+allow_manual_change = false
+
+[node name="fan-standing-two3" parent="Level/Objects" node_paths=PackedStringArray("button") instance=ExtResource("14_7cvth")]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0.278485, 3.79983, -2.30095)
+wind_speed = 200.0
+button = NodePath("../fan-button-round")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Objects/fan-standing-two3/WindArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.393922, 0.5, -4.90209)
+shape = SubResource("CapsuleShape3D_hl16f")
+
+[node name="button-round" parent="Level/Objects/fan-standing-two3" index="4"]
+visible = false
+allow_manual_change = false
+
+[node name="AudioStreamPlayer3D" parent="Level/Objects/fan-standing-two3" index="5"]
+volume_db = -5.0
+
+[node name="AntigravityBase" parent="Level/Objects" instance=ExtResource("15_jxa0w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.475807)
+
+[node name="SpeedBooster" parent="Level/Objects" instance=ExtResource("17_yw4fb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.431972, 2.3304, -5)
+impulse_amount = 7.5
+
+[node name="Marker3D" parent="Level/Objects/SpeedBooster" index="2"]
+transform = Transform3D(1, 4.52534e-08, -1.68888e-07, 0, 0.965926, 0.258819, 1.74846e-07, -0.258819, 0.965926, 0, 0, 0)
+
+[node name="fan-button-round" parent="Level/Objects" instance=ExtResource("18_1wpw8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.67901, 2.22846, -5)
+keep_pressed = true
+allow_manual_change = false
+
+[node name="PhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_targets")]
+transform = Transform3D(-0.601815, -0.480631, 0.637819, 0, 0.798636, 0.601815, -0.798635, 0.362181, -0.480631, 3.63782, 8.85182, -1.73063)
+top_level = true
+script = ExtResource("16_8toe1")
+follow_mode = 3
+follow_targets = [NodePath("../MarbleLauncher/Marble"), NodePath("../MarbleLauncher2/Marble")]
+tween_resource = SubResource("Resource_bxuut")
+tween_on_load = false
+camera_3d_resource = ExtResource("18_5exf6")
+follow_offset = Vector3(3, 1, -4)
+follow_damping = true
+follow_damping_value = Vector3(2, 2, 2)
+follow_axis_lock = 4
+dead_zone_width = 1.0
+dead_zone_height = 1.0
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="GameManager" parent="." node_paths=PackedStringArray("marbles", "buttons", "antigravities", "skip_lock", "win_button", "progress_circle", "reload_button", "start_button", "home_button") instance=ExtResource("19_ku6mp")]
+marbles = [NodePath("../MarbleLauncher/Marble"), NodePath("../MarbleLauncher2/Marble")]
+buttons = [NodePath("../Level/Objects/button-square"), NodePath("../Level/Objects/fan-button-round")]
+antigravities = [NodePath("../Level/Objects/AntigravityBase")]
+skip_lock = [NodePath("../Level/Objects/AntigravityBase")]
+lose_wait_secs = 15.0
+win_button = NodePath("../Level/Objects/button-square")
+next_level = "uid://c68kepcsqa85c"
+main_menu_scene = "uid://ck4usqg4wh3rj"
+progress_circle = NodePath("../UI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/TextureProgressBar")
+reload_button = NodePath("../UI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/ReloadButton")
+start_button = NodePath("../UI/MarginContainer/StartButton")
+home_button = NodePath("../UI/MarginContainer/VBoxContainer/HBoxContainer/HomeButton")
+
+[node name="MarbleLauncher" parent="." instance=ExtResource("20_rv7jb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 2)
+
+[node name="Marble" parent="MarbleLauncher" instance=ExtResource("21_bf472")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+physics_material_override = ExtResource("22_rjokd")
+linear_damp = 0.5
+angular_damp = 0.1
+
+[node name="MarbleLauncher2" parent="." instance=ExtResource("20_rv7jb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 3.5)
+
+[node name="Marble" parent="MarbleLauncher2" instance=ExtResource("21_bf472")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+physics_material_override = ExtResource("22_rjokd")
+linear_damp = 0.5
+angular_damp = 0.1
+
+[node name="UI" parent="." instance=ExtResource("23_uq63i")]
+
+[editable path="Level/Objects/fan-standing-two3"]
+[editable path="Level/Objects/SpeedBooster"]
+[editable path="Level/Objects/SpeedBooster/banner"]
+[editable path="UI"]

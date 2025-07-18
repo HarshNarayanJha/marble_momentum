@@ -1,9 +1,10 @@
 extends Node
 
-@export var marble: Marble
+@export var marbles: Array[Marble]
 @export var sections: Array[SelectableSection]
 @export var buttons: Array[TriggerButton]
 @export var antigravities: Array[Antigravity]
+@export var skip_lock: Array[Node3D]
 @export var build_mode: bool = true
 
 @export_category("Win/Lose")
@@ -19,8 +20,8 @@ extends Node
 @export var start_button: BaseButton
 @export var home_button: BaseButton
 
-var lvel: Vector3
-var avel: Vector3
+var lvels: Array[Vector3]
+var avels: Array[Vector3]
 var lose_timer: SceneTreeTimer
 var time: float
 
@@ -61,12 +62,18 @@ func enter_play_mode():
 	build_mode = false
 	enable_physics()
 	for s in sections:
+		if s in skip_lock:
+			continue
 		s.lock_change()
 		s.remove_highlight()
 	for b in buttons:
+		if b in skip_lock:
+			continue
 		b.lock_change()
 		b.remove_highlight()
 	for a in antigravities:
+		if a in skip_lock:
+			continue
 		a.lock_change()
 		a.remove_highlight()
 
@@ -127,11 +134,13 @@ func start_level() -> void:
 	start_button.pressed.disconnect(start_level)
 
 func disable_physics():
-	marble.set_freeze_enabled(true)
-	lvel = marble.linear_velocity
-	avel = marble.angular_velocity
+	for m in marbles:
+		m.set_freeze_enabled(true)
+		lvels.push_back(m.linear_velocity)
+		avels.push_back(m.angular_velocity)
 
 func enable_physics():
-	marble.linear_velocity = lvel
-	marble.angular_velocity = avel
-	marble.set_freeze_enabled(false)
+	for m in marbles:
+		m.linear_velocity = lvels.pop_front()
+		m.angular_velocity = avels.pop_front()
+		m.set_freeze_enabled(false)

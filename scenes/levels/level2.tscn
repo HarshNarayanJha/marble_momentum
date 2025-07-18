@@ -161,8 +161,8 @@ dead_zone_width = 1.0
 dead_zone_height = 1.0
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
-[node name="GameManager" parent="." node_paths=PackedStringArray("marble", "sections", "buttons", "win_button", "progress_circle", "reload_button", "start_button", "home_button") instance=ExtResource("19_ida7w")]
-marble = NodePath("../MarbleLauncher/Marble")
+[node name="GameManager" parent="." node_paths=PackedStringArray("marbles", "sections", "buttons", "win_button", "progress_circle", "reload_button", "start_button", "home_button") instance=ExtResource("19_ida7w")]
+marbles = [NodePath("../MarbleLauncher/Marble")]
 sections = [NodePath("../Level/Paths/SelectableSection")]
 buttons = [NodePath("../Level/Objects/button-square"), NodePath("../Level/Objects/fan-standing-two/button-round")]
 lose_wait_secs = 18.0

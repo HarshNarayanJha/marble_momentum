@@ -3,10 +3,9 @@ class_name Antigravity extends StaticBody3D
 enum AntigravityState {
 	ATTRACT,
 	REPEL,
-	OFF
 }
 
-const NUM_STATES = 3
+const NUM_STATES = 2
 
 @export var force_area: Area3D
 @export var force_mesh: MeshInstance3D
@@ -65,16 +64,16 @@ func set_state(state: AntigravityState):
 		attract_particles.emitting = false
 		repel_particles.emitting = true
 
-	elif state == AntigravityState.OFF:
-		force_area.gravity_space_override = Area3D.SPACE_OVERRIDE_DISABLED
-		attract_particles.emitting = false
-		repel_particles.emitting = false
-		force_mesh.hide()
+	#elif state == AntigravityState.OFF:
+		#force_area.gravity_space_override = Area3D.SPACE_OVERRIDE_DISABLED
+		#attract_particles.emitting = false
+		#repel_particles.emitting = false
+		#force_mesh.hide()
 
 	else:
 		# if set to the COUNT state accidently, turn off
-		push_error("Invalid Antigravity State")
-		set_state(AntigravityState.OFF)
+		push_error("Invalid Antigravity State %s", state)
+		#set_state(AntigravityState.OFF)
 
 func lock_change():
 	_on_mouse_exit()
