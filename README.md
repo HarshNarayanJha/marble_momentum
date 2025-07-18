@@ -1,6 +1,6 @@
 # Marble Momentum
 
-![logo_big.png](logo_big.png)
+![cover_art.png](art/cover_art.png)
 
 > ​Set the path and just get started!
 
@@ -23,7 +23,7 @@ You can click the home button to go back to the main menu.
 
 ## Where to Play
 
-Built binaries can be downloaded from GitHub releases here as well as on itch.io
+Built binaries can be downloaded from GitHub releases here as well as on itch.io [here](https://harshnarayanjha.itch.io/marble-momentum)
 
 A web version can be played on itch.io, though, it might be low on graphics.
 
