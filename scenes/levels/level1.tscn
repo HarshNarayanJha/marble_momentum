@@ -94,10 +94,10 @@ lose_wait_secs = 8.0
 win_button = NodePath("../Level/Objects/button-square")
 next_level = "uid://1okjujjfvgni"
 main_menu_scene = "uid://ck4usqg4wh3rj"
-progress_circle = NodePath("../UI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/TextureProgressBar")
-reload_button = NodePath("../UI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/ReloadButton")
+progress_circle = NodePath("../UI/MarginContainer/VBoxContainer/VBoxContainer/CenterContainer/TextureProgressBar")
+reload_button = NodePath("../UI/MarginContainer/VBoxContainer/VBoxContainer/CenterContainer/ReloadButton")
 start_button = NodePath("../UI/MarginContainer/StartButton")
-home_button = NodePath("../UI/MarginContainer/VBoxContainer/HBoxContainer/HomeButton")
+home_button = NodePath("../UI/MarginContainer/VBoxContainer/VBoxContainer/HomeButton")
 
 [node name="PhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_target")]
 transform = Transform3D(-0.601752, -0.48062, 0.63775, 0, 0.798618, 0.60175, -0.798552, 0.362173, -0.480579, 3.63775, 8.60175, -5.98058)

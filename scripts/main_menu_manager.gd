@@ -27,17 +27,23 @@ func _exit_tree() -> void:
 	exit_button.pressed.disconnect(exit)
 
 func go_to_level1() -> void:
+	if SceneManager.is_transitioning:
+		return
 	# Can't use change_scene directly since phantom camera bugs out
 	SceneManager.fade_out()
 	await SceneManager.fade_complete
 	get_tree().change_scene_to_file(level1_scene)
 
 func goto_help() -> void:
+	if SceneManager.is_transitioning:
+		return
 	SceneManager.fade_out()
 	await SceneManager.fade_complete
 	get_tree().change_scene_to_file(help_scene)
 
 func goto_credits() -> void:
+	if SceneManager.is_transitioning:
+		return
 	SceneManager.fade_out()
 	await SceneManager.fade_complete
 	get_tree().change_scene_to_file(credits_scene)

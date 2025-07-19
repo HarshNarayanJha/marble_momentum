@@ -175,10 +175,10 @@ lose_wait_secs = 15.0
 win_button = NodePath("../Level/Objects/button-square")
 next_level = "uid://8uv482y18y4l"
 main_menu_scene = "uid://ck4usqg4wh3rj"
-progress_circle = NodePath("../UI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/TextureProgressBar")
-reload_button = NodePath("../UI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/ReloadButton")
+progress_circle = NodePath("../UI/MarginContainer/VBoxContainer/VBoxContainer/CenterContainer/TextureProgressBar")
+reload_button = NodePath("../UI/MarginContainer/VBoxContainer/VBoxContainer/CenterContainer/ReloadButton")
 start_button = NodePath("../UI/MarginContainer/StartButton")
-home_button = NodePath("../UI/MarginContainer/VBoxContainer/HBoxContainer/HomeButton")
+home_button = NodePath("../UI/MarginContainer/VBoxContainer/VBoxContainer/HomeButton")
 
 [node name="MarbleLauncher" parent="." instance=ExtResource("20_rv7jb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 2)

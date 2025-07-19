@@ -110,6 +110,8 @@ func lose() -> void:
 	reload_level()
 
 func reload_level() -> void:
+	if SceneManager.is_transitioning:
+		return
 	# Can't use change_scene directly since phantom camera bugs out
 	SceneManager.fade_out()
 	await SceneManager.fade_complete
@@ -117,6 +119,8 @@ func reload_level() -> void:
 	get_tree().reload_current_scene()
 
 func goto_main_menu():
+	if SceneManager.is_transitioning:
+		return
 	SceneManager.fade_out()
 	await SceneManager.fade_complete
 	get_tree().change_scene_to_file(main_menu_scene)
