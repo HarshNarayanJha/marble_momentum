@@ -138,11 +138,11 @@ volume_db = -5.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.475807)
 
 [node name="SpeedBooster" parent="Level/Objects" instance=ExtResource("17_yw4fb")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.431972, 2.3304, -5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.431972, 2.3304, -5)
 impulse_amount = 7.5
 
-[node name="Marker3D" parent="Level/Objects/SpeedBooster" index="2"]
-transform = Transform3D(1, 4.52534e-08, -1.68888e-07, 0, 0.965926, 0.258819, 1.74846e-07, -0.258819, 0.965926, 0, 0, 0)
+[node name="Marker3D" parent="Level/Objects/SpeedBooster" index="4"]
+transform = Transform3D(-1, 2.26267e-08, -8.44439e-08, 0, 0.965926, 0.258819, 8.74228e-08, 0.258819, -0.965926, 0, 0, 0)
 
 [node name="fan-button-round" parent="Level/Objects" instance=ExtResource("18_1wpw8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.67901, 2.22846, -5)
@@ -202,5 +202,7 @@ angular_damp = 0.1
 
 [editable path="Level/Objects/fan-standing-two3"]
 [editable path="Level/Objects/SpeedBooster"]
-[editable path="Level/Objects/SpeedBooster/banner"]
+[editable path="Level/Objects/SpeedBooster/arrow-basic"]
+[editable path="Level/Objects/SpeedBooster/arrow-basic3"]
+[editable path="Level/Objects/SpeedBooster/arrow-basic2"]
 [editable path="UI"]
