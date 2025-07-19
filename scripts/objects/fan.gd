@@ -6,6 +6,11 @@ class_name Fan extends StaticBody3D
 @export var button: TriggerButton
 @export var sfx: AudioStreamPlayer3D
 
+@export_group("Sprite Settings", "sprite")
+@export var sprite_fan_sprite: Sprite3D
+@export var sprite_off_color: Color
+@export var sprite_on_color: Color
+
 var is_running: bool = false
 var _body: Marble
 
@@ -42,6 +47,8 @@ func toggle():
 		__turn_on()
 
 func __turn_on():
+	sprite_fan_sprite.modulate = sprite_on_color
+
 	if is_running:
 		return
 
@@ -50,6 +57,8 @@ func __turn_on():
 	sfx.play()
 
 func __turn_off():
+	sprite_fan_sprite.modulate = sprite_off_color
+
 	if not is_running:
 		return
 
