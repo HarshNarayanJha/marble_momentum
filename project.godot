@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Marble Momentum"
 config/description="Marble Momentum is a 3D physics puzzle game where every level is a chain reaction waiting to be triggered. Drop a single marble and sit back to relax and watch the tracks, fans, dominoes, and more pave the marble's path. Every bounce, push, and adjustment is fun! You can tweak things like fans, slopes and more with a simple click, then drop the marble and enjoy the dynamic, cause-and-effect spectacle."
-config/version="v0.0.1-pre-d0867b6"
+config/version="v0.0.1-pre-2e3b7bc"
 run/main_scene="uid://ck4usqg4wh3rj"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/bg_color=Color(0.133333, 0.156863, 0.192157, 1)
