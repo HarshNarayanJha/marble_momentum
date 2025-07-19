@@ -25,6 +25,11 @@ const NUM_STATES = 2
 @export var outline_width: float = 6.0
 @export var outline_width_highlight: float = 5.0
 
+@export_group("Sprite", "sprite")
+@export var sprite_node: Sprite3D
+@export var sprite_attract: Texture2D
+@export var sprite_repel: Texture2D
+
 var current_state: AntigravityState
 var _manual_control_enabled: bool
 var is_hovering: bool = false
@@ -54,6 +59,9 @@ func set_state(state: AntigravityState):
 		repel_particles.emitting = false
 		attract_particles.emitting = true
 
+		sprite_node.texture = sprite_attract
+		sprite_node.modulate = attract_color
+
 	elif state == AntigravityState.REPEL:
 		force_area.gravity_space_override = Area3D.SPACE_OVERRIDE_REPLACE
 		force_area.gravity = repel_gravity
@@ -63,6 +71,9 @@ func set_state(state: AntigravityState):
 
 		attract_particles.emitting = false
 		repel_particles.emitting = true
+
+		sprite_node.texture = sprite_repel
+		sprite_node.modulate = repel_color
 
 	#elif state == AntigravityState.OFF:
 		#force_area.gravity_space_override = Area3D.SPACE_OVERRIDE_DISABLED

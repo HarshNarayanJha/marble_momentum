@@ -88,7 +88,7 @@ button = NodePath("button-round")
 sfx = NodePath("AudioStreamPlayer3D")
 sprite_fan_sprite = NodePath("Sprite3D")
 sprite_off_color = Color(0.215972, 0.215972, 0.215972, 1)
-sprite_on_color = Color(0, 0.968627, 0.0862745, 1)
+sprite_on_color = Color(0, 0.870588, 0.0705882, 1)
 
 [node name="fan-standing-two" parent="." index="0"]
 surface_material_override/0 = ExtResource("3_kg1df")

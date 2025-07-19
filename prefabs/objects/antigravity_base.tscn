@@ -1,10 +1,12 @@
-[gd_scene load_steps=22 format=3 uid="uid://ckuucv7xbbwix"]
+[gd_scene load_steps=24 format=3 uid="uid://ckuucv7xbbwix"]
 
 [ext_resource type="PackedScene" uid="uid://vu6w8e8lan71" path="res://art/space_kit/rocket_baseB.fbx" id="1_hanmi"]
 [ext_resource type="PhysicsMaterial" uid="uid://4uj6orphlajr" path="res://materials/level_physics_material.phymat" id="2_218yq"]
 [ext_resource type="Shader" uid="uid://crip5vhfoj26h" path="res://shaders/antigravity.gdshader" id="2_r7hrm"]
 [ext_resource type="Script" uid="uid://buwivqoghsi7v" path="res://scripts/objects/antigravity.gd" id="2_v0v2w"]
 [ext_resource type="Shader" uid="uid://68f7d7esm25w" path="res://shaders/level/slant_long_b.gdshader" id="3_13hw2"]
+[ext_resource type="Texture2D" uid="uid://bpcl02ldbe46e" path="res://art/sprites/float-up.png" id="5_57vnp"]
+[ext_resource type="Texture2D" uid="uid://bhh5a53vxbph8" path="res://art/sprites/fall-down.png" id="6_vhx5o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_13hw2"]
 render_priority = 0
@@ -111,7 +113,7 @@ size = 0.013
 sections = 2
 section_length = 0.026
 
-[node name="AntigravityBase" node_paths=PackedStringArray("force_area", "force_mesh", "base_mesh", "repel_particles", "attract_particles") instance=ExtResource("1_hanmi")]
+[node name="AntigravityBase" node_paths=PackedStringArray("force_area", "force_mesh", "base_mesh", "repel_particles", "attract_particles", "sprite_node") instance=ExtResource("1_hanmi")]
 collision_layer = 8
 collision_mask = 14
 physics_material_override = ExtResource("2_218yq")
@@ -121,6 +123,9 @@ force_mesh = NodePath("ForceField/MeshInstance3D")
 base_mesh = NodePath("rocket_baseB")
 repel_particles = NodePath("RepelParticles")
 attract_particles = NodePath("AttractParticles")
+sprite_node = NodePath("Sprite3D")
+sprite_attract = ExtResource("6_vhx5o")
+sprite_repel = ExtResource("5_57vnp")
 
 [node name="rocket_baseB" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -171,3 +176,11 @@ trail_enabled = true
 trail_lifetime = 0.1
 process_material = SubResource("ParticleProcessMaterial_13hw2")
 draw_pass_1 = SubResource("RibbonTrailMesh_v0v2w")
+
+[node name="Sprite3D" type="Sprite3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.65302, 0)
+pixel_size = 0.004
+billboard = 2
+double_sided = false
+alpha_antialiasing_mode = 1
+texture = ExtResource("6_vhx5o")

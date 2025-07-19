@@ -240,7 +240,7 @@ keep_pressed = true
 allow_manual_change = false
 
 [node name="fan-standing-two3" parent="Level/Objects" instance=ExtResource("11_wd10u")]
-transform = Transform3D(0.5, 0, 5.32907e-15, 0, 0.5, 0, -5.32907e-15, 0, 0.5, -7.62332, 5.29983, -3.03021)
+transform = Transform3D(0.5, 0, 5.32907e-15, 0, 0.5, 0, -5.32907e-15, 0, 0.5, -7.62332, 5.29983, -3.06307)
 wind_speed = 400.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Objects/fan-standing-two3/WindArea" index="0"]
