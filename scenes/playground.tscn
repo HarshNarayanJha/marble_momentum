@@ -128,9 +128,9 @@ projection = 1
 fov = 60.0
 size = 6.0
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("marble", "buttons", "win_button")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("marbles", "buttons", "win_button")]
 script = ExtResource("12_osidk")
-marble = NodePath("../Marble")
+marbles = [NodePath("../Marble")]
 buttons = [NodePath("../Level/Objects/button-square")]
 win_button = NodePath("../Level/Objects/button-square")
 
