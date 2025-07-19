@@ -38,7 +38,7 @@ specular_mode = 1
 roughness = 0.7
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d75b2"]
-size = Vector3(2, 2, 0.601562)
+size = Vector3(2, 2, 1.5)
 
 [sub_resource type="Resource" id="Resource_bxuut"]
 script = ExtResource("16_q3cny")
@@ -240,18 +240,24 @@ keep_pressed = true
 allow_manual_change = false
 
 [node name="fan-standing-two3" parent="Level/Objects" instance=ExtResource("11_wd10u")]
-transform = Transform3D(0.5, 0, 5.32907e-15, 0, 0.5, 0, -5.32907e-15, 0, 0.5, -7.62332, 5.29983, -3.06163)
-wind_speed = 200.0
+transform = Transform3D(0.5, 0, 5.32907e-15, 0, 0.5, 0, -5.32907e-15, 0, 0.5, -7.62332, 5.29983, -3.03021)
+wind_speed = 400.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Objects/fan-standing-two3/WindArea" index="0"]
 transform = Transform3D(0.951975, 0.306177, 1.33834e-08, 0, -4.37114e-08, 1, 0.306177, -0.951975, -4.16121e-08, 1.36614, 0.5, -4.902)
 shape = SubResource("CapsuleShape3D_hl16f")
 
+[node name="button-round" parent="Level/Objects/fan-standing-two3" index="4"]
+editor_description = "This should not be triggered via marble collision, hence mask bit off. Only user mouse click"
+
 [node name="button" parent="Level/Objects/fan-standing-two3/button-round/button-round" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_ngf84")
 
+[node name="Trigger" parent="Level/Objects/fan-standing-two3/button-round" index="3"]
+collision_mask = 13
+
 [node name="CollisionShape3D" parent="Level/Objects/fan-standing-two3/button-round/Trigger" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.364838, 0.199219)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.364838, -0.25)
 shape = SubResource("BoxShape3D_d75b2")
 
 [node name="AudioStreamPlayer3D" parent="Level/Objects/fan-standing-two3" index="5"]
@@ -259,14 +265,15 @@ volume_db = -5.0
 
 [node name="SpeedBooster" parent="Level/Objects" instance=ExtResource("13_pxgjg")]
 transform = Transform3D(0.952087, 0, 0.305828, 0, 1, 0, -0.305828, 0, 0.952087, 0.406784, 5.31571, -5.56947)
-impulse_amount = 1.1
+impulse_amount = 2.6
+metadata/_edit_lock_ = true
 
 [node name="Marker3D" parent="Level/Objects/SpeedBooster" index="2"]
 transform = Transform3D(-0.907015, 0, -0.421099, 0, 1, 0, 0.421099, 0, -0.907015, 0, 0, 0)
 
 [node name="SpeedBooster2" parent="Level/Objects" instance=ExtResource("13_pxgjg")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.88782, 5.31571, -6.5)
-impulse_amount = 1.8
+impulse_amount = 4.2
 
 [node name="Marker3D" parent="Level/Objects/SpeedBooster2" index="2"]
 transform = Transform3D(-0.999391, 0.0348995, -7.57103e-08, 0.0302238, 0.865498, 0.5, 0.0174498, 0.499695, -0.866025, 0, 0, 0)
@@ -274,7 +281,7 @@ transform = Transform3D(-0.999391, 0.0348995, -7.57103e-08, 0.0302238, 0.865498,
 [node name="SpeedBooster3" parent="Level/Objects" instance=ExtResource("13_pxgjg")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -10.2595, 5.31571, -6.49972)
 visible = false
-impulse_amount = 0.8
+impulse_amount = 1.5
 
 [node name="Marker3D" parent="Level/Objects/SpeedBooster3" index="2"]
 transform = Transform3D(-1, 0, -1.19209e-07, 0, 1, 0, 1.3411e-07, 0, -1, 0, 0, 0)
@@ -282,17 +289,62 @@ transform = Transform3D(-1, 0, -1.19209e-07, 0, 1, 0, 1.3411e-07, 0, -1, 0, 0, 0
 [node name="SpeedBooster4" parent="Level/Objects" instance=ExtResource("13_pxgjg")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.2595, 5.31571, -3.50188)
 visible = false
-impulse_amount = 1.0
+impulse_amount = 1.2
 
 [node name="Marker3D" parent="Level/Objects/SpeedBooster4" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0, 0, 0)
 
 [node name="SpeedBooster5" parent="Level/Objects" instance=ExtResource("13_pxgjg")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.75952, 5.31571, -3.50189)
-impulse_amount = 0.7
+impulse_amount = 3.8
 
 [node name="Marker3D" parent="Level/Objects/SpeedBooster5" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="SpeedBooster6" parent="Level/Objects" instance=ExtResource("13_pxgjg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.38782, 5.31571, -9.5)
+impulse_amount = 3.8
+
+[node name="Marker3D" parent="Level/Objects/SpeedBooster6" index="2"]
+transform = Transform3D(0.999391, -0.0348995, 0, 0.0348995, 0.999391, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="SpeedBooster7" parent="Level/Objects" instance=ExtResource("13_pxgjg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.49069, 5.31571, -7.81674)
+impulse_amount = 3.6
+
+[node name="Marker3D" parent="Level/Objects/SpeedBooster7" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="SpeedBooster8" parent="Level/Objects" instance=ExtResource("13_pxgjg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.26207, 5.31571, -0.520889)
+impulse_amount = 1.8
+
+[node name="Marker3D" parent="Level/Objects/SpeedBooster8" index="2"]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 0, 0, 0)
+
+[node name="SpeedBooster9" parent="Level/Objects" instance=ExtResource("13_pxgjg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.76207, 5.31571, -0.520889)
+visible = false
+impulse_amount = 1.4
+
+[node name="Marker3D" parent="Level/Objects/SpeedBooster9" index="2"]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 0, 0, 0)
+
+[node name="SpeedBooster10" parent="Level/Objects" instance=ExtResource("13_pxgjg")]
+transform = Transform3D(0.84233, 0, 0.538962, 0, 1, 0, -0.538962, 0, 0.84233, 1.37985, 5.31571, -0.97636)
+visible = false
+impulse_amount = 1.2
+
+[node name="Marker3D" parent="Level/Objects/SpeedBooster10" index="2"]
+transform = Transform3D(-0.986135, 0, 0.165943, 0, 1, 0, -0.165943, 0, -0.986135, 0, 0, 0)
+
+[node name="SpeedBooster11" parent="Level/Objects" instance=ExtResource("13_pxgjg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.517356, 5.31571, -2.6605)
+visible = false
+impulse_amount = 0.2
+
+[node name="Marker3D" parent="Level/Objects/SpeedBooster11" index="2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="PhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_target")]
 transform = Transform3D(-0.601815, -0.480631, 0.637819, 0, 0.798636, 0.601815, -0.798635, 0.362181, -0.480631, 0.637819, 11.1018, 1.51937)
@@ -316,7 +368,7 @@ sections = [NodePath("../Level/Paths/SelectableSection")]
 buttons = [NodePath("../Level/Objects/fan-standing-two3/button-round")]
 skip_lock = [NodePath("../Level/Paths/SelectableSection"), NodePath("../Level/Objects/fan-standing-two3/button-round")]
 win_wait_secs = 1.0
-lose_wait_secs = 50.0
+lose_wait_secs = 55.0
 win_button = NodePath("../Level/Objects/button-square")
 next_level = "uid://c68kepcsqa85c"
 main_menu_scene = "uid://ck4usqg4wh3rj"
@@ -330,7 +382,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5, 2)
 
 [node name="Marble" parent="MarbleLauncher" instance=ExtResource("20_gw3dk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mass = 0.2
+mass = 0.5
 physics_material_override = ExtResource("22_po1mw")
 linear_damp = 0.5
 angular_damp = 0.1
@@ -349,4 +401,16 @@ angular_damp = 0.1
 [editable path="Level/Objects/SpeedBooster4/banner"]
 [editable path="Level/Objects/SpeedBooster5"]
 [editable path="Level/Objects/SpeedBooster5/banner"]
+[editable path="Level/Objects/SpeedBooster6"]
+[editable path="Level/Objects/SpeedBooster6/banner"]
+[editable path="Level/Objects/SpeedBooster7"]
+[editable path="Level/Objects/SpeedBooster7/banner"]
+[editable path="Level/Objects/SpeedBooster8"]
+[editable path="Level/Objects/SpeedBooster8/banner"]
+[editable path="Level/Objects/SpeedBooster9"]
+[editable path="Level/Objects/SpeedBooster9/banner"]
+[editable path="Level/Objects/SpeedBooster10"]
+[editable path="Level/Objects/SpeedBooster10/banner"]
+[editable path="Level/Objects/SpeedBooster11"]
+[editable path="Level/Objects/SpeedBooster11/banner"]
 [editable path="UI"]

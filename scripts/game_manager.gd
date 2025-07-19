@@ -9,7 +9,7 @@ extends Node
 
 @export_category("Win/Lose")
 @export_range(0, 10) var win_wait_secs: float = 3.0
-@export_range(0, 50) var lose_wait_secs: float = 10.0
+@export_range(0, 90) var lose_wait_secs: float = 10.0
 @export var win_button: TriggerButton
 @export_file var next_level: String
 @export_file var main_menu_scene: String
