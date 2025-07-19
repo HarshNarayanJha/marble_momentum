@@ -56,18 +56,16 @@ size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("3_c6kru")
 theme_override_fonts/italics_font = ExtResource("4_qbfqv")
 theme_override_fonts/bold_font = ExtResource("5_x5q3x")
-theme_override_font_sizes/bold_italics_font_size = 32
-theme_override_font_sizes/italics_font_size = 28
-theme_override_font_sizes/mono_font_size = 28
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 28
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+theme_override_font_sizes/normal_font_size = 28
 theme_override_font_sizes/bold_font_size = 56
 bbcode_enabled = true
 text = "[b]Credits[/b]
 
 Wouldn't been possible without assets from Kenney.nl
-marble kit
-furniture_kit
-space_kit
+marble kit, furniture_kit, space_kit, conveyor kit and more sfx and ui kits
 
 Helpful addons that reduced work
 phantom camera
@@ -78,6 +76,10 @@ Thinking and Tinkering Fablefly Music on itch.io
 Indie Meditations Music by Yanni Ziangos a.k.a. YannZ CC BY 4.0
 minimal - Music By Samuel F. Johanns from Pixabay
 Various Sound effects by pixabay
+
+Cool icons from game-icons.net
+ Fan icon by Delapouite under CC BY 3.0
+ Fall down (and up) by sbed under CC BY 3.0
 
 And finally the Godot Engine
 "

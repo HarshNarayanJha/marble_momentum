@@ -126,7 +126,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5, 1.
 visible = false
 impulse_amount = 85.0
 
-[node name="Marker3D" parent="SpeedBooster4" index="2"]
+[node name="Marker3D" parent="SpeedBooster4" index="4"]
 transform = Transform3D(-1, -5.01436e-08, 7.16126e-08, 0, 0.819152, 0.573576, -8.74228e-08, 0.573576, -0.819152, 0, 0, 0)
 
 [node name="SpeedBooster5" parent="." instance=ExtResource("10_lgwnu")]
@@ -290,12 +290,22 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [editable path="SpeedBooster"]
-[editable path="SpeedBooster/banner"]
+[editable path="SpeedBooster/arrow-basic"]
+[editable path="SpeedBooster/arrow-basic3"]
+[editable path="SpeedBooster/arrow-basic2"]
 [editable path="SpeedBooster2"]
-[editable path="SpeedBooster2/banner"]
+[editable path="SpeedBooster2/arrow-basic"]
+[editable path="SpeedBooster2/arrow-basic3"]
+[editable path="SpeedBooster2/arrow-basic2"]
 [editable path="SpeedBooster3"]
-[editable path="SpeedBooster3/banner"]
+[editable path="SpeedBooster3/arrow-basic"]
+[editable path="SpeedBooster3/arrow-basic3"]
+[editable path="SpeedBooster3/arrow-basic2"]
 [editable path="SpeedBooster4"]
-[editable path="SpeedBooster4/banner"]
+[editable path="SpeedBooster4/arrow-basic"]
+[editable path="SpeedBooster4/arrow-basic3"]
+[editable path="SpeedBooster4/arrow-basic2"]
 [editable path="SpeedBooster5"]
-[editable path="SpeedBooster5/banner"]
+[editable path="SpeedBooster5/arrow-basic"]
+[editable path="SpeedBooster5/arrow-basic3"]
+[editable path="SpeedBooster5/arrow-basic2"]
