@@ -22,7 +22,7 @@ const NUM_STATES = 2
 @export_group("Interaction Params")
 @export var initial_state: AntigravityState = AntigravityState.REPEL
 @export var allow_manual_change: bool = true
-@export var outline_width: float = 8.0
+@export var outline_width: float = 6.0
 @export var outline_width_highlight: float = 5.0
 
 var current_state: AntigravityState
@@ -109,7 +109,7 @@ func _on_mouse_enter():
 		return
 
 	is_hovering = true
-	base_mesh.set_instance_shader_parameter(&"outline_width", 2.5)
+	highlight()
 
 func _on_mouse_exit():
 	is_hovering = false
@@ -117,4 +117,4 @@ func _on_mouse_exit():
 	if not _manual_control_enabled:
 		return
 
-	base_mesh.set_instance_shader_parameter(&"outline_width", 0.0)
+	remove_highlight()
