@@ -1,0 +1,352 @@
+[gd_scene load_steps=30 format=3 uid="uid://8uv482y18y4l"]
+
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_4r5lo"]
+[ext_resource type="Environment" uid="uid://b1srll4lqu0sm" path="res://settings/world_environment.res" id="2_po1mw"]
+[ext_resource type="PackedScene" uid="uid://bic3ininocbum" path="res://prefabs/level/straight.tscn" id="3_ngf84"]
+[ext_resource type="PackedScene" uid="uid://b5toqrpkjhu7v" path="res://prefabs/level/corner.tscn" id="5_snswl"]
+[ext_resource type="PackedScene" uid="uid://cqr1qxqce7gtd" path="res://prefabs/objects/lamp_square_table.tscn" id="9_idwux"]
+[ext_resource type="PackedScene" uid="uid://bpuce7yvpasmc" path="res://prefabs/level/split_left.tscn" id="9_ngf84"]
+[ext_resource type="PackedScene" uid="uid://clvgvu7evbiyk" path="res://prefabs/level/helix_left.tscn" id="9_po1mw"]
+[ext_resource type="PackedScene" uid="uid://bnx7s0ei8iga6" path="res://prefabs/level/ramp_long_d.tscn" id="10_ngf84"]
+[ext_resource type="PackedScene" uid="uid://diqrs7j47gfmn" path="res://prefabs/objects/button_square.tscn" id="10_nhdg1"]
+[ext_resource type="PackedScene" uid="uid://bnhj8nq5gipfo" path="res://prefabs/gameplay/selectable_section.tscn" id="11_4r5lo"]
+[ext_resource type="PackedScene" uid="uid://dwwmx6ntou5or" path="res://prefabs/level/split_large_left.tscn" id="11_d75b2"]
+[ext_resource type="PackedScene" uid="uid://bkg5buo0t1jed" path="res://prefabs/objects/fan_standing_two.tscn" id="11_wd10u"]
+[ext_resource type="PackedScene" uid="uid://b3wocxa62li5c" path="res://prefabs/level/split_down.tscn" id="12_snswl"]
+[ext_resource type="PackedScene" uid="uid://bio4g1jjphmv3" path="res://prefabs/objects/speed_booster.tscn" id="13_pxgjg"]
+[ext_resource type="PackedScene" uid="uid://bipkephjhymmr" path="res://prefabs/level/curve.tscn" id="13_vyr3h"]
+[ext_resource type="PackedScene" uid="uid://cx0sh1khuxhfx" path="res://prefabs/level/bend_medium.tscn" id="14_hph83"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="15_lxeoi"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="16_q3cny"]
+[ext_resource type="Resource" uid="uid://byv2to4m7vhpb" path="res://settings/camera_resource.res" id="17_xlj5p"]
+[ext_resource type="PackedScene" uid="uid://ijho6f4ohbhf" path="res://prefabs/gameplay/game_manager.tscn" id="18_h7anq"]
+[ext_resource type="PackedScene" uid="uid://cj6byrau2kj0i" path="res://prefabs/level/support_four_top_double.tscn" id="19_c3pvc"]
+[ext_resource type="PackedScene" uid="uid://ceyqn55l6fl6q" path="res://prefabs/gameplay/marble.tscn" id="20_gw3dk"]
+[ext_resource type="PackedScene" uid="uid://bu6catn6oeils" path="res://prefabs/gameplay/level_ui.tscn" id="22_34tlj"]
+[ext_resource type="PhysicsMaterial" uid="uid://bovxx6oxygnfq" path="res://materials/marble_level5.phymat" id="22_po1mw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xrw0o"]
+size = Vector3(2, 1.5, 2)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hl16f"]
+height = 9.99276
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngf84"]
+resource_local_to_scene = true
+diffuse_mode = 3
+specular_mode = 1
+roughness = 0.7
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d75b2"]
+size = Vector3(2, 2, 0.601562)
+
+[sub_resource type="Resource" id="Resource_bxuut"]
+script = ExtResource("16_q3cny")
+duration = 1.0
+transition = 0
+ease = 2
+
+[node name="Level5" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+physics_interpolation_mode = 1
+transform = Transform3D(-0.601815, -0.480631, 0.637819, 0, 0.798636, 0.601815, -0.798635, 0.362181, -0.480631, 0.637819, 11.1018, 1.51937)
+projection = 1
+size = 5.5
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("1_4r5lo")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.989526, -0.121884, 0.0773499, 0, 0.535827, 0.844328, -0.144356, -0.835484, 0.530214, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_mode = 0
+sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_po1mw")
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="Paths" type="Node" parent="Level"]
+
+[node name="helix-left" parent="Level/Paths" instance=ExtResource("9_po1mw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6.5, 1)
+
+[node name="corner3" parent="Level/Paths" instance=ExtResource("5_snswl")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0.5, 6.5, 2.5)
+
+[node name="ramp-long-d" parent="Level/Paths" instance=ExtResource("10_ngf84")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 5, 1)
+
+[node name="split-large-left" parent="Level/Paths" instance=ExtResource("11_d75b2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 5, -1.5)
+
+[node name="split-large-left3" parent="Level/Paths" instance=ExtResource("11_d75b2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 5, -1.5)
+
+[node name="SelectableSection" parent="Level/Paths" node_paths=PackedStringArray("click_area") instance=ExtResource("11_4r5lo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 5, -3.5)
+click_area = NodePath("Area3D")
+sections = Array[PackedScene]([ExtResource("12_snswl"), ExtResource("9_ngf84")])
+
+[node name="Area3D" type="Area3D" parent="Level/Paths/SelectableSection"]
+collision_mask = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Paths/SelectableSection/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.130613, 0.25, 0)
+shape = SubResource("BoxShape3D_xrw0o")
+debug_color = Color(1.39579e-06, 0.636256, 0.40716, 0.42)
+
+[node name="straight10" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 5, -4.5)
+
+[node name="curve" parent="Level/Paths" instance=ExtResource("13_vyr3h")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 5, -6)
+
+[node name="straight11" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.5, 5, -6.5)
+
+[node name="straight12" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.5, 5, -6.5)
+
+[node name="straight13" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.5, 5, -6.5)
+
+[node name="straight14" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.5, 5, -6.5)
+
+[node name="straight16" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.5, 5, -6.5)
+
+[node name="straight17" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.5, 5, -6.5)
+
+[node name="bend-medium" parent="Level/Paths" instance=ExtResource("14_hph83")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11, 5, -5)
+
+[node name="straight18" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.5, 5, -3.5)
+
+[node name="split-large-left2" parent="Level/Paths" instance=ExtResource("11_d75b2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 5, -4.5)
+
+[node name="straight3" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 5, -6.5)
+
+[node name="straight15" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 5, -7.5)
+
+[node name="curve2" parent="Level/Paths" instance=ExtResource("13_vyr3h")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6, 5, -9)
+
+[node name="straight19" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.5, 5, -9.5)
+
+[node name="straight20" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.5, 5, -9.5)
+
+[node name="straight21" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.5, 5, -9.5)
+
+[node name="straight22" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.5, 5, -9.5)
+
+[node name="straight23" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5, 5, -9.5)
+
+[node name="straight24" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.5, 5, -9.5)
+
+[node name="straight27" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 5, -9.5)
+
+[node name="straight29" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.5, 5, -9.5)
+
+[node name="curve3" parent="Level/Paths" instance=ExtResource("13_vyr3h")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 5, -9)
+
+[node name="straight30" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 5, -7.5)
+
+[node name="straight31" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 5, -6.5)
+
+[node name="straight32" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 5, -5.5)
+
+[node name="straight34" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 5, -4.5)
+
+[node name="straight35" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 5, -3.5)
+
+[node name="straight36" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 5, -2.5)
+
+[node name="straight37" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 5, -2.5)
+
+[node name="curve4" parent="Level/Paths" instance=ExtResource("13_vyr3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5, -1)
+
+[node name="straight33" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 5, -5.5)
+
+[node name="straight28" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.5, 5, -9.5)
+
+[node name="straight25" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.5, 5, -3.5)
+
+[node name="straight39" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.5, 5, -3.5)
+
+[node name="straight40" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.5, 5, -3.5)
+
+[node name="straight41" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.5, 5, -3.5)
+
+[node name="straight42" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.5, 5, -3.5)
+
+[node name="straight43" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.5, 5, -3.5)
+
+[node name="straight44" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5, 5, -3.5)
+
+[node name="straight26" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 5, -3.5)
+
+[node name="straight38" parent="Level/Paths" instance=ExtResource("3_ngf84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.5, 5, -0.5)
+
+[node name="Objects" type="Node" parent="Level"]
+
+[node name="lampSquareTable" parent="Level/Objects" node_paths=PackedStringArray("button") instance=ExtResource("9_idwux")]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 4, 5, -4.5)
+button = NodePath("../button-square")
+
+[node name="button-square" parent="Level/Objects" instance=ExtResource("10_nhdg1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 5, -3.5)
+keep_pressed = true
+allow_manual_change = false
+
+[node name="fan-standing-two3" parent="Level/Objects" instance=ExtResource("11_wd10u")]
+transform = Transform3D(0.5, 0, 5.32907e-15, 0, 0.5, 0, -5.32907e-15, 0, 0.5, -7.62332, 5.29983, -3.06163)
+wind_speed = 200.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Objects/fan-standing-two3/WindArea" index="0"]
+transform = Transform3D(0.951975, 0.306177, 1.33834e-08, 0, -4.37114e-08, 1, 0.306177, -0.951975, -4.16121e-08, 1.36614, 0.5, -4.902)
+shape = SubResource("CapsuleShape3D_hl16f")
+
+[node name="button" parent="Level/Objects/fan-standing-two3/button-round/button-round" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ngf84")
+
+[node name="CollisionShape3D" parent="Level/Objects/fan-standing-two3/button-round/Trigger" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.364838, 0.199219)
+shape = SubResource("BoxShape3D_d75b2")
+
+[node name="AudioStreamPlayer3D" parent="Level/Objects/fan-standing-two3" index="5"]
+volume_db = -5.0
+
+[node name="SpeedBooster" parent="Level/Objects" instance=ExtResource("13_pxgjg")]
+transform = Transform3D(0.952087, 0, 0.305828, 0, 1, 0, -0.305828, 0, 0.952087, 0.406784, 5.31571, -5.56947)
+impulse_amount = 1.1
+
+[node name="Marker3D" parent="Level/Objects/SpeedBooster" index="2"]
+transform = Transform3D(-0.907015, 0, -0.421099, 0, 1, 0, 0.421099, 0, -0.907015, 0, 0, 0)
+
+[node name="SpeedBooster2" parent="Level/Objects" instance=ExtResource("13_pxgjg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.88782, 5.31571, -6.5)
+impulse_amount = 1.8
+
+[node name="Marker3D" parent="Level/Objects/SpeedBooster2" index="2"]
+transform = Transform3D(-0.999391, 0.0348995, -7.57103e-08, 0.0302238, 0.865498, 0.5, 0.0174498, 0.499695, -0.866025, 0, 0, 0)
+
+[node name="SpeedBooster3" parent="Level/Objects" instance=ExtResource("13_pxgjg")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -10.2595, 5.31571, -6.49972)
+visible = false
+impulse_amount = 0.8
+
+[node name="Marker3D" parent="Level/Objects/SpeedBooster3" index="2"]
+transform = Transform3D(-1, 0, -1.19209e-07, 0, 1, 0, 1.3411e-07, 0, -1, 0, 0, 0)
+
+[node name="SpeedBooster4" parent="Level/Objects" instance=ExtResource("13_pxgjg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.2595, 5.31571, -3.50188)
+visible = false
+impulse_amount = 1.0
+
+[node name="Marker3D" parent="Level/Objects/SpeedBooster4" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="SpeedBooster5" parent="Level/Objects" instance=ExtResource("13_pxgjg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.75952, 5.31571, -3.50189)
+impulse_amount = 0.7
+
+[node name="Marker3D" parent="Level/Objects/SpeedBooster5" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="PhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_target")]
+transform = Transform3D(-0.601815, -0.480631, 0.637819, 0, 0.798636, 0.601815, -0.798635, 0.362181, -0.480631, 0.637819, 11.1018, 1.51937)
+top_level = true
+script = ExtResource("15_lxeoi")
+follow_mode = 5
+follow_target = NodePath("../MarbleLauncher/Marble")
+tween_resource = SubResource("Resource_bxuut")
+tween_on_load = false
+camera_3d_resource = ExtResource("17_xlj5p")
+follow_offset = Vector3(0, 0.5, 0)
+follow_damping = true
+follow_damping_value = Vector3(0.5, 0.7, 0.5)
+dead_zone_width = 0.25
+dead_zone_height = 0.25
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="GameManager" parent="." node_paths=PackedStringArray("marbles", "sections", "buttons", "skip_lock", "win_button", "progress_circle", "reload_button", "start_button", "home_button") instance=ExtResource("18_h7anq")]
+marbles = [NodePath("../MarbleLauncher/Marble")]
+sections = [NodePath("../Level/Paths/SelectableSection")]
+buttons = [NodePath("../Level/Objects/fan-standing-two3/button-round")]
+skip_lock = [NodePath("../Level/Paths/SelectableSection"), NodePath("../Level/Objects/fan-standing-two3/button-round")]
+win_wait_secs = 1.0
+lose_wait_secs = 50.0
+win_button = NodePath("../Level/Objects/button-square")
+next_level = "uid://c68kepcsqa85c"
+main_menu_scene = "uid://ck4usqg4wh3rj"
+progress_circle = NodePath("../UI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/TextureProgressBar")
+reload_button = NodePath("../UI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/ReloadButton")
+start_button = NodePath("../UI/MarginContainer/StartButton")
+home_button = NodePath("../UI/MarginContainer/VBoxContainer/HBoxContainer/HomeButton")
+
+[node name="MarbleLauncher" parent="." instance=ExtResource("19_c3pvc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5, 2)
+
+[node name="Marble" parent="MarbleLauncher" instance=ExtResource("20_gw3dk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mass = 0.2
+physics_material_override = ExtResource("22_po1mw")
+linear_damp = 0.5
+angular_damp = 0.1
+
+[node name="UI" parent="." instance=ExtResource("22_34tlj")]
+
+[editable path="Level/Objects/fan-standing-two3"]
+[editable path="Level/Objects/fan-standing-two3/button-round"]
+[editable path="Level/Objects/SpeedBooster"]
+[editable path="Level/Objects/SpeedBooster/banner"]
+[editable path="Level/Objects/SpeedBooster2"]
+[editable path="Level/Objects/SpeedBooster2/banner"]
+[editable path="Level/Objects/SpeedBooster3"]
+[editable path="Level/Objects/SpeedBooster3/banner"]
+[editable path="Level/Objects/SpeedBooster4"]
+[editable path="Level/Objects/SpeedBooster4/banner"]
+[editable path="Level/Objects/SpeedBooster5"]
+[editable path="Level/Objects/SpeedBooster5/banner"]
+[editable path="UI"]

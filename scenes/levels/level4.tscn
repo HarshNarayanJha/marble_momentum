@@ -19,8 +19,8 @@
 [ext_resource type="Resource" uid="uid://byv2to4m7vhpb" path="res://settings/camera_resource.res" id="18_5exf6"]
 [ext_resource type="PackedScene" uid="uid://ijho6f4ohbhf" path="res://prefabs/gameplay/game_manager.tscn" id="19_ku6mp"]
 [ext_resource type="PackedScene" uid="uid://cj6byrau2kj0i" path="res://prefabs/level/support_four_top_double.tscn" id="20_rv7jb"]
+[ext_resource type="PhysicsMaterial" uid="uid://b3vctn8edy21o" path="res://materials/marble_level4.phymat" id="21_7kkoh"]
 [ext_resource type="PackedScene" uid="uid://ceyqn55l6fl6q" path="res://prefabs/gameplay/marble.tscn" id="21_bf472"]
-[ext_resource type="PhysicsMaterial" uid="uid://bc2eevrgapdey" path="res://materials/marble_level3.phymat" id="22_rjokd"]
 [ext_resource type="PackedScene" uid="uid://bu6catn6oeils" path="res://prefabs/gameplay/level_ui.tscn" id="23_uq63i"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hl16f"]
@@ -173,7 +173,7 @@ antigravities = [NodePath("../Level/Objects/AntigravityBase")]
 skip_lock = [NodePath("../Level/Objects/AntigravityBase")]
 lose_wait_secs = 15.0
 win_button = NodePath("../Level/Objects/button-square")
-next_level = "uid://c68kepcsqa85c"
+next_level = "uid://8uv482y18y4l"
 main_menu_scene = "uid://ck4usqg4wh3rj"
 progress_circle = NodePath("../UI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/TextureProgressBar")
 reload_button = NodePath("../UI/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/ReloadButton")
@@ -185,7 +185,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 2)
 
 [node name="Marble" parent="MarbleLauncher" instance=ExtResource("21_bf472")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-physics_material_override = ExtResource("22_rjokd")
+physics_material_override = ExtResource("21_7kkoh")
 linear_damp = 0.5
 angular_damp = 0.1
 
@@ -194,7 +194,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 3.5)
 
 [node name="Marble" parent="MarbleLauncher2" instance=ExtResource("21_bf472")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-physics_material_override = ExtResource("22_rjokd")
+physics_material_override = ExtResource("21_7kkoh")
 linear_damp = 0.5
 angular_damp = 0.1
 

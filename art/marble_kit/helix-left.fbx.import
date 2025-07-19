@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/helix-left.fbx-f65792d0ed1b5e877011ec5dc01071
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="StaticBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
