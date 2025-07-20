@@ -58,4 +58,6 @@ bus = &"SFX"
 stream = SubResource("AudioStreamRandomizer_eri2w")
 bus = &"SFX"
 
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+
 [editable path="marble-center-butterfly-high"]

@@ -8,10 +8,13 @@ enum AntigravityState {
 const NUM_STATES = 2
 
 @export var force_area: Area3D
+@export var interact_area: Area3D
 @export var force_mesh: MeshInstance3D
 @export var base_mesh: MeshInstance3D
 @export var repel_particles: GPUParticles3D
 @export var attract_particles: GPUParticles3D
+@export var change_sfx: AudioStreamPlayer3D
+@export var force_sfx: AudioStreamPlayer3D
 
 @export_group("Colors")
 @export var repel_gravity: float = -8.8
@@ -35,18 +38,22 @@ var _manual_control_enabled: bool
 var is_hovering: bool = false
 
 func _ready() -> void:
-	force_area.input_event.connect(_on_input)
-	force_area.mouse_entered.connect(_on_mouse_enter)
-	force_area.mouse_exited.connect(_on_mouse_exit)
+	interact_area.input_event.connect(_on_input)
+	interact_area.mouse_entered.connect(_on_mouse_enter)
+	interact_area.mouse_exited.connect(_on_mouse_exit)
+
+	force_area.body_entered.connect(play_force_sfx)
 
 	_manual_control_enabled = allow_manual_change
 	current_state = initial_state
 	set_state(current_state)
 
 func _exit_tree() -> void:
-	force_area.input_event.disconnect(_on_input)
-	force_area.mouse_entered.disconnect(_on_mouse_enter)
-	force_area.mouse_exited.disconnect(_on_mouse_exit)
+	interact_area.input_event.disconnect(_on_input)
+	interact_area.mouse_entered.disconnect(_on_mouse_enter)
+	interact_area.mouse_exited.disconnect(_on_mouse_exit)
+
+	force_area.body_entered.disconnect(play_force_sfx)
 
 func set_state(state: AntigravityState):
 	if state == AntigravityState.ATTRACT:
@@ -106,6 +113,9 @@ func remove_highlight():
 	base_mesh.set_instance_shader_parameter(&"outline_width", 0.0)
 	base_mesh.set_instance_shader_parameter(&"pulse_speed", 0.0)
 
+func play_force_sfx(_other: Node3D):
+	force_sfx.play()
+
 func _on_input(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int):
 	if not _manual_control_enabled:
 		return
@@ -116,6 +126,7 @@ func _on_input(camera: Node, event: InputEvent, event_position: Vector3, normal:
 			current = (current + 1) % NUM_STATES
 			current_state = current as AntigravityState
 			set_state(current_state)
+			change_sfx.play()
 
 func _on_mouse_enter():
 	if not _manual_control_enabled:
