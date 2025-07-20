@@ -1,6 +1,74 @@
-[gd_scene load_steps=2 format=3 uid="uid://ijho6f4ohbhf"]
+[gd_scene load_steps=12 format=3 uid="uid://ijho6f4ohbhf"]
 
 [ext_resource type="Script" uid="uid://bsmwh6ogvdfg1" path="res://scripts/game_manager.gd" id="1_ptyt6"]
 
-[node name="GameManager" type="Node"]
+[sub_resource type="Curve" id="Curve_1jgox"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ofwuy"]
+width = 32
+curve = SubResource("Curve_1jgox")
+
+[sub_resource type="Curve" id="Curve_wx725"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 113.269, 0, 1, Vector2(0.882851, 100), 0.0, 0.0, 0, 0, Vector2(1, 0), -853.617, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ptyt6"]
+curve = SubResource("Curve_wx725")
+
+[sub_resource type="Curve" id="Curve_ptyt6"]
+_data = [Vector2(0.0216206, 0), 0.0, 0.0, 0, 0, Vector2(0.054428, 1), 0.0, 0.0, 0, 0, Vector2(0.791982, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_1jgox"]
+curve = SubResource("Curve_ptyt6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2bw00"]
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+spread = 15.0
+initial_velocity_min = 4.0
+initial_velocity_max = 4.5
+gravity = Vector3(0, -4.9, 0)
+damping_max = 0.08
+damping_curve = SubResource("CurveTexture_ptyt6")
+scale_curve = SubResource("CurveTexture_1jgox")
+alpha_curve = SubResource("CurveTexture_ofwuy")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[sub_resource type="Curve" id="Curve_2bw00"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bw00"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+metallic_specular = 0.8
+roughness = 0.2
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_2bw00"]
+material = SubResource("StandardMaterial3D_2bw00")
+shape = 0
+size = 0.125
+section_length = 0.02
+curve = SubResource("Curve_2bw00")
+
+[node name="GameManager" type="Node" node_paths=PackedStringArray("win_particles")]
 script = ExtResource("1_ptyt6")
+win_particles = NodePath("WinParticles")
+
+[node name="WinParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 0, 0, 0)
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 1.0
+randomness = 0.4
+trail_lifetime = 0.06
+process_material = SubResource("ParticleProcessMaterial_2bw00")
+draw_pass_1 = SubResource("RibbonTrailMesh_2bw00")

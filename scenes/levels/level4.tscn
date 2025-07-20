@@ -111,7 +111,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 2,
 [node name="Objects" type="Node" parent="Level"]
 
 [node name="lampSquareTable" parent="Level/Objects" node_paths=PackedStringArray("button") instance=ExtResource("12_cdy06")]
-transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, -5.5, 3.5, -3.5)
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, -4.5, 3.5, -3.5)
 button = NodePath("../button-square")
 
 [node name="button-square" parent="Level/Objects" instance=ExtResource("13_2c5pw")]
@@ -183,6 +183,9 @@ home_button = NodePath("../UI/MarginContainer/VBoxContainer/VBoxContainer/HomeBu
 hint_button = NodePath("../UI/MarginContainer/HBoxContainer/HintButton")
 hint_node = NodePath("LevelHint")
 
+[node name="WinParticles" parent="GameManager" index="0"]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -4.5, 4.5, -3.5)
+
 [node name="LevelHint" type="Node3D" parent="GameManager"]
 
 [node name="HelpTextMachine" parent="GameManager/LevelHint" instance=ExtResource("19_7kkoh")]
@@ -219,7 +222,8 @@ angular_damp = 0.1
 
 [editable path="Level/Objects/fan-standing-two3"]
 [editable path="Level/Objects/SpeedBooster"]
-[editable path="Level/Objects/SpeedBooster/arrow-basic"]
 [editable path="Level/Objects/SpeedBooster/arrow-basic3"]
+[editable path="Level/Objects/SpeedBooster/arrow-basic"]
 [editable path="Level/Objects/SpeedBooster/arrow-basic2"]
+[editable path="GameManager"]
 [editable path="UI"]

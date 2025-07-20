@@ -379,6 +379,9 @@ home_button = NodePath("../UI/MarginContainer/VBoxContainer/VBoxContainer/HomeBu
 hint_button = NodePath("../UI/MarginContainer/HBoxContainer/HintButton")
 hint_node = NodePath("LevelHint")
 
+[node name="WinParticles" parent="GameManager" index="0"]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 4, 6, -4.5)
+
 [node name="LevelHint" type="Node3D" parent="GameManager"]
 
 [node name="HelpTextPath" parent="GameManager/LevelHint" instance=ExtResource("21_d75b2")]
@@ -449,4 +452,5 @@ angular_damp = 0.1
 [editable path="Level/Objects/SpeedBooster11/arrow-basic3"]
 [editable path="Level/Objects/SpeedBooster11/arrow-basic"]
 [editable path="Level/Objects/SpeedBooster11/arrow-basic2"]
+[editable path="GameManager"]
 [editable path="UI"]
