@@ -19,6 +19,8 @@ extends Node
 @export var reload_button: TextureButton
 @export var start_button: BaseButton
 @export var home_button: BaseButton
+@export var hint_button: BaseButton
+@export var hint_node: Node3D
 
 var lvels: Array[Vector3]
 var avels: Array[Vector3]
@@ -27,11 +29,13 @@ var time: float
 
 func _ready() -> void:
 	SceneManager.fade_in()
+	toggle_level_hint(false)
 	enter_build_mode()
 	win_button.turned_on.connect(win)
 	start_button.pressed.connect(start_level)
 	reload_button.pressed.connect(reload_level)
 	home_button.pressed.connect(goto_main_menu)
+	hint_button.toggled.connect(toggle_level_hint)
 	progress_circle.value = 0
 
 func _exit_tree() -> void:
@@ -39,6 +43,7 @@ func _exit_tree() -> void:
 	start_button.pressed.disconnect(start_level)
 	reload_button.pressed.disconnect(reload_level)
 	home_button.pressed.disconnect(goto_main_menu)
+	hint_button.toggled.disconnect(toggle_level_hint)
 
 func enter_build_mode():
 	if lose_timer:
@@ -83,6 +88,8 @@ func enter_play_mode():
 	lose_timer.timeout.connect(lose)
 
 func win() -> void:
+	toggle_level_hint(false)
+
 	reload_button.disabled = true
 	reload_button.pressed.disconnect(reload_level)
 	home_button.disabled = true
@@ -100,6 +107,8 @@ func win() -> void:
 	get_tree().change_scene_to_file(next_level)
 
 func lose() -> void:
+	toggle_level_hint(false)
+
 	reload_button.disabled = true
 	if reload_button.pressed.is_connected(reload_level):
 		reload_button.pressed.disconnect(reload_level)
@@ -110,6 +119,9 @@ func lose() -> void:
 	reload_level()
 
 func reload_level() -> void:
+	reload_button.release_focus()
+	toggle_level_hint(false)
+
 	if SceneManager.is_transitioning:
 		return
 	# Can't use change_scene directly since phantom camera bugs out
@@ -119,11 +131,23 @@ func reload_level() -> void:
 	get_tree().reload_current_scene()
 
 func goto_main_menu():
+	home_button.release_focus()
+	toggle_level_hint(false)
+
 	if SceneManager.is_transitioning:
 		return
+
 	SceneManager.fade_out()
 	await SceneManager.fade_complete
 	get_tree().change_scene_to_file(main_menu_scene)
+
+func toggle_level_hint(state: bool):
+	hint_button.release_focus()
+	hint_button.set_pressed_no_signal(state)
+	if state:
+		hint_node.show()
+	else:
+		hint_node.hide()
 
 func _process(delta: float) -> void:
 	if build_mode:
@@ -133,6 +157,8 @@ func _process(delta: float) -> void:
 	progress_circle.value = 100 - (time / lose_wait_secs) * 100
 
 func start_level() -> void:
+	start_button.release_focus()
+	toggle_level_hint(false)
 	enter_play_mode()
 	start_button.disabled = true
 	start_button.pressed.disconnect(start_level)

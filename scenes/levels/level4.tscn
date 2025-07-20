@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://hv6larmamf2r"]
+[gd_scene load_steps=26 format=3 uid="uid://hv6larmamf2r"]
 
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_8rpwu"]
 [ext_resource type="Environment" uid="uid://b1srll4lqu0sm" path="res://settings/world_environment.res" id="2_eh8f3"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bio4g1jjphmv3" path="res://prefabs/objects/speed_booster.tscn" id="17_yw4fb"]
 [ext_resource type="PackedScene" uid="uid://bwkiat62m4o5" path="res://prefabs/objects/button_round.tscn" id="18_1wpw8"]
 [ext_resource type="Resource" uid="uid://byv2to4m7vhpb" path="res://settings/camera_resource.res" id="18_5exf6"]
+[ext_resource type="PackedScene" uid="uid://c7hshqv7bb81r" path="res://prefabs/gameplay/level_help_text.tscn" id="19_7kkoh"]
 [ext_resource type="PackedScene" uid="uid://ijho6f4ohbhf" path="res://prefabs/gameplay/game_manager.tscn" id="19_ku6mp"]
 [ext_resource type="PackedScene" uid="uid://cj6byrau2kj0i" path="res://prefabs/level/support_four_top_double.tscn" id="20_rv7jb"]
 [ext_resource type="PhysicsMaterial" uid="uid://b3vctn8edy21o" path="res://materials/marble_level4.phymat" id="21_7kkoh"]
@@ -166,7 +167,7 @@ dead_zone_width = 1.0
 dead_zone_height = 1.0
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
-[node name="GameManager" parent="." node_paths=PackedStringArray("marbles", "buttons", "antigravities", "skip_lock", "win_button", "progress_circle", "reload_button", "start_button", "home_button") instance=ExtResource("19_ku6mp")]
+[node name="GameManager" parent="." node_paths=PackedStringArray("marbles", "buttons", "antigravities", "skip_lock", "win_button", "progress_circle", "reload_button", "start_button", "home_button", "hint_button", "hint_node") instance=ExtResource("19_ku6mp")]
 marbles = [NodePath("../MarbleLauncher/Marble"), NodePath("../MarbleLauncher2/Marble")]
 buttons = [NodePath("../Level/Objects/button-square"), NodePath("../Level/Objects/fan-button-round")]
 antigravities = [NodePath("../Level/Objects/AntigravityBase")]
@@ -177,8 +178,24 @@ next_level = "uid://8uv482y18y4l"
 main_menu_scene = "uid://ck4usqg4wh3rj"
 progress_circle = NodePath("../UI/MarginContainer/VBoxContainer/VBoxContainer/CenterContainer/TextureProgressBar")
 reload_button = NodePath("../UI/MarginContainer/VBoxContainer/VBoxContainer/CenterContainer/ReloadButton")
-start_button = NodePath("../UI/MarginContainer/StartButton")
+start_button = NodePath("../UI/MarginContainer/HBoxContainer/StartButton")
 home_button = NodePath("../UI/MarginContainer/VBoxContainer/VBoxContainer/HomeButton")
+hint_button = NodePath("../UI/MarginContainer/HBoxContainer/HintButton")
+hint_node = NodePath("LevelHint")
+
+[node name="LevelHint" type="Node3D" parent="GameManager"]
+
+[node name="HelpTextMachine" parent="GameManager/LevelHint" instance=ExtResource("19_7kkoh")]
+transform = Transform3D(0.0871558, -0.917002, 0.389244, 0, 0.390731, 0.920505, -0.996195, -0.0802274, 0.0340545, -1.5, 4.5, 0.5)
+text = "This machine can be adjusted
+even after you roll the marbles
+
+Maybe just at the right moment..."
+
+[node name="HelpTextFan" parent="GameManager/LevelHint" instance=ExtResource("19_7kkoh")]
+transform = Transform3D(-1, 8.04731e-08, -3.41588e-08, 0, 0.390731, 0.920505, 8.74228e-08, 0.920505, -0.390731, -0.5, 4, -3.7848)
+text = "Seems like we can't turn this fan on
+But who can?"
 
 [node name="MarbleLauncher" parent="." instance=ExtResource("20_rv7jb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 2)

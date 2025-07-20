@@ -1,6 +1,6 @@
 [gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://11ipljkj26xa"]
 
-[ext_resource type="Texture2D" uid="uid://did048462hbwv" path="res://art/sprites/cornerSquare2.png" id="1_ch2vk"]
+[ext_resource type="Texture2D" uid="uid://bpic23xskihl0" path="res://art/sprites/cornerSquare2.png" id="1_ch2vk"]
 
 [resource]
 texture = ExtResource("1_ch2vk")
@@ -8,4 +8,4 @@ texture_margin_left = 25.0
 texture_margin_top = 25.0
 texture_margin_right = 25.0
 texture_margin_bottom = 25.0
-modulate_color = Color(0.234248, 0.269429, 0.322197, 1)
+modulate_color = Color(0.343773, 0.389435, 0.457919, 1)

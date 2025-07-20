@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7hshqv7bb81r"]
+
+[ext_resource type="FontFile" uid="uid://kdvur1uaqvbq" path="res://addons/phantom_camera/fonts/Nunito-Regular.ttf" id="1_l7wbk"]
+
+[node name="HelpText" type="Label3D"]
+transform = Transform3D(-4.37114e-08, -0.920505, 0.390731, 0, 0.390731, 0.920505, -1, 4.02366e-08, -1.70794e-08, 0, 0, 0)
+modulate = Color(1, 1, 1, 0.784314)
+outline_modulate = Color(0.109804, 0.109804, 0.180392, 1)
+text = "This is a help Text"
+font = ExtResource("1_l7wbk")
