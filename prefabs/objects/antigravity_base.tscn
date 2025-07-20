@@ -4,7 +4,7 @@
 [ext_resource type="PhysicsMaterial" uid="uid://4uj6orphlajr" path="res://materials/level_physics_material.phymat" id="2_218yq"]
 [ext_resource type="Shader" uid="uid://crip5vhfoj26h" path="res://shaders/antigravity.gdshader" id="2_r7hrm"]
 [ext_resource type="Script" uid="uid://buwivqoghsi7v" path="res://scripts/objects/antigravity.gd" id="2_v0v2w"]
-[ext_resource type="Shader" uid="uid://68f7d7esm25w" path="res://shaders/level/slant_long_b.gdshader" id="3_13hw2"]
+[ext_resource type="Shader" uid="uid://68f7d7esm25w" path="res://shaders/level/level_path.gdshader" id="3_13hw2"]
 [ext_resource type="Texture2D" uid="uid://bpcl02ldbe46e" path="res://art/sprites/float-up.png" id="5_57vnp"]
 [ext_resource type="Texture2D" uid="uid://bhh5a53vxbph8" path="res://art/sprites/fall-down.png" id="6_vhx5o"]
 
@@ -123,6 +123,8 @@ force_mesh = NodePath("ForceField/MeshInstance3D")
 base_mesh = NodePath("rocket_baseB")
 repel_particles = NodePath("RepelParticles")
 attract_particles = NodePath("AttractParticles")
+outline_width = 5.0
+outline_width_highlight = 4.5
 sprite_node = NodePath("Sprite3D")
 sprite_attract = ExtResource("6_vhx5o")
 sprite_repel = ExtResource("5_57vnp")

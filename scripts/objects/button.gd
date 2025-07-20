@@ -73,9 +73,11 @@ func highlight():
 		return
 
 	button_mesh.set_instance_shader_parameter(&"outline_width", outline_width if is_hovering else outline_width_highlight)
+	button_mesh.set_instance_shader_parameter(&"pulse_speed", 0.0 if is_hovering else 1.5)
 
 func remove_highlight():
 	button_mesh.set_instance_shader_parameter(&"outline_width", 0.0)
+	button_mesh.set_instance_shader_parameter(&"pulse_speed", 0.0)
 
 func __turn_on():
 	(button_color_mesh.get_surface_override_material(0) as StandardMaterial3D).albedo_color = on_color

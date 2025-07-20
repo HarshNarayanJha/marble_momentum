@@ -45,6 +45,7 @@ func highlight_part():
 	for sm in section.find_children("*", "MeshInstance3D"):
 		var sec_mesh: GeometryInstance3D = sm
 		sec_mesh.set_instance_shader_parameter(&"outline_width", outline_width if is_hovering else outline_width_highlight)
+		sec_mesh.set_instance_shader_parameter(&"pulse_speed", 0.0 if is_hovering else 1.5)
 
 func remove_highlight():
 	if not section:
@@ -53,6 +54,7 @@ func remove_highlight():
 	for sm in section.find_children("*", "MeshInstance3D"):
 		var sec_mesh: GeometryInstance3D = sm
 		sec_mesh.set_instance_shader_parameter(&"outline_width", 0.0)
+		sec_mesh.set_instance_shader_parameter(&"pulse_speed", 1.0)
 
 func __replace_section(part: PackedScene):
 	if section:

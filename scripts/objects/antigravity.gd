@@ -100,9 +100,11 @@ func highlight():
 		return
 
 	base_mesh.set_instance_shader_parameter(&"outline_width", outline_width if is_hovering else outline_width_highlight)
+	base_mesh.set_instance_shader_parameter(&"pulse_speed", 0.0 if is_hovering else 1.5)
 
 func remove_highlight():
 	base_mesh.set_instance_shader_parameter(&"outline_width", 0.0)
+	base_mesh.set_instance_shader_parameter(&"pulse_speed", 0.0)
 
 func _on_input(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int):
 	if not _manual_control_enabled:
