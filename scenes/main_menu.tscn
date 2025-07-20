@@ -106,33 +106,53 @@ level1_scene = "uid://cjgtvd17lhp3w"
 help_scene = "uid://csqxpmdqhrv26"
 credits_scene = "uid://c68kepcsqa85c"
 
-[node name="SpeedBooster" parent="." instance=ExtResource("10_lgwnu")]
+[node name="SpeedBooster" parent="." node_paths=PackedStringArray("particles") instance=ExtResource("10_lgwnu")]
 transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, -0.428277, 0.270514, -5.5)
 visible = false
 impulse_amount = 70.0
+particles = NodePath("SparkParticles")
 
-[node name="SpeedBooster2" parent="." instance=ExtResource("10_lgwnu")]
+[node name="SparkParticles" parent="SpeedBooster" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0762566, 0)
+
+[node name="SpeedBooster2" parent="." node_paths=PackedStringArray("particles") instance=ExtResource("10_lgwnu")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5, 1.271, -5)
 visible = false
 impulse_amount = 20.0
+particles = NodePath("SparkParticles")
 
-[node name="SpeedBooster3" parent="." instance=ExtResource("10_lgwnu")]
+[node name="SparkParticles" parent="SpeedBooster2" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0762566, 0)
+
+[node name="SpeedBooster3" parent="." node_paths=PackedStringArray("particles") instance=ExtResource("10_lgwnu")]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -5.13862, 1.27051, -2.39298)
 visible = false
 impulse_amount = 40.0
+particles = NodePath("SparkParticles")
 
-[node name="SpeedBooster4" parent="." instance=ExtResource("10_lgwnu")]
+[node name="SparkParticles" parent="SpeedBooster3" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0762566, 0)
+
+[node name="SpeedBooster4" parent="." node_paths=PackedStringArray("particles") instance=ExtResource("10_lgwnu")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5, 1.271, 0.395882)
 visible = false
 impulse_amount = 85.0
+particles = NodePath("SparkParticles")
 
 [node name="Marker3D" parent="SpeedBooster4" index="4"]
 transform = Transform3D(-1, -5.01436e-08, 7.16126e-08, 0, 0.819152, 0.573576, -8.74228e-08, 0.573576, -0.819152, 0, 0, 0)
 
-[node name="SpeedBooster5" parent="." instance=ExtResource("10_lgwnu")]
+[node name="SparkParticles" parent="SpeedBooster4" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0762566, 0)
+
+[node name="SpeedBooster5" parent="." node_paths=PackedStringArray("particles") instance=ExtResource("10_lgwnu")]
 transform = Transform3D(1.90738e-07, 0, -1, 0, 1, 0, 1, 0, 1.90738e-07, -2.432, 2.278, 5.5)
 visible = false
 impulse_amount = 40.0
+particles = NodePath("SparkParticles")
+
+[node name="SparkParticles" parent="SpeedBooster5" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0762566, 0)
 
 [node name="MainMenuUI" type="CanvasLayer" parent="."]
 
@@ -290,22 +310,22 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [editable path="SpeedBooster"]
-[editable path="SpeedBooster/arrow-basic"]
 [editable path="SpeedBooster/arrow-basic3"]
+[editable path="SpeedBooster/arrow-basic"]
 [editable path="SpeedBooster/arrow-basic2"]
 [editable path="SpeedBooster2"]
-[editable path="SpeedBooster2/arrow-basic"]
 [editable path="SpeedBooster2/arrow-basic3"]
+[editable path="SpeedBooster2/arrow-basic"]
 [editable path="SpeedBooster2/arrow-basic2"]
 [editable path="SpeedBooster3"]
-[editable path="SpeedBooster3/arrow-basic"]
 [editable path="SpeedBooster3/arrow-basic3"]
+[editable path="SpeedBooster3/arrow-basic"]
 [editable path="SpeedBooster3/arrow-basic2"]
 [editable path="SpeedBooster4"]
-[editable path="SpeedBooster4/arrow-basic"]
 [editable path="SpeedBooster4/arrow-basic3"]
+[editable path="SpeedBooster4/arrow-basic"]
 [editable path="SpeedBooster4/arrow-basic2"]
 [editable path="SpeedBooster5"]
-[editable path="SpeedBooster5/arrow-basic"]
 [editable path="SpeedBooster5/arrow-basic3"]
+[editable path="SpeedBooster5/arrow-basic"]
 [editable path="SpeedBooster5/arrow-basic2"]

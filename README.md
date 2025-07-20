@@ -13,13 +13,16 @@ The game is made in Godot Engine
 
 ## How to Play
 
-The game is pretty simple actually. At the start of each level, you may change the different components the level has. For example in some levels you can change the slop angle,
-and in some you can toggle fans on or off, or some other components. All of them allow for a lot of exciting paths that would guide the marble. 
+The game is pretty simple actually. At the start of each level, you may change the different components the level has.
+For example, in some levels you can change the slop angle or path direction, and in some you can toggle fans on or off, or some other components.
+All of them allow for a lot of exciting ways that would guide the marble. 
 
-After setting everything, press Space or click the Start button to roll the marble. Then just watch the marble roll and hope it lights up the switch. If not, try again with different settings.
-You can press R or click the reload icon at the top to restart the level at any time. After hitting the light on, next level will be loaded automatically.
+After setting everything, press _Space_ or click the _Start_ button to roll the marble.
+Then just watch the marble roll and hope it lights up the switch. If not, try again with different settings. In some levels you can toggle some components after starting as well.
+You can press _R_ or click the _Reload_ icon at the top to restart the level at any time.
+After hitting the light on, next level will be loaded automatically. If you fail, you can reload the level or it will be reloaded after a timeout.
 
-You can click the home button to go back to the main menu.
+You can click the _Home_ button to go back to the main menu.
 
 ## Where to Play
 
