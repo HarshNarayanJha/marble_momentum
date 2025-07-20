@@ -24,6 +24,22 @@ After hitting the light on, next level will be loaded automatically. If you fail
 
 You can click the _Home_ button to go back to the main menu.
 
+## Controls
+
+Left click to change tracks or turn on/off components
+No corresponding gamepad control. Use mouse or touch.
+
+Space to drop the marble (start level)
+East face button on gamepad (Nintendo A)
+
+R to reload current level
+South face button on gamepad (Nintendo B)
+
+H for level hint (help)
+West face button on gamepad (Nintendo Y)
+
+Then sit back and relax
+
 ## Where to Play
 
 Built binaries can be downloaded from GitHub releases here as well as on itch.io [here](https://harshnarayanjha.itch.io/marble-momentum)
