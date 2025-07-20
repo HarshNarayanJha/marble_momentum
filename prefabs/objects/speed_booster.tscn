@@ -1,16 +1,92 @@
-[gd_scene load_steps=5 format=3 uid="uid://bio4g1jjphmv3"]
+[gd_scene load_steps=19 format=3 uid="uid://bio4g1jjphmv3"]
 
 [ext_resource type="Script" uid="uid://dvnyf4smodjyk" path="res://scripts/objects/speed_booster.gd" id="1_3jlfi"]
 [ext_resource type="PackedScene" uid="uid://cxnic8fr44i2s" path="res://art/conveyor_kit/arrow-basic.fbx" id="2_66pmc"]
 [ext_resource type="Material" uid="uid://df2bp5hwwr0qd" path="res://materials/speed_booster_arrow.material" id="3_66pmc"]
+[ext_resource type="AudioStream" uid="uid://f508ymlqkrh" path="res://audio/sfx/match-sizzle-02-104778.wav" id="4_hj4vj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5wm51"]
 size = Vector3(0.0912476, 0.503662, 0.92395)
 
-[node name="SpeedBooster" type="Node3D" node_paths=PackedStringArray("booster_area", "forward_marker")]
+[sub_resource type="Curve" id="Curve_hj4vj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.266583, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_66pmc"]
+curve = SubResource("Curve_hj4vj")
+
+[sub_resource type="Gradient" id="Gradient_wuuwg"]
+interpolation_mode = 2
+colors = PackedColorArray(0.999083, 5.02966e-06, 1.73271e-06, 1, 0.941249, 0.480597, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hj4vj"]
+gradient = SubResource("Gradient_wuuwg")
+
+[sub_resource type="Curve" id="Curve_66pmc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.49131, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yxtmc"]
+curve = SubResource("Curve_66pmc")
+
+[sub_resource type="Curve" id="Curve_wuuwg"]
+_data = [Vector2(0, 1), 0.0, 1.4, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hj4vj"]
+curve = SubResource("Curve_wuuwg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wuuwg"]
+lifetime_randomness = 0.5
+particle_flag_align_y = true
+direction = Vector3(0, 0.4, 1)
+spread = 25.0
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, -2.45, 0)
+scale_curve = SubResource("CurveTexture_hj4vj")
+color_ramp = SubResource("GradientTexture1D_hj4vj")
+alpha_curve = SubResource("CurveTexture_66pmc")
+emission_curve = SubResource("CurveTexture_yxtmc")
+hue_variation_min = -0.01
+hue_variation_max = 0.00999998
+
+[sub_resource type="Curve" id="Curve_yxtmc"]
+_data = [Vector2(0, 0.536831), 0.0, 0.932624, 0, 1, Vector2(0.49663, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.659677), -0.676089, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wuuwg"]
+transparency = 1
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+emission = Color(1, 0.517647, 0, 1)
+emission_energy_multiplier = 1.2
+rim_enabled = true
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_wuuwg"]
+material = SubResource("StandardMaterial3D_wuuwg")
+radius = 0.008
+radial_steps = 3
+sections = 3
+section_length = 0.1
+section_rings = 1
+cap_top = false
+cap_bottom = false
+curve = SubResource("Curve_yxtmc")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wuuwg"]
+random_pitch = 1.2
+random_volume_offset_db = 0.5
+streams_count = 1
+stream_0/stream = ExtResource("4_hj4vj")
+
+[node name="SpeedBooster" type="Node3D" node_paths=PackedStringArray("booster_area", "forward_marker", "particles", "sfx")]
 script = ExtResource("1_3jlfi")
 booster_area = NodePath("BoosterArea")
 forward_marker = NodePath("Marker3D")
+particles = NodePath("GPUParticles3D")
+sfx = NodePath("SparkSFX")
 
 [node name="arrow-basic3" parent="." instance=ExtResource("2_66pmc")]
 transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.125, 0, 0.5, 0, -2.18557e-08, 1.09278e-08, 0, -0.25)
@@ -41,6 +117,23 @@ shape = SubResource("BoxShape3D_5wm51")
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0762566, 0)
+emitting = false
+amount = 12
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.8
+randomness = 0.5
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_wuuwg")
+draw_pass_1 = SubResource("TubeTrailMesh_wuuwg")
+
+[node name="SparkSFX" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_wuuwg")
+pitch_scale = 3.0
+bus = &"SFX"
 
 [editable path="arrow-basic3"]
 [editable path="arrow-basic"]

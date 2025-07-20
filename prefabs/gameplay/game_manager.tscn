@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://ijho6f4ohbhf"]
+[gd_scene load_steps=13 format=3 uid="uid://ijho6f4ohbhf"]
 
 [ext_resource type="Script" uid="uid://bsmwh6ogvdfg1" path="res://scripts/game_manager.gd" id="1_ptyt6"]
+[ext_resource type="AudioStream" uid="uid://bf8qn8bb8jwm7" path="res://audio/sfx/marimba-win-b-2-209675.wav" id="2_wx725"]
 
 [sub_resource type="Curve" id="Curve_1jgox"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -58,9 +59,10 @@ size = 0.125
 section_length = 0.02
 curve = SubResource("Curve_2bw00")
 
-[node name="GameManager" type="Node" node_paths=PackedStringArray("win_particles")]
+[node name="GameManager" type="Node" node_paths=PackedStringArray("win_particles", "win_sfx")]
 script = ExtResource("1_ptyt6")
 win_particles = NodePath("WinParticles")
+win_sfx = NodePath("AudioStreamPlayer")
 
 [node name="WinParticles" type="GPUParticles3D" parent="."]
 transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 0, 0, 0)
@@ -72,3 +74,9 @@ randomness = 0.4
 trail_lifetime = 0.06
 process_material = SubResource("ParticleProcessMaterial_2bw00")
 draw_pass_1 = SubResource("RibbonTrailMesh_2bw00")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_wx725")
+volume_db = -3.0
+pitch_scale = 1.05
+bus = &"Music"

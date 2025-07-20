@@ -208,7 +208,7 @@ texture = ExtResource("6_vhx5o")
 
 [node name="ForceSFX" type="AudioStreamPlayer3D" parent="." index="6"]
 stream = SubResource("AudioStreamRandomizer_57vnp")
-volume_db = -15.0
+volume_db = -7.0
 bus = &"SFX"
 
 [node name="ChangeSFX" type="AudioStreamPlayer3D" parent="." index="7"]

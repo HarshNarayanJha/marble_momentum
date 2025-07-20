@@ -9,6 +9,7 @@ extends Node
 
 @export_category("Win/Lose")
 @export var win_particles: GPUParticles3D
+@export var win_sfx: AudioStreamPlayer
 @export_range(0, 10) var win_wait_secs: float = 3.0
 @export_range(0, 90) var lose_wait_secs: float = 10.0
 @export var win_button: TriggerButton
@@ -100,6 +101,7 @@ func win() -> void:
 		lose_timer.timeout.disconnect(lose)
 
 	win_particles.emitting = true
+	win_sfx.play()
 
 	await get_tree().create_timer(win_wait_secs).timeout
 
